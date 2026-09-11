@@ -1,5 +1,94 @@
 {
   "hero": {
     "subtitle": "Merging creativity, technology and strategy to create digital impact"
+  },
+  "about": {
+    "label": "ABOUT ME",
+    "heading": "Never just one thing.",
+    "body": "I'm Sara. I'm 21, I'm from Aveiro, and I'm building something, I don't know exactly what yet, but I know it's going to be big.\n\nI love creating. Turning ideas into real things, videos, websites, campaigns, or just an idea that wouldn't leave my head until I made it exist.\n\nI'm scared of being mediocre. Of one day looking back and realising I stayed comfortable when I could have taken more risks. That fear is what keeps me going.\n\n@sarapresaa was born from that, from the need to document, to be honest, to show that the path isn't linear and that's okay.\n\nI'm an IT student, content creator, digital marketing and web enthusiast, and I genuinely believe creativity and technology together are the most powerful combination there is.",
+    "skills": [
+      "Digital Marketing",
+      "Web Design",
+      "UI/UX",
+      "Content Creation",
+      "Branding",
+      "Storytelling",
+      "HTML/CSS",
+      "Lyrical Singing 🎶"
+    ]
+  },
+  "timeline": {
+    "label": "MY JOURNEY",
+    "heading": "Where I came from. Where I'm going.",
+    "items": [
+      {
+        "period": "2010 — 2024",
+        "title": "14 years at the Conservatory",
+        "description": "I studied organ and classical singing at the Aveiro Music Conservatory alongside school. For 14 years I learned that discipline, patience and creativity always go hand in hand."
+      },
+      {
+        "period": "2022 — 2023",
+        "title": "First professional experiences",
+        "description": "I worked at Zara (Inditex), a call centre and my family's hair salon. I learned to deal with people, pressure and completely different environments. Nothing was wasted."
+      },
+      {
+        "period": "2023 — today",
+        "title": "Information Technology, ESTGA",
+        "description": "I started my IT degree at the University of Aveiro. I discovered web development, UI/UX, databases, digital marketing. I realised this is where everything made sense."
+      },
+      {
+        "period": "2025 — today",
+        "title": "@sarapresaa was born",
+        "description": "I created my personal brand and started documenting the journey publicly. Content, UGC, strategy, branding — all alongside university. The real-time laboratory."
+      },
+      {
+        "period": "2026 — today",
+        "title": "Building",
+        "description": "Final year of my degree. Developing this site, preparing for my internship, growing @sarapresaa and figuring out where I want to go. I don't know everything yet — and that's okay."
+      },
+      {
+        "period": "2027 — coming soon",
+        "title": "What comes next",
+        "description": "A curricular internship at a company that unites technology and creativity. And then? My own digital ecosystem to help other creators build brands with real impact."
+      }
+    ]
+  },
+  "certificates": {
+    "label": "CERTIFICATES & TRAINING",
+    "heading": "Never stopped learning.",
+    "educationLabel": "Academic Education",
+    "certificatesLabel": "Certificates",
+    "moreNote": "And many more — check my LinkedIn for the full list.",
+    "education": {
+      "degree": {
+        "title": "Licenciatura em Tecnologias da Informação",
+        "tags": [
+          "Web Development",
+          "UI/UX",
+          "Databases",
+          "Digital Marketing",
+          "Programming"
+        ]
+      },
+      "highschool": {
+        "title": "Curso Secundário de Ciências Socioeconómicas",
+        "tags": ["Languages", "Sociology", "Economics"]
+      },
+      "conservatory": {
+        "title": "Organ (5th Grade) and Classical Singing (8th Grade)",
+        "tags": ["Piano", "Italian", "German", "Acting", "Music Analysis"]
+      }
+    }
+  },
+  "linkHub": {
+    "sectionLabel": "Follow me",
+    "comingSoon": "Coming soon",
+    "links": {
+      "latestVideo": "Latest video",
+      "newsletter": "Newsletter",
+      "shop": "Courses & Shop",
+      "events": "Events & Dates",
+      "community": "Leave a message"
+    }
   }
 }

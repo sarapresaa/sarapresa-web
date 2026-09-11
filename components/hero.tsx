@@ -1,18 +1,10 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 import { motion, type Variants } from "framer-motion"
-import { NextIntlClientProvider, useTranslations } from "next-intl"
+import { useTranslations } from "next-intl"
 
-import { LanguageToggle, type Language } from "@/components/language-toggle"
-import enMessages from "@/messages/en.json"
-import ptMessages from "@/messages/pt.json"
-
-const messages: Record<Language, typeof ptMessages> = {
-  pt: ptMessages,
-  en: enMessages,
-}
+import { LanguageToggle } from "@/components/language-toggle"
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -23,17 +15,36 @@ const fadeUp: Variants = {
   }),
 }
 
-function HeroContent({
-  language,
-  onLanguageChange,
-}: {
-  language: Language
-  onLanguageChange: (language: Language) => void
-}) {
+const wordUp: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: 2.0 + index * 0.06,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+}
+
+function Hero() {
   const t = useTranslations("hero")
+  const subtitleWords = t("subtitle").split(" ")
 
   return (
     <section className="hero-gradient relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 text-center">
+      <div
+        className="absolute inset-0 z-[-1]"
+        style={{
+          backgroundImage: "url('/hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 20%",
+          opacity: 0.25,
+          mixBlendMode: "luminosity",
+        }}
+      />
+
       <motion.div
         className="absolute top-6 right-6 md:top-10 md:right-10"
         initial="hidden"
@@ -41,7 +52,7 @@ function HeroContent({
         custom={0.2}
         variants={fadeUp}
       >
-        <LanguageToggle language={language} onChange={onLanguageChange} />
+        <LanguageToggle />
       </motion.div>
 
       <motion.div
@@ -51,41 +62,88 @@ function HeroContent({
         custom={0}
         variants={fadeUp}
       >
-        <Image
-          src="/signature.png"
-          alt="Sara Presa"
-          width={500}
-          height={169}
-          priority
-          className="h-auto w-full"
-          style={{ filter: "brightness(2) contrast(1.2)" }}
-        />
+        <div className="relative">
+          <motion.div
+            initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
+            animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+            transition={{ duration: 1.6, delay: 0.3, ease: [0.65, 0, 0.35, 1] }}
+          >
+            <Image
+              src="/signature.png"
+              alt="Sara Presa"
+              width={500}
+              height={169}
+              priority
+              className="h-auto w-full"
+              style={{ filter: "brightness(2) contrast(1.2)" }}
+            />
+          </motion.div>
+          <motion.span
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 z-10 block size-2.5 -translate-y-1/2 rounded-full bg-white"
+            style={{ boxShadow: "0 0 12px 4px rgba(255,255,255,0.6)" }}
+            initial={{ left: "0%", opacity: 0 }}
+            animate={{ left: "100%", opacity: [0, 1, 1, 0] }}
+            transition={{ duration: 1.6, delay: 0.3, ease: [0.65, 0, 0.35, 1] }}
+          />
+        </div>
       </motion.div>
 
-      <motion.p
+      <p
+        aria-label={t("subtitle")}
+        className="mt-8 text-balance"
+        style={{
+          fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
+          letterSpacing: "0.08em",
+          color: "rgba(255,255,255,0.75)",
+          maxWidth: "520px",
+          textAlign: "center",
+        }}
+      >
+        {subtitleWords.map((word, index) => (
+          <span key={index} aria-hidden="true">
+            <motion.span
+              className="inline-block"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={index}
+              variants={wordUp}
+            >
+              {word}
+            </motion.span>{" "}
+          </span>
+        ))}
+      </p>
+
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial="hidden"
         animate="visible"
-        custom={0.4}
+        custom={2.4}
         variants={fadeUp}
-        className="mt-8 max-w-xl text-base font-light text-balance text-white/70 sm:text-lg md:text-xl"
       >
-        {t("subtitle")}
-      </motion.p>
+        <motion.div
+          className="text-white/70"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </motion.div>
+      </motion.div>
     </section>
-  )
-}
-
-function Hero() {
-  const [language, setLanguage] = useState<Language>("pt")
-
-  return (
-    <NextIntlClientProvider
-      locale={language}
-      messages={messages[language]}
-      timeZone="Europe/Lisbon"
-    >
-      <HeroContent language={language} onLanguageChange={setLanguage} />
-    </NextIntlClientProvider>
   )
 }
 

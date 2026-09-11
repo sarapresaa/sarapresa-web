@@ -1,5 +1,100 @@
 {
   "hero": {
     "subtitle": "Unir criatividade, tecnologia e estratégia para criar impacto digital"
+  },
+  "about": {
+    "label": "SOBRE MIM",
+    "heading": "Nunca fui só uma coisa.",
+    "body": "Sou a Sara. Tenho 21 anos, sou de Aveiro e estou a construir alguma coisa, ainda não sei exactamente o quê, mas sei que vai ser grande.\n\nGosto de criar. De transformar ideias em coisas reais, sejam vídeos, sites, campanhas ou simplesmente uma ideia que ficou na cabeça e que não descansou enquanto não saiu.\n\nTenho medo de ser medíocre. De um dia olhar para trás e perceber que fiquei na zona de conforto quando podia ter arriscado mais. É esse medo que me faz continuar.\n\nO @sarapresaa nasceu disso, da necessidade de documentar, de ser honesta, de mostrar que o caminho não é linear e que tudo bem assim.\n\nSou estudante de TI, criadora de conteúdo, apaixonada por marketing digital e web, e acredito mesmo que criatividade e tecnologia juntas são a combinação mais poderosa que existe.",
+    "skills": [
+      "Marketing Digital",
+      "Web Design",
+      "UI/UX",
+      "Criação de Conteúdo",
+      "Branding",
+      "Storytelling",
+      "HTML/CSS",
+      "Canto Lírico 🎶"
+    ]
+  },
+  "timeline": {
+    "label": "O MEU PERCURSO",
+    "heading": "De onde vim. Para onde vou.",
+    "items": [
+      {
+        "period": "2010 — 2024",
+        "title": "14 anos de Conservatório",
+        "description": "Estudei órgão e canto lírico no Conservatório de Música de Aveiro Calouste Gulbenkian em paralelo com a escola. Durante 14 anos aprendi que disciplina, paciência e criatividade andam sempre juntas."
+      },
+      {
+        "period": "2022 — 2023",
+        "title": "Primeiras experiências profissionais",
+        "description": "Trabalhei na Zara (Inditex), num call center e no salão de cabeleireiro da minha família. Aprendi a lidar com pessoas, com pressão e com ambientes completamente diferentes. Nada foi em vão."
+      },
+      {
+        "period": "2023 — hoje",
+        "title": "Tecnologias da Informação, ESTGA",
+        "description": "Entrei para a licenciatura em TI na Universidade de Aveiro. Descobri o desenvolvimento web, UI/UX, bases de dados, marketing digital. Percebi que era aqui que tudo fazia sentido."
+      },
+      {
+        "period": "2025 — hoje",
+        "title": "Nasci o @sarapresaa",
+        "description": "Criei a minha marca pessoal e comecei a documentar a jornada em público. Conteúdo, UGC, estratégia, branding — tudo em simultâneo com a faculdade. O laboratório em tempo real."
+      },
+      {
+        "period": "2026 — hoje",
+        "title": "A construir",
+        "description": "Último ano de licenciatura. A desenvolver este site, a preparar o estágio, a crescer o @sarapresaa e a perceber onde quero chegar. Ainda não sei tudo — e tudo bem assim."
+      },
+      {
+        "period": "2027 — em breve",
+        "title": "O que vem a seguir",
+        "description": "Estágio curricular numa empresa que una tecnologia e criatividade. E depois? Um ecossistema digital próprio para ajudar outros criadores a construir marcas com impacto real."
+      }
+    ]
+  },
+  "certificates": {
+    "label": "CERTIFICADOS & FORMAÇÃO",
+    "heading": "Nunca parei de aprender.",
+    "educationLabel": "Formação Académica",
+    "certificatesLabel": "Certificados",
+    "moreNote": "E muitos mais — consulta o meu LinkedIn para a lista completa.",
+    "education": {
+      "degree": {
+        "title": "Licenciatura em Tecnologias da Informação",
+        "tags": [
+          "Desenvolvimento Web",
+          "UI/UX",
+          "Bases de Dados",
+          "Marketing Digital",
+          "Programação"
+        ]
+      },
+      "highschool": {
+        "title": "Curso Secundário de Ciências Socioeconómicas",
+        "tags": ["Línguas", "Sociologia", "Economia"]
+      },
+      "conservatory": {
+        "title": "Órgão (5.º Grau) e Canto Lírico (8.º Grau)",
+        "tags": [
+          "Piano",
+          "Italiano",
+          "Alemão",
+          "Arte de Representar",
+          "Análise Musical"
+        ]
+      }
+    }
+  },
+  "linkHub": {
+    "sectionLabel": "Segue-me",
+    "comingSoon": "Brevemente",
+    "links": {
+      "latestVideo": "Último vídeo",
+      "newsletter": "Newsletter",
+      "shop": "Cursos & Loja",
+      "events": "Eventos & Datas",
+      "community": "Deixa a tua mensagem"
+    }
   }
 }

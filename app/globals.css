@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -136,6 +137,10 @@
   html {
     @apply font-sans;
     }
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+    }
 }
 
 /* Soft, slowly drifting gradient built from the brand palette. */
@@ -177,4 +182,51 @@
     .hero-gradient::before {
         animation: none;
     }
+}
+
+.social-card {
+    position: relative;
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 24px;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.social-card:hover {
+    border-color: rgba(197, 145, 154, 0.4);
+    box-shadow:
+        0 0 32px 0 rgba(196, 145, 154, 0.2),
+        0 0 16px 0 rgba(125, 92, 107, 0.15);
+}
+
+.education-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 32px;
+    transition: border-color 0.3s ease;
+}
+
+.education-card:hover {
+    border-color: rgba(197, 145, 154, 0.4);
+}
+
+.cert-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.cert-card:hover {
+    border-color: rgba(197, 145, 154, 0.4);
+    background-color: rgba(255, 255, 255, 0.05);
 }
