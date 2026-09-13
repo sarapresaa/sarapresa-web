@@ -19,7 +19,7 @@ function About() {
   const skills = t.raw("skills") as string[]
 
   return (
-    <section className="bg-[#1a1720] px-6 py-[120px] md:px-10">
+    <section id="about" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2 md:items-center md:gap-16">
         <div>
           <motion.p

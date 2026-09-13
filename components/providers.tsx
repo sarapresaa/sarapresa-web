@@ -11,6 +11,7 @@ function Providers({ children }: { children: ReactNode }) {
         lerp: 0.1,
         duration: 1.2,
         smoothWheel: true,
+        anchors: true,
       }}
     >
       {children}

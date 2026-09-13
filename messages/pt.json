@@ -86,6 +86,12 @@
       }
     }
   },
+  "community": {
+    "label": "A COMUNIDADE",
+    "heading": "O que dizem sobre mim.",
+    "subtext": "Comentários reais de pessoas reais. Obrigada a cada um. 🤍",
+    "note": "Comentários reais retirados do Instagram, TikTok e YouTube 🤍"
+  },
   "linkHub": {
     "sectionLabel": "Segue-me",
     "comingSoon": "Brevemente",
@@ -96,5 +102,26 @@
       "events": "Eventos & Datas",
       "community": "Deixa a tua mensagem"
     }
+  },
+  "newsletter": {
+    "label": "NEWSLETTER",
+    "heading": "Fica por dentro.",
+    "subtext": "Novidades, projetos, bastidores e tudo o que estou a construir — direto para o teu email. Sem spam, prometo.",
+    "placeholder": "O teu email",
+    "button": "Subscrever",
+    "success": "Obrigada! Até breve 🤍",
+    "disclaimer": "Ao subscrever aceitas receber emails ocasionais da Sara Presa. Podes cancelar a qualquer momento."
+  },
+  "footer": {
+    "nav": {
+      "home": "Início",
+      "about": "Sobre",
+      "journey": "Percurso",
+      "certificates": "Certificados",
+      "community": "Comunidade",
+      "contact": "Contacto"
+    },
+    "copyright": "© 2026 Sara Presa. Todos os direitos reservados.",
+    "madeWith": "Feito com 🤍 em Aveiro, Portugal"
   }
 }

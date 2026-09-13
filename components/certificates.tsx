@@ -99,7 +99,7 @@ function Certificates() {
   const education = t.raw("education") as Record<string, EducationEntry>
 
   return (
-    <section className="bg-[#1a1720] px-6 py-[120px] md:px-10">
+    <section id="certificates" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial="hidden"

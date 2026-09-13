@@ -80,6 +80,12 @@
       }
     }
   },
+  "community": {
+    "label": "THE COMMUNITY",
+    "heading": "What people say.",
+    "subtext": "Real comments from real people. Thank you to each one. 🤍",
+    "note": "Real comments from Instagram, TikTok and YouTube 🤍"
+  },
   "linkHub": {
     "sectionLabel": "Follow me",
     "comingSoon": "Coming soon",
@@ -90,5 +96,26 @@
       "events": "Events & Dates",
       "community": "Leave a message"
     }
+  },
+  "newsletter": {
+    "label": "NEWSLETTER",
+    "heading": "Stay in the loop.",
+    "subtext": "News, projects, behind the scenes and everything I'm building — straight to your inbox. No spam, I promise.",
+    "placeholder": "Your email",
+    "button": "Subscribe",
+    "success": "Thank you! See you soon 🤍",
+    "disclaimer": "By subscribing you agree to receive occasional emails from Sara Presa. You can unsubscribe at any time."
+  },
+  "footer": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "journey": "Journey",
+      "certificates": "Certificates",
+      "community": "Community",
+      "contact": "Contact"
+    },
+    "copyright": "© 2026 Sara Presa. All rights reserved.",
+    "madeWith": "Made with 🤍 in Aveiro, Portugal"
   }
 }

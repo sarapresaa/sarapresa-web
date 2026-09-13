@@ -23,7 +23,7 @@ function Timeline() {
   const items = t.raw("items") as TimelineItem[]
 
   return (
-    <section className="bg-[#0f0d14] px-6 py-[120px] md:px-10">
+    <section id="journey" className="bg-[#0f0d14] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-[900px]">
         <motion.p
           initial="hidden"

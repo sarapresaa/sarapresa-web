@@ -33,7 +33,10 @@ function Hero() {
   const subtitleWords = t("subtitle").split(" ")
 
   return (
-    <section className="hero-gradient relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 text-center">
+    <section
+      id="home"
+      className="hero-gradient relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 text-center"
+    >
       <div
         className="absolute inset-0 z-[-1]"
         style={{

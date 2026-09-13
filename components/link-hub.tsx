@@ -58,7 +58,7 @@ function LinkHub() {
   const t = useTranslations("linkHub")
 
   return (
-    <section className="bg-[#1a1720] px-6 py-20 md:px-10">
+    <section id="contact" className="bg-[#1a1720] px-6 py-20 md:px-10">
       <motion.p
         initial="hidden"
         whileInView="visible"
