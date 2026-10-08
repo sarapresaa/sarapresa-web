@@ -1,6 +1,8 @@
 {
   "hero": {
-    "subtitle": "Merging creativity, technology and strategy to create digital impact"
+    "subtitle": "Merging creativity, technology and strategy to create digital impact",
+    "role": "Final-year Information Technology student, looking for a curricular internship (February–June 2027).",
+    "contactCta": "Contact me"
   },
   "about": {
     "label": "ABOUT ME",
@@ -53,6 +55,65 @@
       }
     ]
   },
+  "projects": {
+    "label": "PROJECTS",
+    "heading": "What I've already built.",
+    "linkLabel": "View on GitHub",
+    "imagePlaceholder": "Screenshot coming soon",
+    "items": [
+      {
+        "title": "Mensora IoT Solutions",
+        "meta": "Group project · 2025",
+        "description": "Web platform for home automation and energy consumption monitoring.",
+        "role": "My part: team coordination, reports, presentations, design and front-end.",
+        "tags": ["Angular", "NestJS", "MySQL"]
+      },
+      {
+        "title": "Projeto Temático SIG",
+        "meta": "Group project · 2026",
+        "description": "Web mapping application to search for pharmacies, hospitals and restaurants, with routes and nearby places.",
+        "role": "My part: coordination, reports, presentations, design and front-end.",
+        "tags": ["SvelteKit", "OpenLayers", "FastAPI", "PostgreSQL/PostGIS"]
+      },
+      {
+        "title": "BingoGame",
+        "meta": "Pair project · 2025",
+        "description": "Multiplayer Bingo game in Java, with a client-server architecture: TCP sockets, one thread per client and a Swing interface.",
+        "role": "",
+        "tags": ["Java", "TCP Sockets", "Swing"],
+        "link": "https://github.com/sarapresaa/BingoGame"
+      },
+      {
+        "title": "This portfolio",
+        "meta": "Solo project · 2026",
+        "description": "Bilingual (PT/EN) personal site, built from scratch.",
+        "role": "",
+        "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        "link": "https://github.com/sarapresaa/sarapresa-web"
+      }
+    ]
+  },
+  "results": {
+    "label": "RESULTS",
+    "heading": "Real numbers.",
+    "items": [
+      {
+        "value": "+368K",
+        "label": "TikTok views",
+        "period": "in 12 months"
+      },
+      {
+        "value": "+35K",
+        "label": "Instagram views",
+        "period": "in 90 days"
+      },
+      {
+        "value": "612",
+        "label": "Instagram followers",
+        "period": ""
+      }
+    ]
+  },
   "certificates": {
     "label": "CERTIFICATES & TRAINING",
     "heading": "Never stopped learning.",
@@ -90,6 +151,7 @@
     "sectionLabel": "Follow me",
     "comingSoon": "Coming soon",
     "links": {
+      "email": "Send an email",
       "latestVideo": "Latest video",
       "newsletter": "Newsletter",
       "shop": "Courses & Shop",
@@ -110,6 +172,7 @@
     "nav": {
       "home": "Home",
       "about": "About",
+      "projects": "Projects",
       "journey": "Journey",
       "certificates": "Certificates",
       "community": "Community",

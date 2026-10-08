@@ -1,6 +1,8 @@
 {
   "hero": {
-    "subtitle": "Unir criatividade, tecnologia e estratégia para criar impacto digital"
+    "subtitle": "Unir criatividade, tecnologia e estratégia para criar impacto digital",
+    "role": "Finalista de Tecnologias da Informação, à procura de estágio curricular (fevereiro–junho 2027).",
+    "contactCta": "Contacta-me"
   },
   "about": {
     "label": "SOBRE MIM",
@@ -53,6 +55,65 @@
       }
     ]
   },
+  "projects": {
+    "label": "PROJETOS",
+    "heading": "O que já construí.",
+    "linkLabel": "Ver no GitHub",
+    "imagePlaceholder": "Captura de ecrã em breve",
+    "items": [
+      {
+        "title": "Mensora IoT Solutions",
+        "meta": "Projeto de grupo · 2025",
+        "description": "Plataforma web de automação doméstica e monitorização de consumo energético.",
+        "role": "A minha parte: coordenação do grupo, relatórios, apresentações, design e front-end.",
+        "tags": ["Angular", "NestJS", "MySQL"]
+      },
+      {
+        "title": "Projeto Temático SIG",
+        "meta": "Projeto de grupo · 2026",
+        "description": "Aplicação web de mapas para pesquisar farmácias, hospitais e restaurantes, com rotas e locais próximos.",
+        "role": "A minha parte: coordenação, relatórios, apresentações, design e front-end.",
+        "tags": ["SvelteKit", "OpenLayers", "FastAPI", "PostgreSQL/PostGIS"]
+      },
+      {
+        "title": "BingoGame",
+        "meta": "Projeto em dupla · 2025",
+        "description": "Jogo de Bingo multijogador em Java, com arquitetura cliente-servidor: sockets TCP, uma thread por cliente e interface Swing.",
+        "role": "",
+        "tags": ["Java", "TCP Sockets", "Swing"],
+        "link": "https://github.com/sarapresaa/BingoGame"
+      },
+      {
+        "title": "Este portefólio",
+        "meta": "Projeto a solo · 2026",
+        "description": "Site pessoal bilingue (PT/EN), construído de raiz.",
+        "role": "",
+        "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        "link": "https://github.com/sarapresaa/sarapresa-web"
+      }
+    ]
+  },
+  "results": {
+    "label": "RESULTADOS",
+    "heading": "Números reais.",
+    "items": [
+      {
+        "value": "+368 mil",
+        "label": "visualizações no TikTok",
+        "period": "em 12 meses"
+      },
+      {
+        "value": "+35 mil",
+        "label": "visualizações no Instagram",
+        "period": "em 90 dias"
+      },
+      {
+        "value": "612",
+        "label": "seguidores no Instagram",
+        "period": ""
+      }
+    ]
+  },
   "certificates": {
     "label": "CERTIFICADOS & FORMAÇÃO",
     "heading": "Nunca parei de aprender.",
@@ -96,6 +157,7 @@
     "sectionLabel": "Segue-me",
     "comingSoon": "Brevemente",
     "links": {
+      "email": "Enviar email",
       "latestVideo": "Último vídeo",
       "newsletter": "Newsletter",
       "shop": "Cursos & Loja",
@@ -116,6 +178,7 @@
     "nav": {
       "home": "Início",
       "about": "Sobre",
+      "projects": "Projetos",
       "journey": "Percurso",
       "certificates": "Certificados",
       "community": "Comunidade",

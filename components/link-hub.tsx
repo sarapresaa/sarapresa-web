@@ -7,6 +7,11 @@ import { cn } from "@/lib/utils"
 
 const featuredLinks = [
   {
+    key: "email",
+    href: "mailto:info@sarapresaa.pt",
+    comingSoon: false,
+  },
+  {
     key: "latestVideo",
     href: "https://www.youtube.com/@sarapresaa",
     comingSoon: false,

@@ -8,6 +8,7 @@ import { LanguageToggle } from "@/components/language-toggle"
 const navItems = [
   { key: "home", href: "#home" },
   { key: "about", href: "#about" },
+  { key: "projects", href: "#projects" },
   { key: "journey", href: "#journey" },
   { key: "certificates", href: "#certificates" },
   { key: "community", href: "#community" },
@@ -41,7 +42,24 @@ function SiteNav() {
           ))}
         </nav>
 
-        <LanguageToggle />
+        <div className="flex items-center gap-5">
+          <a
+            href="/cv.pdf"
+            download
+            className="text-xs tracking-wide text-white/60 uppercase transition-colors hover:text-white"
+          >
+            CV
+          </a>
+          <a
+            href="https://github.com/sarapresaa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs tracking-wide text-white/60 uppercase transition-colors hover:text-white"
+          >
+            GitHub
+          </a>
+          <LanguageToggle />
+        </div>
       </div>
     </motion.header>
   )

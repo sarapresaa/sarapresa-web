@@ -119,11 +119,43 @@ function Hero() {
         ))}
       </p>
 
+      <motion.p
+        initial="hidden"
+        animate="visible"
+        custom={2.6}
+        variants={fadeUp}
+        className="mt-4 text-balance"
+        style={{
+          fontSize: "0.95rem",
+          color: "rgba(255,255,255,0.6)",
+          maxWidth: "440px",
+        }}
+      >
+        {t("role")}
+      </motion.p>
+
+      <motion.a
+        href="#contact"
+        initial="hidden"
+        animate="visible"
+        custom={2.8}
+        variants={fadeUp}
+        className="mt-6 inline-flex items-center justify-center rounded-full text-white transition-transform hover:scale-105"
+        style={{
+          background: "linear-gradient(135deg, #7d5c6b, #c4919a)",
+          padding: "12px 32px",
+          fontSize: "14px",
+          fontWeight: 500,
+        }}
+      >
+        {t("contactCta")}
+      </motion.a>
+
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial="hidden"
         animate="visible"
-        custom={2.4}
+        custom={3.2}
         variants={fadeUp}
       >
         <motion.div

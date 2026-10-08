@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 const navItems = [
   { key: "home", href: "#home" },
   { key: "about", href: "#about" },
+  { key: "projects", href: "#projects" },
   { key: "journey", href: "#journey" },
   { key: "certificates", href: "#certificates" },
   { key: "community", href: "#community" },
@@ -21,6 +22,7 @@ const socialLinks = [
   { name: "YouTube", href: "https://www.youtube.com/@sarapresaa" },
   { name: "Pinterest", href: "https://pt.pinterest.com/sarapresaa/" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/sarapresaa/" },
+  { name: "GitHub", href: "https://github.com/sarapresaa" },
 ] as const
 
 function Footer() {
