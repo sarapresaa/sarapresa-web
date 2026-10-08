@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import { m, useMotionValue, useSpring } from "framer-motion"
 
 import { useMediaQuery } from "@/lib/use-media-query"
 
@@ -49,7 +49,7 @@ function CustomCursor() {
   }
 
   return (
-    <motion.div
+    <m.div
       aria-hidden="true"
       className="pointer-events-none fixed top-0 left-0 z-[9999] rounded-full bg-white mix-blend-difference"
       style={{

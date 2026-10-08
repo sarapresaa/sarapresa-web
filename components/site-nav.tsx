@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
+import { m, useScroll, useTransform } from "framer-motion"
 import { useLocale, useTranslations } from "next-intl"
 
 import { LanguageToggle } from "@/components/language-toggle"
@@ -25,10 +25,13 @@ function SiteNav() {
   const pointerEvents = useTransform(scrollY, (value) =>
     value > 400 ? "auto" : "none"
   )
+  const visibility = useTransform(opacity, (value) =>
+    value > 0 ? "visible" : "hidden"
+  )
 
   return (
-    <motion.header
-      style={{ opacity, y, pointerEvents }}
+    <m.header
+      style={{ opacity, y, pointerEvents, visibility }}
       className="fixed top-0 right-0 left-0 z-50 border-b border-white/5 bg-[#0f0d14]/80 backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-6 py-4 md:justify-between md:px-10">
@@ -63,7 +66,7 @@ function SiteNav() {
           <LanguageToggle />
         </div>
       </div>
-    </motion.header>
+    </m.header>
   )
 }
 

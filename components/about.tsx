@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 const fadeUp: Variants = {
@@ -22,7 +22,7 @@ function About() {
     <section id="about" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2 md:items-center md:gap-16">
         <div>
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -31,9 +31,9 @@ function About() {
             className="text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
           >
             {t("label")}
-          </motion.p>
+          </m.p>
 
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -42,11 +42,11 @@ function About() {
             className="mt-4 text-3xl font-medium text-white sm:text-4xl md:text-5xl"
           >
             {t("heading")}
-          </motion.h2>
+          </m.h2>
 
           <div className="mt-6 flex flex-col gap-4">
             {paragraphs.map((paragraph, index) => (
-              <motion.p
+              <m.p
                 key={index}
                 initial="hidden"
                 whileInView="visible"
@@ -56,11 +56,11 @@ function About() {
                 className="text-sm leading-relaxed text-white/70 sm:text-base"
               >
                 {paragraph}
-              </motion.p>
+              </m.p>
             ))}
           </div>
 
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -82,10 +82,10 @@ function About() {
                 {skill}
               </span>
             ))}
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -100,7 +100,7 @@ function About() {
             sizes="(min-width: 768px) 50vw, 100vw"
             style={{ objectFit: "cover", objectPosition: "center top" }}
           />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

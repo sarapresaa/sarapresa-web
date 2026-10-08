@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 type TimelineItem = {
@@ -25,7 +25,7 @@ function Timeline() {
   return (
     <section id="journey" className="bg-[#0f0d14] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-[900px]">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -34,9 +34,9 @@ function Timeline() {
           className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -45,14 +45,14 @@ function Timeline() {
           className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
         <div className="mt-16 flex flex-col">
           {items.map((item, index) => {
             const isLast = index === items.length - 1
 
             return (
-              <motion.div
+              <m.div
                 key={item.period}
                 initial="hidden"
                 whileInView="visible"
@@ -83,7 +83,7 @@ function Timeline() {
                   style={{
                     fontSize: "12px",
                     letterSpacing: "0.1em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(255,255,255,0.5)",
                   }}
                 >
                   {item.period}
@@ -110,7 +110,7 @@ function Timeline() {
                 >
                   {item.description}
                 </p>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>

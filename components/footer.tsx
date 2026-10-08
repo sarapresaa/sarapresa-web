@@ -82,10 +82,10 @@ function Footer() {
         />
 
         <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-between md:text-left">
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
             {t("copyright")}
           </span>
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
             {t("madeWith")}
           </span>
         </div>

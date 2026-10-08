@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 const platformStyles: Record<string, { background: string; color: string }> =
@@ -114,7 +114,7 @@ function Community() {
   return (
     <section id="community" className="bg-[#0f0d14] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-6xl">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -123,9 +123,9 @@ function Community() {
           className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -134,9 +134,9 @@ function Community() {
           className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -145,14 +145,14 @@ function Community() {
           className="mx-auto mt-4 max-w-xl text-center text-sm text-white/50 sm:text-base"
         >
           {t("subtext")}
-        </motion.p>
+        </m.p>
 
         <div className="mt-16 columns-1 gap-4 sm:columns-2 lg:columns-3">
           {testimonials.map((item, index) => {
             const platform = platformStyles[item.platform]
 
             return (
-              <motion.div
+              <m.div
                 key={`${item.name}-${index}`}
                 initial="hidden"
                 whileInView="visible"
@@ -199,21 +199,21 @@ function Community() {
                 >
                   {item.comment}
                 </p>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>
 
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           custom={0.2 + testimonials.length * 0.05 + 0.1}
           variants={fadeUp}
-          className="mt-12 text-center text-xs text-white/30"
+          className="mt-12 text-center text-xs text-white/50"
         >
           {t("note")}
-        </motion.p>
+        </m.p>
       </div>
     </section>
   )

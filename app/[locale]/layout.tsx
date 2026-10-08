@@ -93,11 +93,11 @@ export default async function RootLayout({
       )}
     >
       <body>
-        <CustomCursor />
-        <AmbientParticles />
         <NextIntlClientProvider>
           <ThemeProvider>
             <Providers>
+              <CustomCursor />
+              <AmbientParticles />
               <SiteNav />
               {children}
             </Providers>

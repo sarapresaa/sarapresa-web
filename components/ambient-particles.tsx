@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { m } from "framer-motion"
 
 import { useHasMounted } from "@/lib/use-has-mounted"
 import { useMediaQuery } from "@/lib/use-media-query"
@@ -37,7 +37,7 @@ function AmbientParticles() {
       className="pointer-events-none fixed inset-0 z-10 overflow-hidden"
     >
       {particles.map((particle) => (
-        <motion.span
+        <m.span
           key={particle.id}
           className="absolute rounded-full blur-[1px]"
           style={{

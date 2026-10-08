@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 type ResultItem = {
@@ -25,7 +25,7 @@ function Results() {
   return (
     <section className="bg-[#1a1720] px-6 py-[100px] md:px-10">
       <div className="mx-auto max-w-5xl">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -34,9 +34,9 @@ function Results() {
           className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -45,11 +45,11 @@ function Results() {
           className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
         <div className="mt-16 grid grid-cols-2 gap-8 lg:grid-cols-4">
           {items.map((item, index) => (
-            <motion.div
+            <m.div
               key={item.label}
               initial="hidden"
               whileInView="visible"
@@ -72,11 +72,11 @@ function Results() {
               </div>
               <div className="mt-2 text-sm text-white/70">{item.label}</div>
               {item.period && (
-                <div className="mt-1 text-xs text-white/40">
+                <div className="mt-1 text-xs text-white/50">
                   {item.period}
                 </div>
               )}
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

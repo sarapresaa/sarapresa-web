@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
@@ -64,7 +64,7 @@ function LinkHub() {
 
   return (
     <section id="contact" className="bg-[#1a1720] px-6 py-20 md:px-10">
-      <motion.p
+      <m.p
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -73,7 +73,7 @@ function LinkHub() {
         className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
       >
         {t("sectionLabel")}
-      </motion.p>
+      </m.p>
 
       <div className="mx-auto mt-10 flex max-w-xl flex-col gap-3">
         {featuredLinks.map(({ key, href, comingSoon }, index) => {
@@ -90,7 +90,7 @@ function LinkHub() {
             <>
               <span className="text-sm font-medium text-white">{title}</span>
               {comingSoon ? (
-                <span className="text-[0.65rem] font-medium tracking-[0.15em] text-white/40 uppercase">
+                <span className="text-[0.65rem] font-medium tracking-[0.15em] text-white/50 uppercase">
                   {t("comingSoon")}
                 </span>
               ) : (
@@ -103,7 +103,7 @@ function LinkHub() {
 
           if (comingSoon) {
             return (
-              <motion.div
+              <m.div
                 key={key}
                 {...animationProps}
                 className={cn(
@@ -111,12 +111,12 @@ function LinkHub() {
                 )}
               >
                 {content}
-              </motion.div>
+              </m.div>
             )
           }
 
           return (
-            <motion.a
+            <m.a
               key={key}
               href={href}
               target="_blank"
@@ -127,14 +127,14 @@ function LinkHub() {
               className="social-card group flex items-center justify-between"
             >
               {content}
-            </motion.a>
+            </m.a>
           )
         })}
       </div>
 
       <div className="mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-5 md:gap-6">
         {socialLinks.map(({ platform, handle, href }, index) => (
-          <motion.a
+          <m.a
             key={platform}
             href={href}
             target="_blank"
@@ -157,7 +157,7 @@ function LinkHub() {
             <span className="self-end text-white/60 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">
               →
             </span>
-          </motion.a>
+          </m.a>
         ))}
       </div>
     </section>

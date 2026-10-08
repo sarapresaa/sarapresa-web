@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 import { LanguageToggle } from "@/components/language-toggle"
@@ -48,7 +48,7 @@ function Hero() {
         }}
       />
 
-      <motion.div
+      <m.div
         className="absolute top-6 right-6 md:top-10 md:right-10"
         initial="hidden"
         animate="visible"
@@ -56,9 +56,9 @@ function Hero() {
         variants={fadeUp}
       >
         <LanguageToggle />
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         className="w-[75vw] max-w-[500px]"
         initial="hidden"
         animate="visible"
@@ -66,7 +66,7 @@ function Hero() {
         variants={fadeUp}
       >
         <div className="relative">
-          <motion.div
+          <m.div
             initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
             animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
             transition={{ duration: 1.6, delay: 0.3, ease: [0.65, 0, 0.35, 1] }}
@@ -80,8 +80,8 @@ function Hero() {
               className="h-auto w-full"
               style={{ filter: "brightness(2) contrast(1.2)" }}
             />
-          </motion.div>
-          <motion.span
+          </m.div>
+          <m.span
             aria-hidden="true"
             className="pointer-events-none absolute top-1/2 z-10 block size-2.5 -translate-y-1/2 rounded-full bg-white"
             style={{ boxShadow: "0 0 12px 4px rgba(255,255,255,0.6)" }}
@@ -90,10 +90,9 @@ function Hero() {
             transition={{ duration: 1.6, delay: 0.3, ease: [0.65, 0, 0.35, 1] }}
           />
         </div>
-      </motion.div>
+      </m.div>
 
       <p
-        aria-label={t("subtitle")}
         className="mt-8 text-balance"
         style={{
           fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
@@ -103,23 +102,26 @@ function Hero() {
           textAlign: "center",
         }}
       >
-        {subtitleWords.map((word, index) => (
-          <span key={index} aria-hidden="true">
-            <motion.span
-              className="inline-block"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={index}
-              variants={wordUp}
-            >
-              {word}
-            </motion.span>{" "}
-          </span>
-        ))}
+        <span className="sr-only">{t("subtitle")}</span>
+        <span aria-hidden="true">
+          {subtitleWords.map((word, index) => (
+            <span key={index}>
+              <m.span
+                className="inline-block"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={index}
+                variants={wordUp}
+              >
+                {word}
+              </m.span>{" "}
+            </span>
+          ))}
+        </span>
       </p>
 
-      <motion.p
+      <m.p
         initial="hidden"
         animate="visible"
         custom={2.6}
@@ -132,9 +134,9 @@ function Hero() {
         }}
       >
         {t("role")}
-      </motion.p>
+      </m.p>
 
-      <motion.a
+      <m.a
         href="#contact"
         initial="hidden"
         animate="visible"
@@ -149,16 +151,16 @@ function Hero() {
         }}
       >
         {t("contactCta")}
-      </motion.a>
+      </m.a>
 
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial="hidden"
         animate="visible"
         custom={3.2}
         variants={fadeUp}
       >
-        <motion.div
+        <m.div
           className="text-white/70"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -176,8 +178,8 @@ function Hero() {
           >
             <path d="M6 9l6 6 6-6" />
           </svg>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   )
 }

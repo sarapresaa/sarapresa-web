@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 type EducationEntry = {
@@ -76,7 +76,7 @@ function Certificates() {
   return (
     <section id="certificates" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-6xl">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -85,9 +85,9 @@ function Certificates() {
           className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -96,9 +96,9 @@ function Certificates() {
           className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
-        <motion.h3
+        <m.h3
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -107,13 +107,13 @@ function Certificates() {
           className="mt-16 text-lg font-medium text-white/80"
         >
           {t("educationLabel")}
-        </motion.h3>
+        </m.h3>
 
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           {educationMeta.map((meta, index) => {
             const entry = education[meta.id]
             return (
-              <motion.div
+              <m.div
                 key={meta.id}
                 initial="hidden"
                 whileInView="visible"
@@ -128,7 +128,7 @@ function Certificates() {
                 <div className="mt-2 text-sm text-white/50">
                   {meta.institution}
                 </div>
-                <div className="mt-1 text-xs text-white/35">
+                <div className="mt-1 text-xs text-white/50">
                   {meta.period}
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -147,12 +147,12 @@ function Certificates() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>
 
-        <motion.h3
+        <m.h3
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -161,11 +161,11 @@ function Certificates() {
           className="mt-20 text-lg font-medium text-white/80"
         >
           {t("certificatesLabel")}
-        </motion.h3>
+        </m.h3>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {certificateList.map((cert, index) => (
-            <motion.div
+            <m.div
               key={cert.name}
               initial="hidden"
               whileInView="visible"
@@ -195,15 +195,15 @@ function Certificates() {
               </div>
               <div
                 className="mt-1"
-                style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}
+                style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}
               >
                 {cert.date}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -215,14 +215,14 @@ function Certificates() {
             href="https://www.linkedin.com/in/sarapresaa/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 text-sm text-white/40 transition-colors hover:text-white/70"
+            className="group inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white/70"
           >
             {t("moreNote")}
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

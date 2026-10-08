@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 const fadeUp: Variants = {
@@ -29,7 +29,7 @@ function Newsletter() {
       style={{ width: "100%" }}
     >
       <div className="mx-auto max-w-[600px] text-center">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -38,9 +38,9 @@ function Newsletter() {
           className="text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -49,9 +49,9 @@ function Newsletter() {
           className="mt-4 text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -60,9 +60,9 @@ function Newsletter() {
           className="mt-4 text-sm text-white/60 sm:text-base"
         >
           {t("subtext")}
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -71,14 +71,14 @@ function Newsletter() {
           className="mt-8"
         >
           {submitted ? (
-            <motion.p
+            <m.p
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="text-base font-medium text-white"
             >
               {t("success")}
-            </motion.p>
+            </m.p>
           ) : (
             <form
               onSubmit={handleSubmit}
@@ -115,9 +115,9 @@ function Newsletter() {
               </button>
             </form>
           )}
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -126,12 +126,12 @@ function Newsletter() {
           className="mt-6"
           style={{
             fontSize: "12px",
-            color: "rgba(255,255,255,0.3)",
+            color: "rgba(255,255,255,0.5)",
             textAlign: "center",
           }}
         >
           {t("disclaimer")}
-        </motion.p>
+        </m.p>
       </div>
     </section>
   )

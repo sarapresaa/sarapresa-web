@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 type ProjectItem = {
@@ -28,7 +28,7 @@ function Projects() {
   return (
     <section id="projects" className="bg-[#0f0d14] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-6xl">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -37,9 +37,9 @@ function Projects() {
           className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -48,11 +48,11 @@ function Projects() {
           className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
           {items.map((item, index) => (
-            <motion.div
+            <m.div
               key={item.title}
               initial="hidden"
               whileInView="visible"
@@ -69,7 +69,7 @@ function Projects() {
                 <h3 className="text-lg font-medium text-white">
                   {item.title}
                 </h3>
-                <div className="mt-1 text-xs text-white/40">{item.meta}</div>
+                <div className="mt-1 text-xs text-white/50">{item.meta}</div>
 
                 <p className="mt-3 text-sm leading-relaxed text-white/70">
                   {item.description}
@@ -111,7 +111,7 @@ function Projects() {
                   </a>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variants } from "framer-motion"
+import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 type Job = {
@@ -50,7 +50,7 @@ function Experience() {
   return (
     <section id="experience" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
       <div className="mx-auto max-w-6xl">
-        <motion.p
+        <m.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -59,9 +59,9 @@ function Experience() {
           className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
         >
           {t("label")}
-        </motion.p>
+        </m.p>
 
-        <motion.h2
+        <m.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -70,11 +70,11 @@ function Experience() {
           className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
         >
           {t("heading")}
-        </motion.h2>
+        </m.h2>
 
         <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <motion.h3
+            <m.h3
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -83,11 +83,11 @@ function Experience() {
               className="text-lg font-medium text-white/80"
             >
               {t("experienceLabel")}
-            </motion.h3>
+            </m.h3>
 
             <div className="mt-6 flex flex-col gap-4">
               {jobs.map((job, index) => (
-                <motion.div
+                <m.div
                   key={job.title}
                   initial="hidden"
                   whileInView="visible"
@@ -102,19 +102,19 @@ function Experience() {
                   <div className="mt-1 text-sm text-white/50">
                     {job.company}
                   </div>
-                  <div className="mt-1 text-xs text-white/35">
+                  <div className="mt-1 text-xs text-white/50">
                     {job.period}
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     {job.description}
                   </p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
 
           <div>
-            <motion.h3
+            <m.h3
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -123,9 +123,9 @@ function Experience() {
               className="text-lg font-medium text-white/80"
             >
               {t("skillsLabel")}
-            </motion.h3>
+            </m.h3>
 
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -136,19 +136,19 @@ function Experience() {
               {skills.map((skill) => (
                 <Pill key={skill}>{skill}</Pill>
               ))}
-            </motion.div>
-            <motion.p
+            </m.div>
+            <m.p
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               custom={0.35}
               variants={fadeUp}
-              className="mt-2 text-xs text-white/35"
+              className="mt-2 text-xs text-white/50"
             >
               {t("skillsNote")}
-            </motion.p>
+            </m.p>
 
-            <motion.h3
+            <m.h3
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -157,9 +157,9 @@ function Experience() {
               className="mt-10 text-lg font-medium text-white/80"
             >
               {t("languagesLabel")}
-            </motion.h3>
+            </m.h3>
 
-            <motion.div
+            <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -172,9 +172,9 @@ function Experience() {
                   {lang.name} ({lang.level})
                 </Pill>
               ))}
-            </motion.div>
+            </m.div>
 
-            <motion.h3
+            <m.h3
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -183,9 +183,9 @@ function Experience() {
               className="mt-10 text-lg font-medium text-white/80"
             >
               {t("activitiesLabel")}
-            </motion.h3>
+            </m.h3>
 
-            <motion.ul
+            <m.ul
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -202,7 +202,7 @@ function Experience() {
                   — {activity}
                 </li>
               ))}
-            </motion.ul>
+            </m.ul>
           </div>
         </div>
       </div>
