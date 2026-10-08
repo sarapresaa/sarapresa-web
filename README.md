@@ -1,21 +1,35 @@
-# Next.js template
+# Portefólio de Sara Presa
 
-This is a Next.js template with shadcn/ui.
+Portefólio pessoal bilingue (PT/EN), dedicado ao meu percurso em Tecnologias da Informação, aos meus projetos e ao meu interesse por desenvolvimento web, design de interfaces e marketing digital.
 
-## Adding components
+🌐 **[Visitar o portefólio](https://sarapresaa.pt)**
 
-To add components to your app, run the following command:
+## Tecnologias
+Next.js · React · TypeScript · Tailwind CSS · Framer Motion · next-intl
+
+## Conteúdos
+- Apresentação pessoal e percurso académico
+- Projetos e competências
+- Certificados e participação na comunidade
+- Contactos profissionais
+
+## Executar localmente
 
 ```bash
-npx shadcn@latest add button
+npm install
+npm run dev
 ```
 
-This will place the ui components in the `components` directory.
+## Verificações e compilação
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
+```bash
+npm run lint
+npm run typecheck
+npm run build
 ```
+
+## Autora
+[Sara Presa](https://github.com/sarapresaa)
+
+## Contactos
+🌐 [sarapresaa.pt](https://sarapresaa.pt) · 💼 [LinkedIn](https://www.linkedin.com/in/sarapresaa/) · ✉️ info@sarapresaa.pt
