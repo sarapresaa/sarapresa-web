@@ -47,7 +47,7 @@ function Results() {
           {t("heading")}
         </motion.h2>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <div className="mt-16 grid grid-cols-2 gap-8 lg:grid-cols-4">
           {items.map((item, index) => (
             <motion.div
               key={item.label}
