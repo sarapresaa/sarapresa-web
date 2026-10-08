@@ -12,7 +12,7 @@ const educationMeta = [
   {
     id: "degree",
     institution: "ESTGA — Universidade de Aveiro",
-    period: "2023 — 2026",
+    period: "2023 — 2027",
   },
   {
     id: "highschool",
@@ -57,31 +57,6 @@ const certificateList = [
     name: "The Power of Instagram",
     institution: "ClubLifeDesign",
     date: "Nov 2024",
-  },
-  {
-    name: "Faz Dinheiro Enquanto Dormes",
-    institution: "ClubLifeDesign",
-    date: "Jan 2025",
-  },
-  {
-    name: "Como Começar a Investir com 50€",
-    institution: "Magma Studio",
-    date: "Jul 2026",
-  },
-  {
-    name: "Apoios e Benefícios do Estado para Jovens",
-    institution: "Magma Studio",
-    date: "Jul 2026",
-  },
-  {
-    name: "Orçamento Pessoal e Fundo de Emergência em Excel",
-    institution: "Magma Studio",
-    date: "Jul 2026",
-  },
-  {
-    name: "Crédito, Dívidas e Armadilhas Financeiras",
-    institution: "Magma Studio",
-    date: "Jul 2026",
   },
 ] as const
 
