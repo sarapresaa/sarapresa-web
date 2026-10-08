@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server"
 import { About } from "@/components/about"
 import { Certificates } from "@/components/certificates"
 import { Community } from "@/components/community"
+import { Experience } from "@/components/experience"
 import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
 import { LinkHub } from "@/components/link-hub"
@@ -24,6 +25,7 @@ export default async function Page({
       <Hero />
       <About />
       <Projects />
+      <Experience />
       <Timeline />
       <Certificates />
       <Results />

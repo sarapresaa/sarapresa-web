@@ -24,9 +24,9 @@
     "heading": "Where I came from. Where I'm going.",
     "items": [
       {
-        "period": "2010 — 2024",
-        "title": "14 years at the Conservatory",
-        "description": "I studied organ and classical singing at the Aveiro Music Conservatory alongside school. For 14 years I learned that discipline, patience and creativity always go hand in hand."
+        "period": "2014 — 2024",
+        "title": "10 years at the Conservatory",
+        "description": "I studied organ and classical singing at the Aveiro Music Conservatory alongside school. For 10 years I learned that discipline, patience and creativity always go hand in hand."
       },
       {
         "period": "2022 — 2023",
@@ -114,6 +114,69 @@
       }
     ]
   },
+  "experience": {
+    "label": "EXPERIENCE & SKILLS",
+    "heading": "Beyond the computer.",
+    "experienceLabel": "Professional Experience",
+    "skillsLabel": "Skills",
+    "skillsNote": "and others...",
+    "languagesLabel": "Languages",
+    "activitiesLabel": "Activities",
+    "jobs": [
+      {
+        "title": "Content Creator",
+        "company": "@sarapresaa",
+        "period": "Apr 2025 – Oct 2025 (regular pace); occasionally since then",
+        "description": "Personal brand on 4 platforms. Instagram (612 followers), TikTok (369 followers), YouTube (105 subscribers) and Pinterest (in development). Content planning, video and metrics analysis."
+      },
+      {
+        "title": "Nail Designer & Makeup Artist",
+        "company": "@shineperfectglam",
+        "period": "Aug 2024 – present",
+        "description": "Self-employed, with a personal brand. Gel nails, manicure and makeup, with direct client service, bookings and business management. Promotion and visual identity on social media."
+      },
+      {
+        "title": "Retail Associate",
+        "company": "Zara (Inditex)",
+        "period": "2022–2023; Feb 2026 – present",
+        "description": "Customer service at checkout and on the shop floor, store organization and visual merchandising."
+      },
+      {
+        "title": "Contact Center Assistant",
+        "company": "Ventask Portugal (Endesa)",
+        "period": "Jul–Aug 2025",
+        "description": "Sales and telephone support, CRM and contracts."
+      }
+    ],
+    "skills": [
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Angular",
+      "React",
+      "SQL",
+      "Firebase",
+      "REST APIs",
+      "Git/GitHub",
+      "UI/UX",
+      "Video",
+      "Storytelling",
+      "Team Coordination",
+      "AI"
+    ],
+    "languages": [
+      { "name": "Portuguese", "level": "Native" },
+      { "name": "English", "level": "B1" },
+      { "name": "Italian", "level": "A2" },
+      { "name": "Spanish", "level": "B1" }
+    ],
+    "activities": [
+      "Tuna Feminina, University of Aveiro Academic Association",
+      "NAE — ESTGA Student Association"
+    ]
+  },
   "certificates": {
     "label": "CERTIFICATES & TRAINING",
     "heading": "Never stopped learning.",
@@ -173,6 +236,7 @@
       "home": "Home",
       "about": "About",
       "projects": "Projects",
+      "experience": "Experience",
       "journey": "Journey",
       "certificates": "Certificates",
       "community": "Community",

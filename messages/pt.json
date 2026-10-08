@@ -24,9 +24,9 @@
     "heading": "De onde vim. Para onde vou.",
     "items": [
       {
-        "period": "2010 — 2024",
-        "title": "14 anos de Conservatório",
-        "description": "Estudei órgão e canto lírico no Conservatório de Música de Aveiro Calouste Gulbenkian em paralelo com a escola. Durante 14 anos aprendi que disciplina, paciência e criatividade andam sempre juntas."
+        "period": "2014 — 2024",
+        "title": "10 anos de Conservatório",
+        "description": "Estudei órgão e canto lírico no Conservatório de Música de Aveiro Calouste Gulbenkian em paralelo com a escola. Durante 10 anos aprendi que disciplina, paciência e criatividade andam sempre juntas."
       },
       {
         "period": "2022 — 2023",
@@ -114,6 +114,69 @@
       }
     ]
   },
+  "experience": {
+    "label": "EXPERIÊNCIA & COMPETÊNCIAS",
+    "heading": "Para além do computador.",
+    "experienceLabel": "Experiência Profissional",
+    "skillsLabel": "Competências",
+    "skillsNote": "entre outras...",
+    "languagesLabel": "Idiomas",
+    "activitiesLabel": "Atividades",
+    "jobs": [
+      {
+        "title": "Criadora de Conteúdo",
+        "company": "@sarapresaa",
+        "period": "Abr. 2025 – Out. 2025 em ritmo regular; pontual desde então",
+        "description": "Marca pessoal em 4 plataformas. Instagram (612 seguidores), TikTok (369 seguidores), YouTube (105 subscritores) e Pinterest (em desenvolvimento). Planeamento de conteúdo, vídeo e análise de métricas."
+      },
+      {
+        "title": "Nail Designer e Maquilhadora",
+        "company": "@shineperfectglam",
+        "period": "Ago. 2024 – presente",
+        "description": "Atividade por conta própria, com marca pessoal. Unhas de gel, manicure e maquilhagem, com atendimento direto a clientes, marcações e gestão do negócio. Divulgação e identidade visual nas redes sociais."
+      },
+      {
+        "title": "Colaboradora de Loja",
+        "company": "Zara (Inditex)",
+        "period": "2022–2023; Fev. 2026 – presente",
+        "description": "Atendimento ao cliente em caixa e em secção, organização de loja e visual merchandising."
+      },
+      {
+        "title": "Assistente de Contact Center",
+        "company": "Ventask Portugal (Endesa)",
+        "period": "Jul.–Ago. 2025",
+        "description": "Vendas e atendimento telefónico, CRM e contratos."
+      }
+    ],
+    "skills": [
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Angular",
+      "React",
+      "SQL",
+      "Firebase",
+      "APIs REST",
+      "Git/GitHub",
+      "UI/UX",
+      "Vídeo",
+      "Storytelling",
+      "Coordenação de equipas",
+      "IA"
+    ],
+    "languages": [
+      { "name": "Português", "level": "Nativo" },
+      { "name": "Inglês", "level": "B1" },
+      { "name": "Italiano", "level": "A2" },
+      { "name": "Espanhol", "level": "B1" }
+    ],
+    "activities": [
+      "Tuna Feminina da Associação Académica da UA",
+      "NAE — Núcleo de Estudantes da ESTGA"
+    ]
+  },
   "certificates": {
     "label": "CERTIFICADOS & FORMAÇÃO",
     "heading": "Nunca parei de aprender.",
@@ -179,6 +242,7 @@
       "home": "Início",
       "about": "Sobre",
       "projects": "Projetos",
+      "experience": "Experiência",
       "journey": "Percurso",
       "certificates": "Certificados",
       "community": "Comunidade",

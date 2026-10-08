@@ -17,12 +17,12 @@ const educationMeta = [
   {
     id: "highschool",
     institution: "Escola Secundária Dr. Mário Sacramento",
-    period: "2018 — 2023",
+    period: "2019 — 2023",
   },
   {
     id: "conservatory",
     institution: "Conservatório de Música de Aveiro Calouste Gulbenkian",
-    period: "2010 — 2024",
+    period: "2014 — 2024",
   },
 ] as const
 
