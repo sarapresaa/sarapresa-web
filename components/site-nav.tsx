@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 import { LanguageToggle } from "@/components/language-toggle"
 
@@ -17,6 +17,7 @@ const navItems = [
 
 function SiteNav() {
   const t = useTranslations("footer")
+  const locale = useLocale()
   const { scrollY } = useScroll()
   const opacity = useTransform(scrollY, [0, 200, 500], [0, 0, 1])
   const y = useTransform(scrollY, [0, 500], [-16, 0])
@@ -44,7 +45,7 @@ function SiteNav() {
 
         <div className="flex items-center gap-5">
           <a
-            href="/cv.pdf"
+            href={`/cv-${locale}.pdf`}
             download
             className="text-xs tracking-wide text-white/60 uppercase transition-colors hover:text-white"
           >
