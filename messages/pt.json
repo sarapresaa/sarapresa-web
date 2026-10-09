@@ -66,21 +66,34 @@
         "meta": "Projeto de grupo · 2025",
         "description": "Plataforma web de automação doméstica e monitorização de consumo energético.",
         "role": "A minha parte: coordenação do grupo, relatórios, apresentações, design e front-end.",
-        "tags": ["Angular", "NestJS", "MySQL"]
+        "tags": [
+          "Angular",
+          "NestJS",
+          "MySQL"
+        ]
       },
       {
         "title": "Projeto Temático SIG",
         "meta": "Projeto de grupo · 2026",
         "description": "Aplicação web de mapas para pesquisar farmácias, hospitais e restaurantes, com rotas e locais próximos.",
         "role": "A minha parte: coordenação, relatórios, apresentações, design e front-end.",
-        "tags": ["SvelteKit", "OpenLayers", "FastAPI", "PostgreSQL/PostGIS"]
+        "tags": [
+          "SvelteKit",
+          "OpenLayers",
+          "FastAPI",
+          "PostgreSQL/PostGIS"
+        ]
       },
       {
         "title": "BingoGame",
         "meta": "Projeto em dupla · 2025",
         "description": "Jogo de Bingo multijogador em Java, com arquitetura cliente-servidor: sockets TCP, uma thread por cliente e interface Swing.",
         "role": "",
-        "tags": ["Java", "TCP Sockets", "Swing"],
+        "tags": [
+          "Java",
+          "TCP Sockets",
+          "Swing"
+        ],
         "link": "https://github.com/sarapresaa/BingoGame"
       },
       {
@@ -88,7 +101,12 @@
         "meta": "Projeto a solo · 2026",
         "description": "Site pessoal bilingue (PT/EN), construído de raiz.",
         "role": "",
-        "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS"
+        ],
         "link": "https://github.com/sarapresaa/sarapresa-web"
       }
     ]
@@ -172,10 +190,22 @@
       "IA"
     ],
     "languages": [
-      { "name": "Português", "level": "Nativo" },
-      { "name": "Inglês", "level": "B1" },
-      { "name": "Italiano", "level": "A2" },
-      { "name": "Espanhol", "level": "B1" }
+      {
+        "name": "Português",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglês",
+        "level": "B1"
+      },
+      {
+        "name": "Italiano",
+        "level": "A2"
+      },
+      {
+        "name": "Espanhol",
+        "level": "B1"
+      }
     ],
     "activities": [
       "Tuna Feminina da Associação Académica da UA",
@@ -201,7 +231,11 @@
       },
       "highschool": {
         "title": "Curso Secundário de Ciências Socioeconómicas",
-        "tags": ["Línguas", "Sociologia", "Economia"]
+        "tags": [
+          "Línguas",
+          "Sociologia",
+          "Economia"
+        ]
       },
       "conservatory": {
         "title": "Órgão (5.º Grau) e Canto Lírico (8.º Grau)",
@@ -254,6 +288,8 @@
       "contact": "Contacto"
     },
     "copyright": "© 2026 Sara Presa. Todos os direitos reservados.",
-    "madeWith": "Feito com 🤍 em Aveiro, Portugal"
+    "madeWith": "Feito com 🤍 em Aveiro, Portugal",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
   }
 }

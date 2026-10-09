@@ -66,21 +66,34 @@
         "meta": "Group project · 2025",
         "description": "Web platform for home automation and energy consumption monitoring.",
         "role": "My part: team coordination, reports, presentations, design and front-end.",
-        "tags": ["Angular", "NestJS", "MySQL"]
+        "tags": [
+          "Angular",
+          "NestJS",
+          "MySQL"
+        ]
       },
       {
         "title": "Projeto Temático SIG",
         "meta": "Group project · 2026",
         "description": "Web mapping application to search for pharmacies, hospitals and restaurants, with routes and nearby places.",
         "role": "My part: coordination, reports, presentations, design and front-end.",
-        "tags": ["SvelteKit", "OpenLayers", "FastAPI", "PostgreSQL/PostGIS"]
+        "tags": [
+          "SvelteKit",
+          "OpenLayers",
+          "FastAPI",
+          "PostgreSQL/PostGIS"
+        ]
       },
       {
         "title": "BingoGame",
         "meta": "Pair project · 2025",
         "description": "Multiplayer Bingo game in Java, with a client-server architecture: TCP sockets, one thread per client and a Swing interface.",
         "role": "",
-        "tags": ["Java", "TCP Sockets", "Swing"],
+        "tags": [
+          "Java",
+          "TCP Sockets",
+          "Swing"
+        ],
         "link": "https://github.com/sarapresaa/BingoGame"
       },
       {
@@ -88,7 +101,12 @@
         "meta": "Solo project · 2026",
         "description": "Bilingual (PT/EN) personal site, built from scratch.",
         "role": "",
-        "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS"
+        ],
         "link": "https://github.com/sarapresaa/sarapresa-web"
       }
     ]
@@ -172,10 +190,22 @@
       "AI"
     ],
     "languages": [
-      { "name": "Portuguese", "level": "Native" },
-      { "name": "English", "level": "B1" },
-      { "name": "Italian", "level": "A2" },
-      { "name": "Spanish", "level": "B1" }
+      {
+        "name": "Portuguese",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "B1"
+      },
+      {
+        "name": "Italian",
+        "level": "A2"
+      },
+      {
+        "name": "Spanish",
+        "level": "B1"
+      }
     ],
     "activities": [
       "Tuna Feminina, University of Aveiro Academic Association",
@@ -201,11 +231,21 @@
       },
       "highschool": {
         "title": "Curso Secundário de Ciências Socioeconómicas",
-        "tags": ["Languages", "Sociology", "Economics"]
+        "tags": [
+          "Languages",
+          "Sociology",
+          "Economics"
+        ]
       },
       "conservatory": {
         "title": "Organ (5th Grade) and Classical Singing (8th Grade)",
-        "tags": ["Piano", "Italian", "German", "Acting", "Music Analysis"]
+        "tags": [
+          "Piano",
+          "Italian",
+          "German",
+          "Acting",
+          "Music Analysis"
+        ]
       }
     }
   },
@@ -248,6 +288,8 @@
       "contact": "Contact"
     },
     "copyright": "© 2026 Sara Presa. All rights reserved.",
-    "madeWith": "Made with 🤍 in Aveiro, Portugal"
+    "madeWith": "Made with 🤍 in Aveiro, Portugal",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   }
 }
