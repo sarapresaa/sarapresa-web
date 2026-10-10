@@ -12,7 +12,7 @@ const TYPEAHEAD_RESET_MS = 500
 
 const PANEL_RADIUS = "rounded-2xl"
 const PANEL_PADDING = "p-1.5"
-const OPTION_RADIUS = "rounded-[calc(1rem-0.375rem)]"
+const OPTION_RADIUS = "rounded-[calc(var(--radius-2xl)-0.375rem)]"
 
 const navigationKeys = [
   "ArrowDown",
