@@ -7,7 +7,6 @@ import { notFound } from "next/navigation"
 import "../globals.css"
 import { routing } from "@/i18n/routing"
 import { AmbientParticles } from "@/components/ambient-particles"
-import { CustomCursor } from "@/components/custom-cursor"
 import { Providers } from "@/components/providers"
 import { SiteNav } from "@/components/site-nav"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -96,7 +95,6 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <ThemeProvider>
             <Providers>
-              <CustomCursor />
               <AmbientParticles />
               <SiteNav />
               {children}
