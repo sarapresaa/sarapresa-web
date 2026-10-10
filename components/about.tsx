@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl"
 
-import { ScrollWords } from "@/components/motion/scroll-words"
+import { ScrollText } from "@/components/motion/scroll-text"
 import { SectionShell } from "@/components/section-shell"
 
 function About() {
@@ -13,26 +13,22 @@ function About() {
 
   return (
     <SectionShell id="about" label={t("label")} heading={t("heading")}>
-      <div className="flex flex-col gap-8">
-        {paragraphs.map((paragraph, index) => {
+      <ScrollText
+        className="flex flex-col gap-8"
+        blocks={paragraphs.map((text, index) => {
           // The first and last paragraphs carry the story; the middle ones
           // are the supporting detail.
           const isStatement = index === 0 || index === lastIndex
 
-          return (
-            <ScrollWords
-              key={index}
-              text={paragraph}
-              floor={isStatement ? 0.4 : 0.5}
-              className={
-                isStatement
-                  ? "font-display text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.32] font-normal tracking-[-0.025em] text-paper"
-                  : "max-w-[34em] text-base leading-[1.75] text-paper md:text-[1.0625rem]"
-              }
-            />
-          )
+          return {
+            text,
+            floor: isStatement ? 0.4 : 0.5,
+            className: isStatement
+              ? "font-display text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.32] font-normal tracking-[-0.025em] text-paper"
+              : "max-w-[34em] text-base leading-[1.75] text-paper md:text-[1.0625rem]",
+          }
         })}
-      </div>
+      />
 
       <div className="mt-20">
         <p className="text-sm text-paper-dim">{t("skillsLabel")}</p>
