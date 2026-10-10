@@ -2,7 +2,7 @@ import assert from "node:assert/strict"
 import { describe, it } from "node:test"
 
 import { EmailFrame } from "@/emails/_shared/frame"
-import { renderEmail } from "@/lib/newsletter/render"
+import { renderEmail } from "@/lib/email/render"
 
 function subscriberEmail() {
   return (

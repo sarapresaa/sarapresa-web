@@ -391,6 +391,39 @@
       "failed": "I couldn't send it right now. Please try again in a moment."
     }
   },
+  "contactForm": {
+    "headline": "Tell me what's on your mind.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "category": "Topic",
+    "categoryPlaceholder": "Choose a topic",
+    "categories": {
+      "internship": "Internship or job",
+      "collaboration": "Collaboration or partnership",
+      "project": "Web project or freelance",
+      "question": "Question or feedback",
+      "other": "Something else"
+    },
+    "message": "Message",
+    "submit": "Send message",
+    "pending": "Sending",
+    "hint": "I'll reply to the email you give me. I only use your details to reply to you, as explained in the <link>privacy policy</link>.",
+    "sent": {
+      "title": "Message sent.",
+      "text": "Thank you for reaching out! I'll reply to the email you gave me as soon as I can."
+    },
+    "errors": {
+      "required": "Fill in this field.",
+      "invalid": "This value isn't valid.",
+      "email": "That email doesn't look valid.",
+      "category": "Choose a topic.",
+      "tooShort": "Write at least {min} characters.",
+      "tooLong": "Use {max} characters at most.",
+      "failed": "I couldn't send the message right now. Please try again in a moment, or write to me at {email}."
+    }
+  },
   "newsletterConfirm": {
     "title": "Confirm subscription",
     "label": "Newsletter",
@@ -436,7 +469,7 @@
         "paragraphs": ["I only collect the data I need, and only when you give it to me."],
         "items": [
           "Newsletter: your email and the site language you subscribed in, to send you the newsletter. The legal basis is your consent, which you give when you subscribe and confirm again through the link I email you.",
-          "Messages: if you write to info@sarapresaa.pt, I use your email and your message only to reply to you.",
+          "Messages: if you write to info@sarapresaa.pt or through the contact form, I use your name, your email and your message only to reply to you.",
           "Technical logs: the hosting service may keep data such as your IP address for a short time, to keep the site secure and working."
         ]
       },
@@ -446,7 +479,7 @@
           "I use two services that process data on my behalf. I don't sell or give your data to anyone else."
         ],
         "items": [
-          "Resend: stores the newsletter list and sends the emails.",
+          "Resend: stores the newsletter list and sends the emails, including contact form messages.",
           "Vercel: hosts the site."
         ]
       },

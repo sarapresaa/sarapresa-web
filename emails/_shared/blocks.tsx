@@ -43,6 +43,19 @@ export function TextLink({ href, children }: BlockProps & { href: string }) {
   )
 }
 
+export function Detail({ label, children }: BlockProps & { label: string }) {
+  return (
+    <>
+      <Text style={styles.detailLabel}>{label}</Text>
+      <Text style={styles.detailValue}>{children}</Text>
+    </>
+  )
+}
+
+export function Quote({ children }: BlockProps) {
+  return <Text style={styles.quote}>{children}</Text>
+}
+
 export function Divider() {
   return <Hr style={styles.divider} />
 }

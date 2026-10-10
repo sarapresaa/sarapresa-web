@@ -71,6 +71,26 @@ export const styles = {
     fontSize: "14px",
     lineHeight: "1.6",
   },
+  detailLabel: {
+    margin: 0,
+    color: colors.paperFaint,
+    fontSize: "13px",
+    lineHeight: "1.5",
+  },
+  detailValue: {
+    margin: "2px 0 18px",
+    color: colors.paper,
+    fontSize: "16px",
+    lineHeight: "1.5",
+  },
+  quote: {
+    margin: "0 0 4px",
+    padding: "4px 0 4px 16px",
+    borderLeft: `2px solid ${colors.rose}`,
+    color: colors.paper,
+    fontSize: "16px",
+    lineHeight: "1.65",
+  },
   action: {
     margin: "8px 0 28px",
   },

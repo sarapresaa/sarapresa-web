@@ -26,7 +26,7 @@ type EmailFrameProps = {
   locale: Locale
   siteUrl: string
   preview: string
-  footer: "subscribers" | "transactional"
+  footer: "subscribers" | "transactional" | "contact"
   children: ReactNode
 }
 

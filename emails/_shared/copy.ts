@@ -44,12 +44,35 @@ export const emailCopy = {
       action: "Visit the site",
     },
   },
+  contact: {
+    preview: "Mensagem recebida pelo formulário de contacto do site.",
+    title: "Nova mensagem",
+    sender: "De",
+    email: "Email",
+    category: "Assunto",
+    language: "Língua do site",
+    message: "Mensagem",
+    subject: "Contacto",
+    languages: {
+      pt: "Português",
+      en: "Inglês",
+    },
+    categories: {
+      internship: "Estágio ou emprego",
+      collaboration: "Colaboração ou parceria",
+      project: "Projeto web ou freelance",
+      question: "Pergunta ou feedback",
+      other: "Outro assunto",
+    },
+  },
   footer: {
     pt: {
       subscribers:
         "Recebes este email porque subscreveste a newsletter da Sara Presa.",
       transactional:
         "Enviado por Sara Presa. Recebeste este email porque foi pedida uma subscrição com este endereço.",
+      contact:
+        "Mensagem enviada pelo formulário de contacto do site. Responde a este email para falar diretamente com quem escreveu.",
       unsubscribe: "Anular subscrição",
     },
     en: {
@@ -57,6 +80,8 @@ export const emailCopy = {
         "You're receiving this email because you subscribed to Sara Presa's newsletter.",
       transactional:
         "Sent by Sara Presa. You received this email because a subscription was requested with this address.",
+      contact:
+        "Message sent through the site's contact form. Reply to this email to talk directly to the person who wrote.",
       unsubscribe: "Unsubscribe",
     },
   },

@@ -391,6 +391,39 @@
       "failed": "Não consegui enviar agora. Tenta outra vez daqui a pouco."
     }
   },
+  "contactForm": {
+    "headline": "Conta-me o que tens em mente.",
+    "firstName": "Nome",
+    "lastName": "Apelido",
+    "email": "Email",
+    "emailPlaceholder": "o.teu@email.com",
+    "category": "Assunto",
+    "categoryPlaceholder": "Escolhe um assunto",
+    "categories": {
+      "internship": "Estágio ou emprego",
+      "collaboration": "Colaboração ou parceria",
+      "project": "Projeto web ou freelance",
+      "question": "Pergunta ou feedback",
+      "other": "Outro assunto"
+    },
+    "message": "Mensagem",
+    "submit": "Enviar mensagem",
+    "pending": "A enviar",
+    "hint": "Respondo para o email que indicares. Uso os teus dados apenas para te responder, como explico na <link>política de privacidade</link>.",
+    "sent": {
+      "title": "Mensagem enviada.",
+      "text": "Obrigada pelo contacto! Vou responder-te para o email que indicaste assim que puder."
+    },
+    "errors": {
+      "required": "Preenche este campo.",
+      "invalid": "Este valor não é válido.",
+      "email": "Este email não parece válido.",
+      "category": "Escolhe um assunto.",
+      "tooShort": "Escreve pelo menos {min} caracteres.",
+      "tooLong": "Usa no máximo {max} caracteres.",
+      "failed": "Não consegui enviar a mensagem agora. Tenta outra vez daqui a pouco, ou escreve-me para {email}."
+    }
+  },
   "newsletterConfirm": {
     "title": "Confirmar subscrição",
     "label": "Newsletter",
@@ -436,7 +469,7 @@
         "paragraphs": ["Só recolho os dados de que preciso, e só quando mos dás."],
         "items": [
           "Newsletter: o teu email e a língua do site em que subscreveste, para te enviar a newsletter. A base legal é o teu consentimento, que dás ao subscrever e voltas a confirmar no link que te envio por email.",
-          "Mensagens: se me escreveres para info@sarapresaa.pt, uso o teu email e a tua mensagem apenas para te responder.",
+          "Mensagens: se me escreveres para info@sarapresaa.pt ou pelo formulário de contacto, uso o teu nome, o teu email e a tua mensagem apenas para te responder.",
           "Registos técnicos: o serviço de alojamento pode guardar, por pouco tempo, dados como o endereço IP, para garantir a segurança e o funcionamento do site."
         ]
       },
@@ -446,7 +479,7 @@
           "Uso dois serviços que tratam dados em meu nome. Não vendo nem cedo os teus dados a mais ninguém."
         ],
         "items": [
-          "Resend: guarda a lista da newsletter e envia os emails.",
+          "Resend: guarda a lista da newsletter e envia os emails, incluindo as mensagens do formulário de contacto.",
           "Vercel: aloja o site."
         ]
       },

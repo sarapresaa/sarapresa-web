@@ -3,22 +3,18 @@
 import { useActionState } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  AlertCircleIcon,
   Loading03Icon,
   Mail01Icon,
   Tick02Icon,
 } from "@hugeicons/core-free-icons"
 import { useLocale, useTranslations } from "next-intl"
 
+import { FieldError, FormCard } from "@/components/form-card"
 import { Link } from "@/i18n/navigation"
 import { subscribeAction } from "@/lib/newsletter/actions"
 import type { SubscribeState } from "@/lib/newsletter/types"
 
 const initialState: SubscribeState = { status: "idle", email: "" }
-
-function focusOnMount(node: HTMLElement | null) {
-  node?.focus()
-}
 
 function NewsletterCard() {
   const t = useTranslations("newsletter")
@@ -38,27 +34,12 @@ function NewsletterCard() {
     : "newsletter-hint"
 
   return (
-    <section
-      aria-labelledby="newsletter-title"
-      className="rounded-3xl bg-gradient-to-br from-blush from-45% to-rose p-6 text-ink md:p-8"
+    <FormCard
+      titleId="newsletter-title"
+      icon={sent ? Tick02Icon : Mail01Icon}
+      title={sent ? t("sent.title") : t("headline")}
+      focusTitle={sent}
     >
-      <span className="grid size-12 place-items-center rounded-full bg-ink text-blush">
-        <HugeiconsIcon
-          icon={sent ? Tick02Icon : Mail01Icon}
-          size={22}
-          strokeWidth={1.8}
-        />
-      </span>
-
-      <h3
-        id="newsletter-title"
-        ref={sent ? focusOnMount : undefined}
-        tabIndex={sent ? -1 : undefined}
-        className="mt-6 max-w-xl text-[clamp(1.5rem,2.8vw,2rem)] leading-[1.15] font-semibold tracking-[-0.03em] text-ink outline-none"
-      >
-        {sent ? t("sent.title") : t("headline")}
-      </h3>
-
       {sent ? (
         <p className="mt-3 max-w-md text-base leading-relaxed text-ink/85">
           {t("sent.text")}
@@ -120,19 +101,9 @@ function NewsletterCard() {
           </div>
 
           {errorKey ? (
-            <p
-              id="newsletter-error"
-              role="alert"
-              className="mt-4 flex items-start gap-2 text-sm font-semibold"
-            >
-              <HugeiconsIcon
-                icon={AlertCircleIcon}
-                size={18}
-                strokeWidth={2}
-                className="mt-px shrink-0"
-              />
+            <FieldError id="newsletter-error" alert className="mt-4">
               {t(`errors.${errorKey}`)}
-            </p>
+            </FieldError>
           ) : null}
 
           <p
@@ -152,7 +123,7 @@ function NewsletterCard() {
           </p>
         </form>
       )}
-    </section>
+    </FormCard>
   )
 }
 

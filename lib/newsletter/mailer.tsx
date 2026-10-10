@@ -1,13 +1,12 @@
-import { createHash } from "node:crypto"
-
 import type { ReactElement } from "react"
 import type { Resend } from "resend"
 
 import { ConfirmSubscriptionEmail } from "@/emails/_shared/confirm-subscription"
 import { emailCopy } from "@/emails/_shared/copy"
 import { WelcomeEmail } from "@/emails/_shared/welcome"
+import { fingerprint } from "@/lib/email/fingerprint"
+import { renderEmail } from "@/lib/email/render"
 import { confirmationUrl } from "@/lib/newsletter/links"
-import { renderEmail } from "@/lib/newsletter/render"
 import type { Mailer } from "@/lib/newsletter/types"
 
 type MailerOptions = {
@@ -22,10 +21,6 @@ type Message = {
   subject: string
   element: ReactElement
   idempotencyKey: string
-}
-
-function fingerprint(value: string) {
-  return createHash("sha256").update(value).digest("hex").slice(0, 32)
 }
 
 export function createMailer({

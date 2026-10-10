@@ -16,6 +16,7 @@ import {
 } from "@hugeicons/core-free-icons"
 import { useLocale, useTranslations } from "next-intl"
 
+import { ContactForm } from "@/components/contact-form"
 import { Magnetic } from "@/components/motion/magnetic"
 import { NewsletterCard } from "@/components/newsletter-card"
 import { RevealText } from "@/components/motion/reveal-text"
@@ -137,37 +138,41 @@ function LinkHub() {
         </div>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
-          <p className="max-w-md text-lg leading-relaxed text-paper-dim">
-            {t("lead")}
-          </p>
+          <div className="flex flex-col gap-12 lg:sticky lg:top-28 lg:self-start">
+            <p className="max-w-md text-lg leading-relaxed text-paper-dim">
+              {t("lead")}
+            </p>
 
-          <div className="flex flex-col items-start gap-6">
-            <p className="text-sm text-paper-faint">{t("emailLabel")}</p>
-            <Magnetic strength={0.12}>
-              <a
-                href={`mailto:${EMAIL}`}
-                className="link-sweep pb-1 font-display text-[clamp(1.5rem,3.2vw,2.6rem)] leading-tight break-all text-paper transition-colors duration-500 hover:text-blush"
-              >
-                {EMAIL}
-              </a>
-            </Magnetic>
-            <div className="flex flex-wrap items-center gap-3">
-              <CopyEmailButton />
-              <a
-                href={`/cv-${locale}.pdf`}
-                download
-                className="group inline-flex items-center gap-2 rounded-full bg-paper px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-blush"
-              >
-                {t("cv")}
-                <HugeiconsIcon
-                  icon={Download01Icon}
-                  size={16}
-                  strokeWidth={2}
-                  className="transition-transform duration-300 group-hover:translate-y-0.5"
-                />
-              </a>
+            <div className="flex flex-col items-start gap-6">
+              <p className="text-sm text-paper-faint">{t("emailLabel")}</p>
+              <Magnetic strength={0.12}>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="link-sweep pb-1 font-display text-[clamp(1.5rem,3.2vw,2.6rem)] leading-tight break-all text-paper transition-colors duration-500 hover:text-blush"
+                >
+                  {EMAIL}
+                </a>
+              </Magnetic>
+              <div className="flex flex-wrap items-center gap-3">
+                <CopyEmailButton />
+                <a
+                  href={`/cv-${locale}.pdf`}
+                  download
+                  className="group inline-flex items-center gap-2 rounded-full bg-paper px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-300 hover:bg-blush"
+                >
+                  {t("cv")}
+                  <HugeiconsIcon
+                    icon={Download01Icon}
+                    size={16}
+                    strokeWidth={2}
+                    className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  />
+                </a>
+              </div>
             </div>
           </div>
+
+          <ContactForm />
         </div>
 
         <div className="mt-32 grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">

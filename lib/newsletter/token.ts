@@ -2,7 +2,7 @@ import { createHmac, timingSafeEqual } from "node:crypto"
 
 import { z } from "zod"
 
-import { emailSchema, localeSchema } from "@/lib/newsletter/schema"
+import { emailSchema, localeSchema } from "@/lib/email/schema"
 import type { Locale } from "@/lib/seo"
 
 export const CONFIRMATION_TTL_MS = 48 * 60 * 60 * 1000

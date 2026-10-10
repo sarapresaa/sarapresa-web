@@ -6,8 +6,8 @@ import { Resend } from "resend"
 import type { IssueModule } from "@/emails/_shared/issue"
 import { routing } from "@/i18n/routing"
 import { parseNewsletterConfig } from "@/lib/newsletter/config"
-import { renderEmail } from "@/lib/newsletter/render"
-import { localeSchema } from "@/lib/newsletter/schema"
+import { renderEmail } from "@/lib/email/render"
+import { localeSchema } from "@/lib/email/schema"
 import { SITE_URL, type Locale } from "@/lib/seo"
 
 const ISSUE_PATTERN = /^[a-z0-9-]+$/
