@@ -5,13 +5,15 @@ import {
   PORTRAIT_PATH,
   SITE_URL,
   languageAlternates,
+  localePath,
   localeUrl,
+  pathAlternates,
 } from "@/lib/seo"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
-  return routing.locales.map((locale) => ({
+  const home: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
     url: localeUrl(locale),
     lastModified,
     changeFrequency: "monthly",
@@ -19,4 +21,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages: languageAlternates() },
     images: [`${SITE_URL}${PORTRAIT_PATH}`],
   }))
+
+  const privacy: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
+    url: `${SITE_URL}${localePath(locale, "/privacy")}`,
+    lastModified,
+    changeFrequency: "yearly",
+    priority: 0.3,
+    alternates: { languages: pathAlternates("/privacy") },
+  }))
+
+  return [...home, ...privacy]
 }

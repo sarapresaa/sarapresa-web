@@ -24,17 +24,30 @@ export const HREFLANG: Record<Locale, string> = {
   en: "en",
 }
 
+export function localePath(locale: string, path = "/") {
+  if (locale === routing.defaultLocale) {
+    return path
+  }
+
+  return path === "/" ? `/${locale}` : `/${locale}${path}`
+}
+
 export function localeUrl(locale: string) {
-  return locale === routing.defaultLocale
-    ? `${SITE_URL}/`
-    : `${SITE_URL}/${locale}`
+  return `${SITE_URL}${localePath(locale)}`
+}
+
+export function pathAlternates(path: string) {
+  return {
+    ...Object.fromEntries(
+      routing.locales.map((locale) => [
+        HREFLANG[locale],
+        `${SITE_URL}${localePath(locale, path)}`,
+      ])
+    ),
+    "x-default": `${SITE_URL}${localePath(routing.defaultLocale, path)}`,
+  }
 }
 
 export function languageAlternates() {
-  return {
-    ...Object.fromEntries(
-      routing.locales.map((locale) => [HREFLANG[locale], localeUrl(locale)])
-    ),
-    "x-default": localeUrl(routing.defaultLocale),
-  }
+  return pathAlternates("/")
 }

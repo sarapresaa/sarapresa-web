@@ -35,3 +35,9 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# react email preview cache
+/.react-email/
+
+# env template stays tracked
+!.env.example

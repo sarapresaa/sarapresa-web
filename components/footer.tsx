@@ -5,6 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowUp01Icon } from "@hugeicons/core-free-icons"
 import { useTranslations } from "next-intl"
 
+import { Link } from "@/i18n/navigation"
 import { socialList } from "@/lib/socials"
 
 const navItems = [
@@ -84,7 +85,15 @@ function Footer() {
         </div>
 
         <div className="flex flex-col gap-2 pb-6 text-xs text-paper-faint md:flex-row md:justify-between">
-          <span>{t("copyright")}</span>
+          <span className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>{t("copyright")}</span>
+            <Link
+              href="/privacy"
+              className="link-sweep inline-block pb-0.5 transition-colors duration-300 hover:text-paper"
+            >
+              {t("privacy")}
+            </Link>
+          </span>
           <span>{t("madeWith")}</span>
         </div>
       </div>

@@ -362,7 +362,6 @@
     "latestVideo": "Latest video",
     "soonLabel": "Coming soon",
     "soon": [
-      "Newsletter",
       "Courses & Shop",
       "Events & Dates",
       "Leave a message"
@@ -376,6 +375,112 @@
     },
     "latestVideoHint": "Watch on YouTube"
   },
+  "newsletter": {
+    "title": "Newsletter",
+    "text": "Projects, behind the scenes and new videos, straight to your inbox. No spam, and you can leave whenever you like.",
+    "emailLabel": "Your email",
+    "placeholder": "your@email.com",
+    "submit": "Subscribe",
+    "pending": "Sending",
+    "hint": "I'll email you a link to confirm. By subscribing, you accept the <link>privacy policy</link>.",
+    "sent": {
+      "title": "Check your email",
+      "text": "I sent you a link to confirm your subscription. If you don't see it, check your spam folder or try again in 15 minutes."
+    },
+    "errors": {
+      "invalid": "That email doesn't look valid. Check it and try again.",
+      "failed": "I couldn't send it right now. Please try again in a moment."
+    }
+  },
+  "newsletterConfirm": {
+    "title": "Confirm subscription",
+    "label": "Newsletter",
+    "back": "Back to home",
+    "prompt": {
+      "title": "Confirm your subscription",
+      "text": "One step left to get the newsletter at {email}.",
+      "action": "Confirm subscription",
+      "pending": "Confirming"
+    },
+    "confirmed": {
+      "title": "Subscription confirmed",
+      "text": "Thank you for being here. You'll get the first email soon."
+    },
+    "expired": {
+      "title": "This link has expired",
+      "text": "Confirmation links last 48 hours. Request a new one with the newsletter form."
+    },
+    "invalid": {
+      "title": "Invalid link",
+      "text": "This link isn't valid. Request a new one with the newsletter form."
+    },
+    "failed": {
+      "title": "Something went wrong",
+      "text": "I couldn't confirm right now. Please try again in a moment."
+    }
+  },
+  "privacy": {
+    "label": "Privacy",
+    "title": "Privacy Policy",
+    "description": "How I handle the personal data collected on this site, including the newsletter.",
+    "updated": "Last updated: 10 October 2026",
+    "back": "Back to home",
+    "sections": [
+      {
+        "title": "Who is responsible",
+        "paragraphs": [
+          "I'm Sara Presa, from Aveiro, Portugal, and I'm the controller of the personal data collected on this site."
+        ]
+      },
+      {
+        "title": "What data I collect and why",
+        "paragraphs": ["I only collect the data I need, and only when you give it to me."],
+        "items": [
+          "Newsletter: your email and the site language you subscribed in, to send you the newsletter. The legal basis is your consent, which you give when you subscribe and confirm again through the link I email you.",
+          "Messages: if you write to info@sarapresaa.pt, I use your email and your message only to reply to you.",
+          "Technical logs: the hosting service may keep data such as your IP address for a short time, to keep the site secure and working."
+        ]
+      },
+      {
+        "title": "Who I share data with",
+        "paragraphs": [
+          "I use two services that process data on my behalf. I don't sell or give your data to anyone else."
+        ],
+        "items": [
+          "Resend: stores the newsletter list and sends the emails.",
+          "Vercel: hosts the site."
+        ]
+      },
+      {
+        "title": "Transfers outside the European Union",
+        "paragraphs": [
+          "These services may process data outside the European Economic Area, notably in the United States, with the safeguards required by the GDPR."
+        ]
+      },
+      {
+        "title": "How long I keep data",
+        "paragraphs": [
+          "Your email stays on the newsletter list until you unsubscribe. You can unsubscribe at any time with the link at the bottom of every email, and if you want I'll delete all your data too. I keep the messages you send me only as long as needed to reply."
+        ]
+      },
+      {
+        "title": "Cookies",
+        "paragraphs": [
+          "This site doesn't use advertising, analytics or social media cookies. It only stores one functional cookie (NEXT_LOCALE) with the language you chose, to show the site in the right language. It isn't used to track you."
+        ]
+      },
+      {
+        "title": "Your rights",
+        "paragraphs": [
+          "You have the right to access, correct and delete your data, to restrict or object to its processing, to ask for portability, and to withdraw your consent at any time, without affecting what was done before. You can also lodge a complaint with the Portuguese data protection authority, the Comissão Nacional de Proteção de Dados (cnpd.pt)."
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Contact",
+      "text": "To exercise any of these rights, or with any privacy question, write to me:"
+    }
+  },
   "footer": {
     "nav": {
       "home": "Home",
@@ -387,6 +492,7 @@
       "community": "Community",
       "contact": "Contact"
     },
+    "privacy": "Privacy",
     "copyright": "© 2026 Sara Presa. All rights reserved.",
     "madeWith": "Made with 🤍 in Aveiro, Portugal"
   },

@@ -17,6 +17,7 @@ import {
 import { useLocale, useTranslations } from "next-intl"
 
 import { Magnetic } from "@/components/motion/magnetic"
+import { NewsletterCard } from "@/components/newsletter-card"
 import { RevealText } from "@/components/motion/reveal-text"
 import { Rule } from "@/components/motion/rule"
 import { EMAIL } from "@/lib/seo"
@@ -216,6 +217,8 @@ function LinkHub() {
 
             <SocialGroup label={t("groups.work")} links={workLinks} />
             <SocialGroup label={t("groups.content")} links={contentLinks} />
+
+            <NewsletterCard />
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2.5">
               <p className="mr-1 text-sm text-paper-faint">{t("soonLabel")}</p>

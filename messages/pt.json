@@ -362,7 +362,6 @@
     "latestVideo": "Último vídeo",
     "soonLabel": "Brevemente",
     "soon": [
-      "Newsletter",
       "Cursos & Loja",
       "Eventos & Datas",
       "Deixa a tua mensagem"
@@ -376,6 +375,112 @@
     },
     "latestVideoHint": "Ver no YouTube"
   },
+  "newsletter": {
+    "title": "Newsletter",
+    "text": "Projetos, bastidores e vídeos novos, diretamente no teu email. Sem spam, e sais quando quiseres.",
+    "emailLabel": "O teu email",
+    "placeholder": "o.teu@email.com",
+    "submit": "Subscrever",
+    "pending": "A enviar",
+    "hint": "Vou enviar-te um email para confirmares. Ao subscrever, aceitas a <link>política de privacidade</link>.",
+    "sent": {
+      "title": "Verifica o teu email",
+      "text": "Enviei-te um link para confirmares a subscrição. Se não o vires, espreita o spam ou tenta de novo daqui a 15 minutos."
+    },
+    "errors": {
+      "invalid": "Este email não parece válido. Confirma e tenta outra vez.",
+      "failed": "Não consegui enviar agora. Tenta outra vez daqui a pouco."
+    }
+  },
+  "newsletterConfirm": {
+    "title": "Confirmar subscrição",
+    "label": "Newsletter",
+    "back": "Voltar ao início",
+    "prompt": {
+      "title": "Confirma a tua subscrição",
+      "text": "Falta só um passo para receberes a newsletter em {email}.",
+      "action": "Confirmar subscrição",
+      "pending": "A confirmar"
+    },
+    "confirmed": {
+      "title": "Subscrição confirmada",
+      "text": "Obrigada por estares aqui. Vais receber o primeiro email em breve."
+    },
+    "expired": {
+      "title": "Este link expirou",
+      "text": "Os links de confirmação duram 48 horas. Pede um novo no formulário da newsletter."
+    },
+    "invalid": {
+      "title": "Link inválido",
+      "text": "Este link não é válido. Pede um novo no formulário da newsletter."
+    },
+    "failed": {
+      "title": "Algo correu mal",
+      "text": "Não consegui confirmar agora. Tenta outra vez daqui a pouco."
+    }
+  },
+  "privacy": {
+    "label": "Privacidade",
+    "title": "Política de Privacidade",
+    "description": "Como trato os dados pessoais recolhidos neste site, incluindo a newsletter.",
+    "updated": "Última atualização: 10 de outubro de 2026",
+    "back": "Voltar ao início",
+    "sections": [
+      {
+        "title": "Quem é o responsável",
+        "paragraphs": [
+          "Sou a Sara Presa, de Aveiro, Portugal, e sou a responsável pelo tratamento dos dados pessoais recolhidos neste site."
+        ]
+      },
+      {
+        "title": "Que dados recolho e porquê",
+        "paragraphs": ["Só recolho os dados de que preciso, e só quando mos dás."],
+        "items": [
+          "Newsletter: o teu email e a língua do site em que subscreveste, para te enviar a newsletter. A base legal é o teu consentimento, que dás ao subscrever e voltas a confirmar no link que te envio por email.",
+          "Mensagens: se me escreveres para info@sarapresaa.pt, uso o teu email e a tua mensagem apenas para te responder.",
+          "Registos técnicos: o serviço de alojamento pode guardar, por pouco tempo, dados como o endereço IP, para garantir a segurança e o funcionamento do site."
+        ]
+      },
+      {
+        "title": "Com quem partilho os dados",
+        "paragraphs": [
+          "Uso dois serviços que tratam dados em meu nome. Não vendo nem cedo os teus dados a mais ninguém."
+        ],
+        "items": [
+          "Resend: guarda a lista da newsletter e envia os emails.",
+          "Vercel: aloja o site."
+        ]
+      },
+      {
+        "title": "Transferências para fora da União Europeia",
+        "paragraphs": [
+          "Estes serviços podem tratar dados fora do Espaço Económico Europeu, nomeadamente nos Estados Unidos, com as garantias previstas no RGPD."
+        ]
+      },
+      {
+        "title": "Durante quanto tempo guardo os dados",
+        "paragraphs": [
+          "O teu email fica na lista da newsletter até anulares a subscrição. Podes anular a qualquer momento no link que está no fim de cada email, e se quiseres apago também todos os teus dados. As mensagens que me enviares guardo apenas o tempo necessário para te responder."
+        ]
+      },
+      {
+        "title": "Cookies",
+        "paragraphs": [
+          "Este site não usa cookies de publicidade, de análise nem de redes sociais. Guarda apenas um cookie funcional (NEXT_LOCALE) com a língua que escolheste, para o mostrar no idioma certo. Não é usado para te rastrear."
+        ]
+      },
+      {
+        "title": "Os teus direitos",
+        "paragraphs": [
+          "Tens direito a aceder aos teus dados, corrigi-los, apagá-los, limitar ou opor-te ao tratamento, pedir a portabilidade e retirar o consentimento a qualquer momento, sem que isso afete o que foi feito antes. Tens ainda o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (cnpd.pt)."
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Contacto",
+      "text": "Para exercer qualquer um destes direitos, ou para qualquer dúvida sobre privacidade, escreve-me:"
+    }
+  },
   "footer": {
     "nav": {
       "home": "Início",
@@ -387,6 +492,7 @@
       "community": "Comunidade",
       "contact": "Contacto"
     },
+    "privacy": "Privacidade",
     "copyright": "© 2026 Sara Presa. Todos os direitos reservados.",
     "madeWith": "Feito com 🤍 em Aveiro, Portugal"
   },
