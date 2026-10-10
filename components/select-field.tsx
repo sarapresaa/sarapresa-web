@@ -1,6 +1,6 @@
 "use client"
 
-import { useId, useRef, useState, type KeyboardEvent } from "react"
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowDown01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 
@@ -55,6 +55,14 @@ function SelectField({
   const selectedIndex = options.findIndex((option) => option.value === value)
   const selected = options[selectedIndex]
   const optionId = (index: number) => `${listboxId}-option-${index}`
+
+  useEffect(() => {
+    if (open && activeIndex >= 0) {
+      document
+        .getElementById(`${listboxId}-option-${activeIndex}`)
+        ?.scrollIntoView({ block: "nearest" })
+    }
+  }, [open, activeIndex, listboxId])
 
   function openList(index = selectedIndex) {
     setActiveIndex(Math.max(index, 0))
@@ -207,7 +215,7 @@ function SelectField({
           className={cn(
             PANEL_RADIUS,
             PANEL_PADDING,
-            "absolute top-full right-0 left-0 z-20 mt-2 max-h-72 overflow-auto bg-paper shadow-xl ring-1 shadow-ink/30 ring-ink/10 transition-[opacity,translate] duration-150 motion-reduce:transition-none starting:-translate-y-1 starting:opacity-0"
+            "absolute top-full right-0 left-0 z-20 mt-2 max-h-[min(24rem,60svh)] overflow-auto bg-paper shadow-xl ring-1 shadow-ink/30 ring-ink/10 transition-[opacity,translate] duration-150 motion-reduce:transition-none starting:-translate-y-1 starting:opacity-0"
           )}
         >
           {options.map((option, index) => {

@@ -22,7 +22,10 @@ describe("contact categories", () => {
   }
 
   it("has an email label for every category and nothing extra", () => {
-    assert.deepEqual(Object.keys(emailCopy.contact.categories).sort(), categories)
+    assert.deepEqual(
+      Object.keys(emailCopy.contact.categories).sort(),
+      categories
+    )
   })
 
   it("never leaves a label empty", () => {
