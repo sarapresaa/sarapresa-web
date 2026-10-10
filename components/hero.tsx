@@ -17,7 +17,6 @@ import { useTranslations } from "next-intl"
 
 import { Magnetic } from "@/components/motion/magnetic"
 import { RevealText } from "@/components/motion/reveal-text"
-import { Signature } from "@/components/signature"
 
 const rise: Variants = {
   hidden: { opacity: 0, y: 18 },
@@ -75,12 +74,19 @@ function Hero() {
         className="pointer-events-none absolute inset-0 z-[-1]"
       />
 
-      <div className="mx-auto grid min-h-svh max-w-[1280px] items-center gap-12 px-6 pt-28 pb-24 md:px-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10 lg:pt-24">
+      <div className="mx-auto grid min-h-svh max-w-[1360px] items-center gap-12 px-6 pt-28 pb-24 md:px-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10 lg:pt-24">
         <div className="flex flex-col items-start">
-          {/* The signature is the visible name, so it is the page's H1. The
-              screen-reader suffix gives the heading its full meaning. */}
+          {/* The signature is the visible name, so this is the page's H1. The
+              empty slot marks where the fixed <BrandSignature /> (layout)
+              draws it, before it flies into the header as you scroll. The
+              sr-only text gives the heading its full meaning. */}
           <h1 className="block text-[1rem] leading-none tracking-normal">
-            <Signature />
+            <span
+              id="hero-signature"
+              aria-hidden="true"
+              className="block aspect-[515/174] w-[min(78vw,340px)]"
+              style={{ marginLeft: "calc(min(78vw, 340px) * -0.0796)" }}
+            />
             <span className="sr-only">Sara Presa, {t("h1Suffix")}</span>
           </h1>
 

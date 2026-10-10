@@ -6,6 +6,7 @@ import { notFound } from "next/navigation"
 
 import "../globals.css"
 import { routing } from "@/i18n/routing"
+import { BrandSignature } from "@/components/brand-signature"
 import { Aurora } from "@/components/motion/aurora"
 import { ScrollProgress } from "@/components/motion/scroll-progress"
 import { Spotlight } from "@/components/motion/spotlight"
@@ -143,6 +144,7 @@ export default async function RootLayout({
             <ScrollProgress />
             <Aurora />
             <Spotlight />
+            <BrandSignature />
             <SiteNav />
             {children}
             <div aria-hidden="true" className="grain" />

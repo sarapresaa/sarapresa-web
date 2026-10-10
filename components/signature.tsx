@@ -26,7 +26,8 @@ function penHeight(progress: number) {
 /**
  * "Sara Presa", written live. The signature is a raster image, so the ink is
  * revealed by a feathered mask that follows a glowing pen tip bobbing along
- * the stroke, a close approximation of handwriting.
+ * the stroke, a close approximation of handwriting. It fills its parent, so
+ * the caller decides the size (see brand-signature.tsx).
  */
 function Signature({ delay = 0.5 }: { delay?: number }) {
   const prefersReducedMotion = useReducedMotion()
@@ -54,9 +55,7 @@ function Signature({ delay = 0.5 }: { delay?: number }) {
   const penOpacity = useTransform(progress, [0, 0.03, 0.96, 1], [0, 1, 1, 0])
 
   return (
-    // Spans only: this lives inside the page's <h1>, which allows phrasing
-    // content. The name itself is real text in an sr-only span next to it (hero.tsx).
-    <span className="relative -ml-[8%] block w-[min(78vw,340px)]">
+    <span className="relative block w-full">
       <m.span
         className="block"
         style={{ maskImage: mask, WebkitMaskImage: mask }}
@@ -64,9 +63,10 @@ function Signature({ delay = 0.5 }: { delay?: number }) {
         <Image
           src="/sara-presa-signature.png"
           alt=""
-          width={500}
-          height={169}
+          width={515}
+          height={174}
           priority
+          sizes="340px"
           className="h-auto w-full"
           style={{ filter: "brightness(2.2) contrast(1.15)" }}
         />

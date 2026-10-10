@@ -12,7 +12,6 @@ import { AnimatePresence, animate, m, useMotionValue } from "framer-motion"
 import { useLenis } from "lenis/react"
 import { useLocale, useTranslations } from "next-intl"
 
-import { BrandMark } from "@/components/brand-mark"
 import { LanguageToggle } from "@/components/language-toggle"
 import { cn } from "@/lib/utils"
 
@@ -143,13 +142,8 @@ function SiteNav() {
         />
 
         <div className="relative mx-auto grid h-[4.5rem] max-w-[1360px] grid-cols-2 items-center gap-4 px-6 md:px-10 lg:grid-cols-[1fr_auto_1fr]">
-          <a
-            href="#home"
-            className="group flex items-center gap-2.5 justify-self-start text-[0.95rem] font-semibold tracking-[-0.02em] text-paper"
-          >
-            <BrandMark className="transition-transform duration-500 ease-out-expo group-hover:scale-105" />
-            Sara Presa
-          </a>
+          {/* Left slot: the hand-written logo flies in here (brand-signature). */}
+          <div aria-hidden="true" className="h-10" />
 
           <nav
             aria-label={t("label")}
