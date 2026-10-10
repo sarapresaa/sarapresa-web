@@ -13,7 +13,6 @@ function Providers({ children }: { children: ReactNode }) {
           options={{
             lerp: 0.09,
             smoothWheel: true,
-            // Same-page links glide, and land below the floating nav.
             anchors: { offset: -72, duration: 1.4 },
           }}
         >

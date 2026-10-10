@@ -2,11 +2,6 @@
 
 import { useEffect } from "react"
 
-/**
- * One global listener that feeds the pointer position (--mx / --my) to any
- * element marked `data-spotlight`. The glow itself is pure CSS (globals.css),
- * so hovering a panel never triggers a React render.
- */
 function Spotlight() {
   useEffect(() => {
     function handleMove(event: PointerEvent) {

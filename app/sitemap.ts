@@ -8,11 +8,6 @@ import {
   localeUrl,
 } from "@/lib/seo"
 
-/**
- * One entry per language page. Each lists its hreflang siblings (so Google
- * serves the Portuguese or English page to the right person) and the portrait
- * for image search. The bare "/" is left out on purpose: it only redirects.
- */
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 

@@ -1,4 +1,3 @@
-/** Every public profile, in one place (site, footer, structured data, llms.txt). */
 export type SocialKey =
   "github" | "linkedin" | "instagram" | "tiktok" | "youtube" | "pinterest"
 

@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og"
 
-/** The "SP" monogram as a square PNG, for the web manifest's app icons. */
 function brandIcon(size: number) {
   return new ImageResponse(
     <div

@@ -18,20 +18,12 @@ const PERSON_ID = `${SITE_URL}/#person`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const PORTRAIT_ID = `${SITE_URL}/#portrait`
 
-// Same order in both message files: Portuguese, English, Italian, Spanish.
 const LANGUAGE_CODES = ["pt-PT", "en", "it", "es"]
 
-/** "Lyrical Singing 🎶" -> "Lyrical Singing". */
 function stripEmoji(value: string) {
   return value.replace(/[^\p{L}\p{N}\s/&+.-]/gu, "").trim()
 }
 
-/**
- * One linked JSON-LD graph per language: the site, this profile page, the
- * person (with every spelling and profile that belongs to her) and her
- * projects. Everything is derived from the same messages the page renders,
- * so the markup can never drift from the visible content.
- */
 function buildStructuredData(locale: Locale) {
   const m = messages[locale]
   const pageUrl = localeUrl(locale)

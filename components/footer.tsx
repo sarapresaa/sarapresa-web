@@ -1,5 +1,6 @@
 "use client"
 
+import type { ReactNode } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowUp01Icon } from "@hugeicons/core-free-icons"
 import { useTranslations } from "next-intl"
@@ -24,7 +25,7 @@ function FooterLink({
 }: {
   href: string
   external?: boolean
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <a

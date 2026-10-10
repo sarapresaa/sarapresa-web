@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
 import { m, useScroll, useTransform } from "framer-motion"
@@ -9,6 +8,7 @@ import { useTranslations } from "next-intl"
 
 import { ProjectArt } from "@/components/art/project-art"
 import { SectionShell } from "@/components/section-shell"
+import { socials } from "@/lib/socials"
 import { cn } from "@/lib/utils"
 
 type ProjectItem = {
@@ -22,15 +22,6 @@ type ProjectItem = {
   link?: string
 }
 
-/*
- * Real screenshots win over the illustrated covers. To add one, drop the file
- * in /public/projects and map the project id to its path, e.g.
- *   mensora: "/projects/mensora.png"
- */
-const screenshots: Partial<Record<string, string>> = {}
-
-const GITHUB_URL = "https://github.com/sarapresaa"
-
 function ProjectPanel({ item }: { item: ProjectItem }) {
   const t = useTranslations("projects")
   const coverRef = useRef<HTMLDivElement>(null)
@@ -39,7 +30,6 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
     offset: ["start end", "end start"],
   })
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"])
-  const screenshot = screenshots[item.id]
 
   return (
     <article
@@ -56,17 +46,7 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
           style={{ y }}
           className="absolute inset-x-0 -inset-y-[6%] transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04]"
         >
-          {screenshot ? (
-            <Image
-              src={screenshot}
-              alt={item.title}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          ) : (
-            <ProjectArt id={item.id} className="size-full" />
-          )}
+          <ProjectArt id={item.id} className="size-full" />
         </m.div>
       </div>
 
@@ -126,7 +106,6 @@ function Projects() {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "")
   const listRef = useRef<HTMLDivElement>(null)
 
-  // The index in the rail follows whichever project crosses mid-screen.
   useEffect(() => {
     const panels =
       listRef.current?.querySelectorAll<HTMLElement>("[data-project]")
@@ -200,7 +179,7 @@ function Projects() {
       </div>
 
       <a
-        href={GITHUB_URL}
+        href={socials.github.url}
         target="_blank"
         rel="noopener noreferrer"
         className="group mt-12 inline-flex items-center gap-2 rounded-full border border-hairline-strong px-6 py-3 text-sm text-paper transition-colors duration-300 hover:border-paper/50 hover:bg-paper/5"

@@ -3,14 +3,11 @@
 import { Fragment } from "react"
 import { m, type Variants } from "framer-motion"
 
-import { cn } from "@/lib/utils"
-
 type RevealTextProps = {
   children: string
-  as?: "h1" | "h2" | "h3" | "p"
+  as?: "h2" | "p"
   className?: string
   delay?: number
-  /** Play on mount (hero) instead of when scrolled into view. */
   immediate?: boolean
 }
 
@@ -22,10 +19,6 @@ const wordVariants: Variants = {
   },
 }
 
-/**
- * Headline reveal: every word rises out of its own mask, staggered. The text
- * stays real DOM text (selectable, indexable); only the transform animates.
- */
 function RevealText({
   children,
   as: Tag = "h2",
@@ -57,12 +50,7 @@ function RevealText({
       >
         {words.map((word, index) => (
           <Fragment key={index}>
-            <span
-              className={cn(
-                "inline-block overflow-hidden align-bottom",
-                "-mb-[0.16em] pb-[0.16em]"
-              )}
-            >
+            <span className="-mb-[0.16em] inline-block overflow-hidden pb-[0.16em] align-bottom">
               <m.span className="inline-block" variants={wordVariants}>
                 {word}
               </m.span>

@@ -22,8 +22,6 @@ import { Rule } from "@/components/motion/rule"
 import { EMAIL } from "@/lib/seo"
 import { socials, type Social } from "@/lib/socials"
 
-const YOUTUBE_URL = socials.youtube.url
-
 type SocialLink = Social & { icon: IconSvgElement }
 
 const workLinks: SocialLink[] = [
@@ -45,12 +43,12 @@ function CopyEmailButton() {
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText(EMAIL)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 2000)
     } catch {
-      // Clipboard can be blocked (e.g. insecure context); the mailto link
-      // right next to this button still works.
+      return
     }
+
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -69,7 +67,6 @@ function CopyEmailButton() {
   )
 }
 
-/** One tappable profile: icon, name, handle. The whole card is the link. */
 function SocialCard({ name, handle, url, icon }: SocialLink) {
   return (
     <a
@@ -184,7 +181,7 @@ function LinkHub() {
 
           <div className="flex flex-col gap-10">
             <a
-              href={YOUTUBE_URL}
+              href={socials.youtube.url}
               target="_blank"
               rel="noopener noreferrer"
               data-spotlight

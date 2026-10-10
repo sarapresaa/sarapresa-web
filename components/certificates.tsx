@@ -5,6 +5,7 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
 import { useTranslations } from "next-intl"
 
 import { SectionShell } from "@/components/section-shell"
+import { socials } from "@/lib/socials"
 
 type EducationEntry = {
   title: string
@@ -18,8 +19,6 @@ type CertificateItem = {
   institution: string
   date: string
 }
-
-const LINKEDIN_URL = "https://www.linkedin.com/in/sarapresaa/"
 
 function Certificates() {
   const t = useTranslations("certificates")
@@ -85,7 +84,7 @@ function Certificates() {
       </ul>
 
       <a
-        href={LINKEDIN_URL}
+        href={socials.linkedin.url}
         target="_blank"
         rel="noopener noreferrer"
         className="group mt-8 inline-flex items-center gap-2 text-sm text-paper-dim transition-colors duration-300 hover:text-paper"

@@ -2,11 +2,6 @@
 
 import { m, useScroll, useTransform } from "framer-motion"
 
-/**
- * Page-long glow in the brand palette. It sits behind every section, so the
- * mauve / rose / blush identity carries past the hero instead of stopping
- * at the first screen. Blobs drift with scroll; nothing re-renders.
- */
 function Aurora() {
   const { scrollYProgress } = useScroll()
   const roseY = useTransform(scrollYProgress, [0, 1], ["8vh", "-55vh"])

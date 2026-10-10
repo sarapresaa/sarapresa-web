@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, type PointerEvent as ReactPointerEvent } from "react"
 import Image from "next/image"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowDown01Icon, ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
@@ -31,8 +31,6 @@ function Hero() {
   const t = useTranslations("hero")
   const sectionRef = useRef<HTMLElement>(null)
 
-  // Pointer in percent of the section: drives a soft rose glow and a slight
-  // parallax of the portrait. Motion values only, so nothing re-renders.
   const pointerX = useMotionValue(0.5)
   const pointerY = useMotionValue(0.4)
   const smoothX = useSpring(pointerX, { stiffness: 50, damping: 20 })
@@ -51,7 +49,7 @@ function Hero() {
   })
   const portraitScroll = useTransform(scrollYProgress, [0, 1], [0, 90])
 
-  function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
+  function handlePointerMove(event: ReactPointerEvent<HTMLElement>) {
     if (event.pointerType !== "mouse") {
       return
     }
@@ -76,10 +74,6 @@ function Hero() {
 
       <div className="mx-auto grid min-h-svh max-w-[1360px] items-center gap-12 px-6 pt-28 pb-24 md:px-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10 lg:pt-24">
         <div className="flex flex-col items-start">
-          {/* The signature is the visible name, so this is the page's H1. The
-              empty slot marks where the fixed <BrandSignature /> (layout)
-              draws it, before it flies into the header as you scroll. The
-              sr-only text gives the heading its full meaning. */}
           <h1 className="block text-[1rem] leading-none tracking-normal">
             <span
               id="hero-signature"

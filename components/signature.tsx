@@ -11,9 +11,7 @@ import {
   useTransform,
 } from "framer-motion"
 
-/** How tall the pen should be riding at this point of the word (0 to 1). */
 function penHeight(progress: number) {
-  // Taller strokes where the S and the P rise above the x-height.
   const rise =
     Math.exp(-(((progress - 0.07) / 0.07) ** 2)) +
     Math.exp(-(((progress - 0.57) / 0.07) ** 2))
@@ -23,13 +21,7 @@ function penHeight(progress: number) {
   )
 }
 
-/**
- * "Sara Presa", written live. The signature is a raster image, so the ink is
- * revealed by a feathered mask that follows a glowing pen tip bobbing along
- * the stroke, a close approximation of handwriting. It fills its parent, so
- * the caller decides the size (see brand-signature.tsx).
- */
-function Signature({ delay = 0.5 }: { delay?: number }) {
+function Signature() {
   const prefersReducedMotion = useReducedMotion()
   const progress = useMotionValue(prefersReducedMotion ? 1 : 0)
 
@@ -41,12 +33,12 @@ function Signature({ delay = 0.5 }: { delay?: number }) {
 
     const controls = animate(progress, 1, {
       duration: 2.5,
-      delay,
+      delay: 0.5,
       ease: [0.5, 0, 0.3, 1],
     })
 
     return () => controls.stop()
-  }, [delay, prefersReducedMotion, progress])
+  }, [prefersReducedMotion, progress])
 
   const edge = useTransform(progress, [0, 1], [0, 108])
   const mask = useMotionTemplate`linear-gradient(to right, #000 calc(${edge}% - 8%), transparent ${edge}%)`

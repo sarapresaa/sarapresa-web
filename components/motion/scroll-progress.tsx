@@ -2,7 +2,6 @@
 
 import { m, useScroll, useSpring } from "framer-motion"
 
-/** Hairline reading-progress bar pinned to the top of the viewport. */
 function ScrollProgress() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {

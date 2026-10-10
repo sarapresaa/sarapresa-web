@@ -3,6 +3,7 @@ import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
+import type { ReactNode } from "react"
 
 import "../globals.css"
 import { routing } from "@/i18n/routing"
@@ -24,8 +25,6 @@ import {
 } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 
-// One family for everything: clean, friendly and refined next to the
-// handwritten signature. Geist Mono is only used for tech tags.
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
@@ -106,8 +105,6 @@ export async function generateMetadata({
         "max-video-preview": -1,
       },
     },
-    // Optional: set these env vars after claiming the site in Google Search
-    // Console / Bing Webmaster Tools (see the README).
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
       other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
@@ -121,7 +118,7 @@ export default async function RootLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
   params: Promise<{ locale: string }>
 }>) {
   const { locale } = await params
@@ -135,7 +132,7 @@ export default async function RootLayout({
   return (
     <html
       lang={HREFLANG[locale]}
-      className={cn("dark antialiased", jakarta.variable, geistMono.variable)}
+      className={cn("antialiased", jakarta.variable, geistMono.variable)}
     >
       <body>
         <NextIntlClientProvider>

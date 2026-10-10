@@ -10,50 +10,24 @@ import {
 import { useReducedMotion } from "framer-motion"
 import { useLenis } from "lenis/react"
 
-export type ScrollTextBlock = {
+import { clamp } from "@/lib/utils"
+
+type ScrollTextBlock = {
   text: string
   className: string
-  /**
-   * Opacity of a word before it is "read". Keep it high enough that unread
-   * text still passes contrast: ~0.5 for body text, ~0.4 for large display text.
-   */
   floor: number
 }
-
-/** Where the reading line sits, as a fraction of the viewport height. */
-const READ_LINE = 0.64
-/**
- * Distance (px) of scroll over which ONE word fades from dim to lit. Kept
- * small so words light up one after another (about three at a time).
- */
-const FEATHER = 14
 
 type MeasuredWord = {
   element: HTMLElement
   floor: number
-  /**
-   * Where this word crosses the reading line, in px from the top of the
-   * block: its line's top plus its position along the line, so every word
-   * has its own spot and words light up strictly in reading order.
-   */
   offset: number
 }
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value))
-}
+const READ_LINE_RATIO = 0.64
+const FEATHER_PX = 14
+const FALLBACK_LINE_HEIGHT_PX = 24
 
-/**
- * Text that lights up as you read it, word by word. ONE reading line crosses
- * the whole block and every word has its own spot on it: each word above the
- * line is lit, each below is dim, so the lit front moves through the text one
- * word after another in order (a paragraph can never be brighter than the
- * paragraph above it, and a line never lights up all at once). Words are measured relative to the
- * block, so layout shifts above it can't desync the effect, and opacity is
- * written straight to the DOM in the same frame Lenis scrolls.
- *
- * Without JS (or with reduced motion) all text is simply fully visible.
- */
 function ScrollText({
   blocks,
   className,
@@ -90,8 +64,9 @@ function ScrollText({
           info = {
             left: rect.left,
             width: rect.width,
-            // Distance between two lines of this paragraph.
-            pitch: parseFloat(getComputedStyle(paragraph).lineHeight) || 24,
+            pitch:
+              parseFloat(getComputedStyle(paragraph).lineHeight) ||
+              FALLBACK_LINE_HEIGHT_PX,
           }
           paragraphs.set(paragraph, info)
         }
@@ -102,9 +77,6 @@ function ScrollText({
         return {
           element,
           floor: Number(element.dataset.floor),
-          // A word's slot spans one line pitch from its start to its end of
-          // line, so the next line's first word comes right after this one's
-          // last: strictly one word after another, never a whole line at once.
           offset: rect.top - box.top + along * info.pitch,
         }
       }
@@ -119,16 +91,15 @@ function ScrollText({
     }
 
     const top = container.getBoundingClientRect().top
-    const line = window.innerHeight * READ_LINE
+    const line = window.innerHeight * READ_LINE_RATIO
 
     for (const word of wordsRef.current) {
       const y = top + word.offset
-      const lit = clamp((line - y) / FEATHER, 0, 1)
+      const lit = clamp((line - y) / FEATHER_PX, 0, 1)
       const opacity = String(
         Math.round((word.floor + (1 - word.floor) * lit) * 100) / 100
       )
 
-      // Only words inside the fade band actually change from frame to frame.
       if (word.element.style.opacity !== opacity) {
         word.element.style.setProperty("opacity", opacity)
       }
@@ -159,7 +130,6 @@ function ScrollText({
       return
     }
 
-    // Native (touch) scrolling bypasses Lenis; fonts and resizes reflow text.
     const observer = new ResizeObserver(remeasure)
 
     observer.observe(container)

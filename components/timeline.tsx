@@ -15,13 +15,10 @@ type TimelineItem = {
 
 function TimelineEntry({ item }: { item: TimelineItem }) {
   const ref = useRef<HTMLLIElement>(null)
-  // 0 while the entry is still below the reading line, 1 once it has reached it.
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 82%", "start 52%"],
   })
-  // Only the large year dims: large text stays above 3:1 contrast even
-  // before the entry is reached, and the readable text never fades.
   const yearOpacity = useTransform(scrollYProgress, [0, 1], [0.4, 1])
   const dotScale = useTransform(scrollYProgress, [0, 1], [0.6, 1])
   const dotFill = useTransform(

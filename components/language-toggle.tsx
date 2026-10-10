@@ -6,8 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 
-/** PT / EN as quiet text: the current language is simply brighter. */
-function LanguageToggle({ className }: { className?: string }) {
+function LanguageToggle() {
   const locale = useLocale()
   const pathname = usePathname()
   const t = useTranslations("nav")
@@ -16,7 +15,7 @@ function LanguageToggle({ className }: { className?: string }) {
     <div
       role="group"
       aria-label={t("language")}
-      className={cn("flex items-center text-sm", className)}
+      className="flex items-center text-sm"
     >
       {routing.locales.map((loc, index) => (
         <span key={loc} className="flex items-center">

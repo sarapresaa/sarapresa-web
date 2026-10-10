@@ -13,6 +13,7 @@ import { useLenis } from "lenis/react"
 import { useLocale, useTranslations } from "next-intl"
 
 import { LanguageToggle } from "@/components/language-toggle"
+import { socials } from "@/lib/socials"
 import { cn } from "@/lib/utils"
 
 const navItems = [
@@ -25,7 +26,6 @@ const navItems = [
 
 type NavKey = (typeof navItems)[number]["key"]
 
-// Sections without their own nav entry highlight the closest one.
 const sectionToNav: Record<string, NavKey> = {
   projects: "projects",
   about: "about",
@@ -39,13 +39,10 @@ const sectionToNav: Record<string, NavKey> = {
 
 const sectionIds = Object.keys(sectionToNav)
 
-const GITHUB_URL = "https://github.com/sarapresaa"
-
 function useActiveSection() {
   const [active, setActive] = useState<NavKey | null>(null)
 
   useEffect(() => {
-    // A section is "current" while it crosses the middle of the viewport.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -88,8 +85,6 @@ function SiteNav() {
   const indicatorWidth = useMotionValue(0)
   const indicatorOpacity = useMotionValue(0)
 
-  // Slide the highlight under the active link. Motion values only: moving
-  // the indicator never re-renders the nav.
   useEffect(() => {
     const list = listRef.current
 
@@ -98,10 +93,9 @@ function SiteNav() {
     }
 
     function place(immediate: boolean) {
-      // Measure the <li>: its offsetParent is the <ul>, the <a>'s is the <li>.
-      const link = active ? linkRefs.current[active]?.parentElement : null
+      const item = active ? linkRefs.current[active]?.parentElement : null
 
-      if (!link) {
+      if (!item) {
         animate(indicatorOpacity, 0, { duration: 0.3 })
         return
       }
@@ -109,11 +103,11 @@ function SiteNav() {
       const spring = { type: "spring", stiffness: 380, damping: 34 } as const
 
       if (immediate || indicatorOpacity.get() === 0) {
-        indicatorX.jump(link.offsetLeft)
-        indicatorWidth.jump(link.offsetWidth)
+        indicatorX.jump(item.offsetLeft)
+        indicatorWidth.jump(item.offsetWidth)
       } else {
-        animate(indicatorX, link.offsetLeft, spring)
-        animate(indicatorWidth, link.offsetWidth, spring)
+        animate(indicatorX, item.offsetLeft, spring)
+        animate(indicatorWidth, item.offsetWidth, spring)
       }
 
       animate(indicatorOpacity, 1, { duration: 0.3 })
@@ -135,14 +129,12 @@ function SiteNav() {
         transition={{ duration: 1, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
         className="fixed inset-x-0 top-0 z-50"
       >
-        {/* Soft blur that fades out below the bar, so the bar has no edge. */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/80 via-ink/40 to-transparent [mask-image:linear-gradient(to_bottom,#000_35%,transparent)] backdrop-blur-md"
         />
 
         <div className="relative mx-auto grid h-[4.5rem] max-w-[1360px] grid-cols-2 items-center gap-4 px-6 md:px-10 lg:grid-cols-[1fr_auto_1fr]">
-          {/* Left slot: the hand-written logo flies in here (brand-signature). */}
           <div aria-hidden="true" className="h-10" />
 
           <nav
@@ -230,8 +222,6 @@ function MobileMenu({ active, locale, onClose }: MobileMenuProps) {
   const lenis = useLenis()
   const panelRef = useRef<HTMLDivElement>(null)
 
-  // Freeze page scroll (Lenis owns it), trap focus, close on Escape, and put
-  // focus back where it was when the menu closes.
   useEffect(() => {
     const previouslyFocused = document.activeElement as HTMLElement | null
     lenis?.stop()
@@ -335,7 +325,7 @@ function MobileMenu({ active, locale, onClose }: MobileMenuProps) {
           <HugeiconsIcon icon={Download01Icon} size={16} strokeWidth={1.8} />
         </a>
         <a
-          href={GITHUB_URL}
+          href={socials.github.url}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-paper-dim"

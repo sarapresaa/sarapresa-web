@@ -1,5 +1,6 @@
 "use client"
 
+import type { CSSProperties } from "react"
 import { useTranslations } from "next-intl"
 
 import { RevealText } from "@/components/motion/reveal-text"
@@ -12,7 +13,6 @@ type Comment = {
   comment: string
 }
 
-// Real comments, kept in the language they were written in.
 const comments: Comment[] = [
   {
     name: "@norberto_presa",
@@ -128,7 +128,7 @@ function MarqueeRow({
       <div
         className="marquee-track"
         data-direction={reverse ? "reverse" : undefined}
-        style={{ "--marquee-duration": duration } as React.CSSProperties}
+        style={{ "--marquee-duration": duration } as CSSProperties}
       >
         {[false, true].map((isCopy) => (
           <ul

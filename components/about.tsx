@@ -16,8 +16,6 @@ function About() {
       <ScrollText
         className="flex flex-col gap-8"
         blocks={paragraphs.map((text, index) => {
-          // The first and last paragraphs carry the story; the middle ones
-          // are the supporting detail.
           const isStatement = index === 0 || index === lastIndex
 
           return {

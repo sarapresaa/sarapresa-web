@@ -12,7 +12,6 @@ export const contentType = "image/png"
 
 let portrait: Promise<string> | undefined
 
-/** The portrait as a data URL, read once and reused across requests. */
 function loadPortrait() {
   portrait ??= readFile(
     path.join(process.cwd(), "public", PORTRAIT_PATH.slice(1))
@@ -111,7 +110,7 @@ export default async function OpengraphImage({
           border: "3px solid rgba(232,180,184,0.55)",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={photo}
           alt=""

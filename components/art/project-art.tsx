@@ -1,13 +1,7 @@
 "use client"
 
+import type { ReactNode } from "react"
 import { m, useReducedMotion } from "framer-motion"
-
-/*
- * Illustrated covers for the projects. Each one is a small designed scene of
- * what the project does (energy dashboard, route on a map, bingo + server,
- * this site's hero). They are illustrations, not screenshots: to use a real
- * screenshot instead, see `screenshots` in components/projects.tsx.
- */
 
 type ArtProps = { className?: string }
 
@@ -28,7 +22,7 @@ function Frame({
   from: string
   to: string
   className?: string
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <svg
@@ -49,7 +43,6 @@ function Frame({
   )
 }
 
-/** Mensora: energy dashboard with consumption bars, a trend line and switches. */
 function MensoraArt({ className }: ArtProps) {
   const bars = [88, 132, 104, 164, 122, 190, 148, 176, 112]
 
@@ -154,7 +147,6 @@ function MensoraArt({ className }: ArtProps) {
   )
 }
 
-/** SIG: a web map with streets, points of interest and a highlighted route. */
 function SigArt({ className }: ArtProps) {
   return (
     <Frame id="sig" from="#241d2e" to="#3d3a4e" className={className}>
@@ -275,7 +267,6 @@ function SigArt({ className }: ArtProps) {
   )
 }
 
-/** BingoGame: a bingo card on the left, clients talking to one server. */
 function BingoArt({ className }: ArtProps) {
   const prefersReducedMotion = useReducedMotion()
   const marked = new Set([1, 6, 8, 12, 14, 17, 21, 23])
@@ -415,7 +406,6 @@ function BingoArt({ className }: ArtProps) {
   )
 }
 
-/** This portfolio: a miniature of the hero (signature, headline, arch). */
 function PortfolioArt({ className }: ArtProps) {
   return (
     <Frame id="portfolio" from="#3d3a4e" to="#c4919a" className={className}>

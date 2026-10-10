@@ -17,7 +17,6 @@ type ParsedValue = {
   suffix: string
 }
 
-/** "+368K" -> { prefix: "+", number: 368, suffix: "K" }, "+7,5 mil" works too. */
 function parseValue(value: string): ParsedValue {
   const match = value.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/)
 
@@ -44,21 +43,13 @@ function format(parsed: ParsedValue, current: number) {
   return `${parsed.prefix}${text}${parsed.suffix}`
 }
 
-type CounterProps = {
-  value: string
-  className?: string
-}
-
-/** Counts up to `value` once, the first time it scrolls into view. */
-function Counter({ value, className }: CounterProps) {
+function Counter({ value }: { value: string }) {
   const parsed = parseValue(value)
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: "0px 0px -12% 0px" })
   const count = useMotionValue(parsed.number)
   const text = useTransform(count, (current) => format(parsed, current))
 
-  // The server (and no-JS) render the final number; the count restarts from 0
-  // the moment the element first enters the viewport.
   useMotionValueEvent(text, "change", (latest) => {
     if (ref.current) {
       ref.current.textContent = latest
@@ -79,11 +70,7 @@ function Counter({ value, className }: CounterProps) {
     return () => controls.stop()
   }, [isInView, count, parsed.number])
 
-  return (
-    <span ref={ref} className={className}>
-      {format(parsed, parsed.number)}
-    </span>
-  )
+  return <span ref={ref}>{format(parsed, parsed.number)}</span>
 }
 
 export { Counter }

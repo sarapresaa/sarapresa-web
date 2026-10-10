@@ -62,17 +62,15 @@ const languageNames: Record<Locale, string> = {
   pt: "Português",
 }
 
-/**
- * /llms.txt: a short, link-rich summary for AI assistants and answer engines
- * (https://llmstxt.org). Facts come from the same messages as the site.
- */
+const socialKeys = Object.keys(socials) as SocialKey[]
+
 function buildLlmsTxt() {
   const m = messages.en
   const projectLines = m.projects.items.map(
     (project) =>
       `- [${project.title}](${localeUrl("en")}#project-${project.id}): ${project.description} (${project.tags.join(", ")})`
   )
-  const profileLines = (Object.keys(socials) as SocialKey[]).map(
+  const profileLines = socialKeys.map(
     (key) =>
       `- [${socials[key].name}](${socials[key].url}): ${profileNotes[key]} (${socials[key].handle})`
   )
@@ -104,11 +102,6 @@ ${profileLines.join("\n")}
 `
 }
 
-function listOrNone(items: string[]) {
-  return items.length > 0 ? items.join(", ") : ""
-}
-
-/** One language's whole profile as Markdown. */
 function renderProfile(locale: Locale) {
   const m = messages[locale]
   const s = sectionTitles[locale]
@@ -123,7 +116,7 @@ function renderProfile(locale: Locale) {
     "",
     ...m.about.body.split("\n\n").flatMap((p) => [p, ""])
   )
-  lines.push(`${m.about.skillsLabel}: ${listOrNone(m.about.skills)}`, "")
+  lines.push(`${m.about.skillsLabel}: ${m.about.skills.join(", ")}`, "")
 
   lines.push(`## ${s.projects}`, "")
   for (const project of m.projects.items) {
@@ -132,7 +125,7 @@ function renderProfile(locale: Locale) {
     if (project.role) {
       lines.push(`${s.role}: ${project.role}`)
     }
-    lines.push(`${s.stack}: ${listOrNone(project.tags)}`)
+    lines.push(`${s.stack}: ${project.tags.join(", ")}`)
     if ("link" in project && project.link) {
       lines.push(`${s.repository}: ${project.link}`)
     }
@@ -151,7 +144,7 @@ function renderProfile(locale: Locale) {
 
   lines.push(`## ${s.skills}`, "")
   for (const group of m.experience.skillGroups) {
-    lines.push(`- ${group.label}: ${listOrNone(group.items)}`)
+    lines.push(`- ${group.label}: ${group.items.join(", ")}`)
   }
   lines.push("")
 
@@ -164,7 +157,7 @@ function renderProfile(locale: Locale) {
   lines.push(`## ${s.education}`, "")
   for (const entry of m.certificates.education) {
     lines.push(
-      `- ${entry.title}, ${entry.institution} (${entry.period}). ${listOrNone(entry.tags)}`
+      `- ${entry.title}, ${entry.institution} (${entry.period}). ${entry.tags.join(", ")}`
     )
   }
   lines.push("")
@@ -197,7 +190,7 @@ function renderProfile(locale: Locale) {
 
   lines.push(`## ${s.contact}`, "")
   lines.push(`- ${s.email}: ${EMAIL}`)
-  for (const key of Object.keys(socials) as SocialKey[]) {
+  for (const key of socialKeys) {
     lines.push(`- ${socials[key].name}: ${socials[key].url}`)
   }
   lines.push("")
@@ -205,7 +198,6 @@ function renderProfile(locale: Locale) {
   return lines.join("\n")
 }
 
-/** /llms-full.txt: the complete profile in both languages. */
 function buildLlmsFullTxt() {
   return `${renderProfile("en")}\n---\n\n${renderProfile("pt")}`
 }
