@@ -130,6 +130,8 @@ Funciona com as variáveis que já tens (`RESEND_API_KEY` e `NEWSLETTER_FROM`). 
 | `CONTACT_FROM` | Remetente das mensagens (por defeito, o `NEWSLETTER_FROM`). |
 | `CONTACT_TO` | Onde chegam as mensagens (por defeito `info@sarapresaa.pt`). |
 
+O endereço de destino tem de conseguir receber email: se o domínio não tiver registos MX (ou um serviço de reencaminhamento), o Resend aceita a mensagem mas ela nunca chega e fica no estado `sent`. Enquanto isso não estiver resolvido, define `CONTACT_TO` com uma caixa que já receba.
+
 Para testar sem escrever na tua caixa de entrada, corre o site com `CONTACT_TO=delivered@resend.dev`, o endereço de teste do Resend. O formulário não guarda histórico de envios, por isso, para travar abusos, cria no Vercel uma regra de limite de pedidos (rate limit) para o site. A pré-visualização do email que recebes está em `emails/contact-message.tsx` (`npm run email:dev`).
 
 ## Autora
@@ -273,6 +275,8 @@ It works with the variables you already have (`RESEND_API_KEY` and `NEWSLETTER_F
 | --- | --- |
 | `CONTACT_FROM` | Sender of the messages (defaults to `NEWSLETTER_FROM`). |
 | `CONTACT_TO` | Where the messages arrive (defaults to `info@sarapresaa.pt`). |
+
+The destination address must be able to receive email: if the domain has no MX records (or a forwarding service), Resend accepts the message but it never arrives and stays in the `sent` state. Until that is fixed, set `CONTACT_TO` to a mailbox that already receives mail.
 
 To test without writing to your inbox, run the site with `CONTACT_TO=delivered@resend.dev`, Resend's test address. The form keeps no send history, so to curb abuse, add a rate limit rule for the site on Vercel. The preview of the email you receive is in `emails/contact-message.tsx` (`npm run email:dev`).
 
