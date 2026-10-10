@@ -376,13 +376,12 @@
     "latestVideoHint": "Ver no YouTube"
   },
   "newsletter": {
-    "title": "Newsletter",
-    "text": "Projetos, bastidores e vídeos novos, diretamente no teu email. Sem spam, e sais quando quiseres.",
+    "headline": "Recebe a newsletter com projetos, bastidores e vídeos novos.",
     "emailLabel": "O teu email",
     "placeholder": "o.teu@email.com",
     "submit": "Subscrever",
     "pending": "A enviar",
-    "hint": "Vou enviar-te um email para confirmares. Ao subscrever, aceitas a <link>política de privacidade</link>.",
+    "hint": "Sem spam, e anulas quando quiseres. Vou enviar-te um email para confirmares. Ao subscrever, aceitas a <link>política de privacidade</link>.",
     "sent": {
       "title": "Verifica o teu email",
       "text": "Enviei-te um link para confirmares a subscrição. Se não o vires, espreita o spam ou tenta de novo daqui a 15 minutos."

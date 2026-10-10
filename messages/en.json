@@ -376,13 +376,12 @@
     "latestVideoHint": "Watch on YouTube"
   },
   "newsletter": {
-    "title": "Newsletter",
-    "text": "Projects, behind the scenes and new videos, straight to your inbox. No spam, and you can leave whenever you like.",
+    "headline": "Get the newsletter with projects, behind the scenes and new videos.",
     "emailLabel": "Your email",
     "placeholder": "your@email.com",
     "submit": "Subscribe",
     "pending": "Sending",
-    "hint": "I'll email you a link to confirm. By subscribing, you accept the <link>privacy policy</link>.",
+    "hint": "No spam, and you can unsubscribe anytime. I'll email you a link to confirm. By subscribing, you accept the <link>privacy policy</link>.",
     "sent": {
       "title": "Check your email",
       "text": "I sent you a link to confirm your subscription. If you don't see it, check your spam folder or try again in 15 minutes."
