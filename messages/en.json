@@ -1,13 +1,36 @@
 {
+  "a11y": {
+    "skip": "Skip to content",
+    "toTop": "Back to top"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "projects": "Projects",
+    "about": "About",
+    "experience": "Experience",
+    "journey": "Journey",
+    "community": "Community",
+    "contact": "Contact",
+    "cv": "CV",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
+  },
   "hero": {
     "subtitle": "Merging creativity, technology and strategy to create digital impact",
     "role": "Final-year Information Technology student, looking for a curricular internship (February–June 2027).",
-    "contactCta": "Contact me"
+    "contactCta": "Contact me",
+    "projectsCta": "See my projects",
+    "location": "Aveiro, Portugal",
+    "portraitAlt": "Portrait of Sara Presa",
+    "scroll": "Scroll"
   },
   "about": {
-    "label": "ABOUT ME",
+    "label": "About me",
     "heading": "Never just one thing.",
-    "body": "I'm Sara. I'm 21, I'm from Aveiro, and I'm building something, I don't know exactly what yet, but I know it's going to be big.\n\nI love creating. Turning ideas into real things, videos, websites, campaigns, or just an idea that wouldn't leave my head until I made it exist.\n\nI'm scared of being mediocre. Of one day looking back and realising I stayed comfortable when I could have taken more risks. That fear is what keeps me going.\n\n@sarapresaa was born from that, from the need to document, to be honest, to show that the path isn't linear and that's okay.\n\nI'm an IT student, content creator, digital marketing and web enthusiast, and I genuinely believe creativity and technology together are the most powerful combination there is.",
+    "body": "I'm Sara. I'm 22, I'm from Aveiro, and I'm building something, I don't know exactly what yet, but I know it's going to be big.\n\nI love creating. Turning ideas into real things, videos, websites, campaigns, or just an idea that wouldn't leave my head until I made it exist.\n\nI'm scared of being mediocre. Of one day looking back and realising I stayed comfortable when I could have taken more risks. That fear is what keeps me going.\n\n@sarapresaa was born from that, from the need to document, to be honest, to show that the path isn't linear and that's okay.\n\nI'm an IT student, content creator, digital marketing and web enthusiast, and I genuinely believe creativity and technology together are the most powerful combination there is.",
+    "skillsLabel": "What I do",
     "skills": [
       "Digital Marketing",
       "Web Design",
@@ -19,53 +42,20 @@
       "Lyrical Singing 🎶"
     ]
   },
-  "timeline": {
-    "label": "MY JOURNEY",
-    "heading": "Where I came from. Where I'm going.",
-    "items": [
-      {
-        "period": "2014 — 2024",
-        "title": "10 years at the Conservatory",
-        "description": "I studied organ and classical singing at the Aveiro Music Conservatory alongside school. For 10 years I learned that discipline, patience and creativity always go hand in hand."
-      },
-      {
-        "period": "2022 — 2023",
-        "title": "First professional experiences",
-        "description": "I worked at Zara (Inditex), a call centre and my family's hair salon. I learned to deal with people, pressure and completely different environments. Nothing was wasted."
-      },
-      {
-        "period": "2023 — today",
-        "title": "Information Technology, ESTGA",
-        "description": "I started my IT degree at the University of Aveiro. I discovered web development, UI/UX, databases, digital marketing. I realised this is where everything made sense."
-      },
-      {
-        "period": "2025 — today",
-        "title": "@sarapresaa was born",
-        "description": "I created my personal brand and started documenting the journey publicly. Content, UGC, strategy, branding — all alongside university. The real-time laboratory."
-      },
-      {
-        "period": "2026 — today",
-        "title": "Building",
-        "description": "Another year of my degree. Developing this site, preparing for my internship, growing @sarapresaa and figuring out where I want to go. I don't know everything yet — and that's okay."
-      },
-      {
-        "period": "2027 — coming soon",
-        "title": "What comes next",
-        "description": "A curricular internship at a company that unites technology and creativity. And then? My own digital ecosystem to help other creators build brands with real impact."
-      }
-    ]
-  },
   "projects": {
-    "label": "PROJECTS",
+    "label": "Selected work",
     "heading": "What I've already built.",
+    "roleLabel": "My part",
     "linkLabel": "View on GitHub",
-    "imagePlaceholder": "Screenshot coming soon",
+    "moreLabel": "More on GitHub",
     "items": [
       {
+        "id": "mensora",
         "title": "Mensora IoT Solutions",
-        "meta": "Group project · 2025",
+        "kind": "Group project",
+        "year": "2025",
         "description": "Web platform for home automation and energy consumption monitoring.",
-        "role": "My part: team coordination, reports, presentations, design and front-end.",
+        "role": "Team coordination, reports, presentations, design and front-end.",
         "tags": [
           "Angular",
           "NestJS",
@@ -73,10 +63,12 @@
         ]
       },
       {
+        "id": "sig",
         "title": "Projeto Temático SIG",
-        "meta": "Group project · 2026",
+        "kind": "Group project",
+        "year": "2026",
         "description": "Web mapping application to search for pharmacies, hospitals and restaurants, with routes and nearby places.",
-        "role": "My part: coordination, reports, presentations, design and front-end.",
+        "role": "Coordination, reports, presentations, design and front-end.",
         "tags": [
           "SvelteKit",
           "OpenLayers",
@@ -85,8 +77,10 @@
         ]
       },
       {
+        "id": "bingo",
         "title": "BingoGame",
-        "meta": "Pair project · 2025",
+        "kind": "Pair project",
+        "year": "2025",
         "description": "Multiplayer Bingo game in Java, with a client-server architecture: TCP sockets, one thread per client and a Swing interface.",
         "role": "",
         "tags": [
@@ -97,8 +91,10 @@
         "link": "https://github.com/sarapresaa/BingoGame"
       },
       {
+        "id": "portfolio",
         "title": "This portfolio",
-        "meta": "Solo project · 2026",
+        "kind": "Solo project",
+        "year": "2026",
         "description": "Bilingual (PT/EN) personal site, built from scratch.",
         "role": "",
         "tags": [
@@ -111,36 +107,10 @@
       }
     ]
   },
-  "results": {
-    "label": "RESULTS",
-    "heading": "Real numbers.",
-    "items": [
-      {
-        "value": "+368K",
-        "label": "TikTok views",
-        "period": "in 12 months"
-      },
-      {
-        "value": "+35K",
-        "label": "Instagram views",
-        "period": "in 90 days"
-      },
-      {
-        "value": "612",
-        "label": "Instagram followers",
-        "period": ""
-      },
-      {
-        "value": "+7.5K",
-        "label": "YouTube views",
-        "period": "in 12 months"
-      }
-    ]
-  },
   "experience": {
-    "label": "EXPERIENCE & SKILLS",
+    "label": "Experience & skills",
     "heading": "Beyond the computer.",
-    "experienceLabel": "Professional Experience",
+    "experienceLabel": "Professional experience",
     "skillsLabel": "Skills",
     "skillsNote": "and others...",
     "languagesLabel": "Languages",
@@ -171,23 +141,38 @@
         "description": "Sales and telephone support, CRM and contracts."
       }
     ],
-    "skills": [
-      "Java",
-      "JavaScript",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "Angular",
-      "React",
-      "SQL",
-      "Firebase",
-      "REST APIs",
-      "Git/GitHub",
-      "UI/UX",
-      "Video",
-      "Storytelling",
-      "Team Coordination",
-      "AI"
+    "skillGroups": [
+      {
+        "label": "Build",
+        "items": [
+          "Java",
+          "JavaScript",
+          "TypeScript",
+          "HTML",
+          "CSS",
+          "Angular",
+          "React",
+          "SQL",
+          "Firebase",
+          "REST APIs",
+          "Git/GitHub",
+          "AI"
+        ]
+      },
+      {
+        "label": "Create",
+        "items": [
+          "UI/UX",
+          "Video",
+          "Storytelling"
+        ]
+      },
+      {
+        "label": "Lead",
+        "items": [
+          "Team Coordination"
+        ]
+      }
     ],
     "languages": [
       {
@@ -209,18 +194,62 @@
     ],
     "activities": [
       "Tuna Feminina, University of Aveiro Academic Association",
-      "NAE — ESTGA Student Association"
+      "NAE, ESTGA Student Association"
+    ]
+  },
+  "timeline": {
+    "label": "My journey",
+    "heading": "Where I came from. Where I'm going.",
+    "items": [
+      {
+        "year": "2014",
+        "note": "until 2024",
+        "title": "10 years at the Conservatory",
+        "description": "I studied organ and classical singing at the Aveiro Music Conservatory alongside school. For 10 years I learned that discipline, patience and creativity always go hand in hand."
+      },
+      {
+        "year": "2022",
+        "note": "until 2023",
+        "title": "First professional experiences",
+        "description": "I worked at Zara (Inditex), a call centre and my family's hair salon. I learned to deal with people, pressure and completely different environments. Nothing was wasted."
+      },
+      {
+        "year": "2023",
+        "note": "ongoing",
+        "title": "Information Technology, ESTGA",
+        "description": "I started my IT degree at the University of Aveiro. I discovered web development, UI/UX, databases, digital marketing. I realised this is where everything made sense."
+      },
+      {
+        "year": "2025",
+        "note": "ongoing",
+        "title": "@sarapresaa was born",
+        "description": "I created my personal brand and started documenting the journey publicly. Content, UGC, strategy and branding, all alongside university. The real-time laboratory."
+      },
+      {
+        "year": "2026",
+        "note": "ongoing",
+        "title": "Building",
+        "description": "Another year of my degree. Developing this site, preparing for my internship, growing @sarapresaa and figuring out where I want to go. I don't know everything yet, and that's okay."
+      },
+      {
+        "year": "2027",
+        "note": "coming soon",
+        "title": "What comes next",
+        "description": "A curricular internship at a company that unites technology and creativity. And then? My own digital ecosystem to help other creators build brands with real impact."
+      }
     ]
   },
   "certificates": {
-    "label": "CERTIFICATES & TRAINING",
+    "label": "Education & certificates",
     "heading": "Never stopped learning.",
-    "educationLabel": "Academic Education",
+    "educationLabel": "Academic education",
     "certificatesLabel": "Certificates",
-    "moreNote": "And many more — check my LinkedIn for the full list.",
-    "education": {
-      "degree": {
+    "moreNote": "And many more. Check my LinkedIn for the full list.",
+    "education": [
+      {
         "title": "Licenciatura em Tecnologias da Informação",
+        "institution": "ESTGA, Universidade de Aveiro",
+        "period": "2023–2027",
         "tags": [
           "Web Development",
           "UI/UX",
@@ -229,16 +258,20 @@
           "Programming"
         ]
       },
-      "highschool": {
+      {
         "title": "Curso Secundário de Ciências Socioeconómicas",
+        "institution": "Escola Secundária Dr. Mário Sacramento",
+        "period": "2019–2023",
         "tags": [
           "Languages",
           "Sociology",
           "Economics"
         ]
       },
-      "conservatory": {
+      {
         "title": "Organ (5th Grade) and Classical Singing (8th Grade)",
+        "institution": "Conservatório de Música de Aveiro Calouste Gulbenkian",
+        "period": "2014–2024",
         "tags": [
           "Piano",
           "Italian",
@@ -247,34 +280,100 @@
           "Music Analysis"
         ]
       }
-    }
+    ],
+    "items": [
+      {
+        "name": "Inside LVMH Certificate – Creation & Branding, Retail & Client Experience",
+        "institution": "LVMH",
+        "date": "Oct 2025"
+      },
+      {
+        "name": "It's All About Trends 2026 – Digital Trends & AI",
+        "institution": "Lisbon Digital School",
+        "date": "Jan 2026"
+      },
+      {
+        "name": "O Teu Futuro é Digital",
+        "institution": "Lisbon Digital School",
+        "date": "May 2025"
+      },
+      {
+        "name": "Storytelling para Marketing Digital",
+        "institution": "Santander Open Academy",
+        "date": "Dec 2024"
+      },
+      {
+        "name": "Workshop: IntraEmpreendedorismo – Inovação e Proatividade",
+        "institution": "Universidade de Aveiro",
+        "date": "Nov 2025"
+      },
+      {
+        "name": "Ads Made Easy",
+        "institution": "ClubLifeDesign",
+        "date": "Jan 2025"
+      },
+      {
+        "name": "The Power of Instagram",
+        "institution": "ClubLifeDesign",
+        "date": "Nov 2024"
+      }
+    ]
+  },
+  "results": {
+    "label": "Beyond the code",
+    "heading": "Real numbers.",
+    "items": [
+      {
+        "value": "+368K",
+        "label": "TikTok views",
+        "period": "in 12 months"
+      },
+      {
+        "value": "+35K",
+        "label": "Instagram views",
+        "period": "in 90 days"
+      },
+      {
+        "value": "612",
+        "label": "Instagram followers",
+        "period": ""
+      },
+      {
+        "value": "+7.5K",
+        "label": "YouTube views",
+        "period": "in 12 months"
+      }
+    ]
   },
   "community": {
-    "label": "THE COMMUNITY",
+    "label": "The community",
     "heading": "What people say.",
     "subtext": "Real comments from real people. Thank you to each one. 🤍",
     "note": "Real comments from Instagram, TikTok and YouTube 🤍"
   },
   "linkHub": {
-    "sectionLabel": "Follow me",
-    "comingSoon": "Coming soon",
-    "links": {
-      "email": "Send an email",
-      "latestVideo": "Latest video",
-      "newsletter": "Newsletter",
-      "shop": "Courses & Shop",
-      "events": "Events & Dates",
-      "community": "Leave a message"
-    }
-  },
-  "newsletter": {
-    "label": "NEWSLETTER",
-    "heading": "Stay in the loop.",
-    "subtext": "News, projects, behind the scenes and everything I'm building — straight to your inbox. No spam, I promise.",
-    "placeholder": "Your email",
-    "button": "Subscribe",
-    "success": "Thank you! See you soon 🤍",
-    "disclaimer": "By subscribing you agree to receive occasional emails from Sara Presa. You can unsubscribe at any time."
+    "label": "Contact",
+    "heading": "Let's talk.",
+    "lead": "I'm looking for a curricular internship from February to June 2027, at a company where technology and creativity meet.",
+    "emailLabel": "Write to me",
+    "cv": "Download CV",
+    "followLabel": "Follow along",
+    "latestVideo": "Latest video",
+    "soonLabel": "Coming soon",
+    "soon": [
+      "Newsletter",
+      "Courses & Shop",
+      "Events & Dates",
+      "Leave a message"
+    ],
+    "copy": "Copy email",
+    "copied": "Copied",
+    "followIntro": "Projects, behind the scenes and everything I'm building.",
+    "groups": {
+      "work": "Professional",
+      "content": "Content creator"
+    },
+    "latestVideoHint": "Watch on YouTube"
   },
   "footer": {
     "nav": {
@@ -288,8 +387,6 @@
       "contact": "Contact"
     },
     "copyright": "© 2026 Sara Presa. All rights reserved.",
-    "madeWith": "Made with 🤍 in Aveiro, Portugal",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "madeWith": "Made with 🤍 in Aveiro, Portugal"
   }
 }

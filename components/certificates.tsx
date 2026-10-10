@@ -1,230 +1,104 @@
 "use client"
 
-import { m, type Variants } from "framer-motion"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
 import { useTranslations } from "next-intl"
+
+import { SectionShell } from "@/components/section-shell"
 
 type EducationEntry = {
   title: string
+  institution: string
+  period: string
   tags: string[]
 }
 
-const educationMeta = [
-  {
-    id: "degree",
-    institution: "ESTGA — Universidade de Aveiro",
-    period: "2023 — 2027",
-  },
-  {
-    id: "highschool",
-    institution: "Escola Secundária Dr. Mário Sacramento",
-    period: "2019 — 2023",
-  },
-  {
-    id: "conservatory",
-    institution: "Conservatório de Música de Aveiro Calouste Gulbenkian",
-    period: "2014 — 2024",
-  },
-] as const
-
-const certificateList = [
-  {
-    name: "Inside LVMH Certificate – Creation & Branding, Retail & Client Experience",
-    institution: "LVMH",
-    date: "Out 2025",
-  },
-  {
-    name: "It's All About Trends 2026 – Digital Trends & AI",
-    institution: "Lisbon Digital School",
-    date: "Jan 2026",
-  },
-  {
-    name: "O Teu Futuro é Digital",
-    institution: "Lisbon Digital School",
-    date: "Mai 2025",
-  },
-  {
-    name: "Storytelling para Marketing Digital",
-    institution: "Santander Open Academy",
-    date: "Dez 2024",
-  },
-  {
-    name: "Workshop: IntraEmpreendedorismo – Inovação e Proatividade",
-    institution: "Universidade de Aveiro",
-    date: "Nov 2025",
-  },
-  { name: "Ads Made Easy", institution: "ClubLifeDesign", date: "Jan 2025" },
-  {
-    name: "The Power of Instagram",
-    institution: "ClubLifeDesign",
-    date: "Nov 2024",
-  },
-] as const
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
-  }),
+type CertificateItem = {
+  name: string
+  institution: string
+  date: string
 }
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/sarapresaa/"
 
 function Certificates() {
   const t = useTranslations("certificates")
-  const education = t.raw("education") as Record<string, EducationEntry>
+  const education = t.raw("education") as EducationEntry[]
+  const certificates = t.raw("items") as CertificateItem[]
 
   return (
-    <section id="certificates" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <m.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0}
-          variants={fadeUp}
-          className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
-        >
-          {t("label")}
-        </m.p>
+    <SectionShell id="certificates" label={t("label")} heading={t("heading")}>
+      <h3 className="font-sans text-sm font-normal tracking-normal text-paper-dim">
+        {t("educationLabel")}
+      </h3>
 
-        <m.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.1}
-          variants={fadeUp}
-          className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
-        >
-          {t("heading")}
-        </m.h2>
-
-        <m.h3
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.2}
-          variants={fadeUp}
-          className="mt-16 text-lg font-medium text-white/80"
-        >
-          {t("educationLabel")}
-        </m.h3>
-
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {educationMeta.map((meta, index) => {
-            const entry = education[meta.id]
-            return (
-              <m.div
-                key={meta.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                custom={0.3 + index * 0.1}
-                variants={fadeUp}
-                className="education-card"
-              >
-                <div className="text-base font-medium text-white">
-                  {entry.title}
-                </div>
-                <div className="mt-2 text-sm text-white/50">
-                  {meta.institution}
-                </div>
-                <div className="mt-1 text-xs text-white/50">
-                  {meta.period}
-                </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {entry.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full text-white"
-                      style={{
-                        background: "rgba(255,255,255,0.07)",
-                        border: "1px solid rgba(255,255,255,0.15)",
-                        padding: "4px 12px",
-                        fontSize: "12px",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </m.div>
-            )
-          })}
-        </div>
-
-        <m.h3
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0}
-          variants={fadeUp}
-          className="mt-20 text-lg font-medium text-white/80"
-        >
-          {t("certificatesLabel")}
-        </m.h3>
-
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {certificateList.map((cert, index) => (
-            <m.div
-              key={cert.name}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.1 + index * 0.05}
-              variants={fadeUp}
-              className="cert-card"
-            >
-              <span
-                aria-hidden="true"
-                className="absolute top-4 right-4"
-                style={{ color: "#c4919a", fontSize: "12px" }}
-              >
-                ✦
-              </span>
-              <div
-                className="pr-4"
-                style={{ fontSize: "15px", fontWeight: 700, color: "white" }}
-              >
-                {cert.name}
-              </div>
-              <div
-                className="mt-2"
-                style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}
-              >
-                {cert.institution}
-              </div>
-              <div
-                className="mt-1"
-                style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}
-              >
-                {cert.date}
-              </div>
-            </m.div>
-          ))}
-        </div>
-
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.2}
-          variants={fadeUp}
-          className="mt-8 text-center"
-        >
-          <a
-            href="https://www.linkedin.com/in/sarapresaa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 text-sm text-white/50 transition-colors hover:text-white/70"
+      <ul className="mt-5 border-t border-hairline">
+        {education.map((entry) => (
+          <li
+            key={entry.title}
+            data-spotlight
+            className="border-b border-hairline py-8"
           >
-            {t("moreNote")}
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-        </m.div>
-      </div>
-    </section>
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h4 className="max-w-[22em] font-display text-[1.35rem] leading-tight">
+                {entry.title}
+              </h4>
+              <p className="text-sm text-paper-faint">{entry.period}</p>
+            </div>
+            <p className="mt-2 text-sm text-blush">{entry.institution}</p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {entry.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-md border border-hairline-strong px-2.5 py-1 font-mono text-xs text-paper-dim"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="mt-20 font-sans text-sm font-normal tracking-normal text-paper-dim">
+        {t("certificatesLabel")}
+      </h3>
+
+      <ul className="mt-5 border-t border-hairline">
+        {certificates.map((certificate) => (
+          <li
+            key={certificate.name}
+            className="group grid gap-x-8 gap-y-1 border-b border-hairline py-5 transition-colors duration-500 hover:border-hairline-strong sm:grid-cols-[minmax(0,1fr)_auto]"
+          >
+            <p className="text-[0.9375rem] leading-snug text-paper transition-transform duration-500 ease-out-expo group-hover:translate-x-1.5">
+              {certificate.name}
+            </p>
+            <p className="text-sm text-paper-faint sm:text-right">
+              {certificate.institution}
+              <span className="mx-2 text-paper-faint/50" aria-hidden="true">
+                /
+              </span>
+              {certificate.date}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={LINKEDIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group mt-8 inline-flex items-center gap-2 text-sm text-paper-dim transition-colors duration-300 hover:text-paper"
+      >
+        {t("moreNote")}
+        <HugeiconsIcon
+          icon={ArrowUpRight01Icon}
+          size={16}
+          strokeWidth={2}
+          className="transition-transform duration-500 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </a>
+    </SectionShell>
   )
 }
 

@@ -1,220 +1,182 @@
 "use client"
 
-import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
-const platformStyles: Record<string, { background: string; color: string }> =
-  {
-    Instagram: { background: "#E1306C20", color: "#E1306C" },
-    TikTok: { background: "rgba(255,255,255,0.1)", color: "white" },
-    YouTube: { background: "#FF000020", color: "#FF0000" },
-  }
+import { RevealText } from "@/components/motion/reveal-text"
+import { Rule } from "@/components/motion/rule"
+import { cn } from "@/lib/utils"
 
-const testimonials = [
+type Comment = {
+  name: string
+  platform: "Instagram" | "TikTok" | "YouTube"
+  comment: string
+}
+
+// Real comments, kept in the language they were written in.
+const comments: Comment[] = [
   {
     name: "@norberto_presa",
-    initials: "NP",
     platform: "Instagram",
     comment: "Não há nada como seguir os sonhos e fazer o que se gosta ❤️",
-    avatarColor: "#7d5c6b",
   },
   {
     name: "@giovannescaa",
-    initials: "GI",
     platform: "Instagram",
     comment: "OMG não sabia que cantavas assim 😍😍",
-    avatarColor: "#c4919a",
   },
   {
     name: "@cardooso.sj",
-    initials: "CS",
     platform: "Instagram",
     comment: "Ameiii, incrível mesmo, continua ehhehe 😍 ❤️",
-    avatarColor: "#3d3a4e",
   },
   {
     name: "@alicercaalves",
-    initials: "AA",
     platform: "Instagram",
     comment: "Lindooooo continua 🔥🔥",
-    avatarColor: "#7d5c6b",
   },
   {
     name: "@julianaleitew",
-    initials: "JL",
     platform: "Instagram",
     comment: "aiiiii que linda!!!!! 🥹🤝",
-    avatarColor: "#c4919a",
   },
-  {
-    name: "nicole ☆",
-    initials: "NI",
-    platform: "TikTok",
-    comment: "girl, u ARE PRETTY",
-    avatarColor: "#3d3a4e",
-  },
+  { name: "nicole ☆", platform: "TikTok", comment: "girl, u ARE PRETTY" },
   {
     name: "@geirinhas0811",
-    initials: "GE",
     platform: "TikTok",
     comment: "Ayoooo, continua que está espetacular!!",
-    avatarColor: "#7d5c6b",
   },
   {
     name: "Constança Caixinha",
-    initials: "CC",
     platform: "TikTok",
     comment: "Incrível! Continua! ✨",
-    avatarColor: "#c4919a",
   },
   {
     name: "Rita Gameiro",
-    initials: "RG",
     platform: "TikTok",
     comment: "Adoro 🥹🥹🥹🥹🥹💗💗💗💗💗",
-    avatarColor: "#3d3a4e",
   },
   {
     name: "@SantiagoSantos-wo4jo",
-    initials: "SS",
     platform: "YouTube",
     comment:
       "Que video incrível 🔥🔥🔥 Tu consegues Sara tamos todos aqui para ti ❤️",
-    avatarColor: "#7d5c6b",
   },
   {
     name: "@CarolinaCorreia-x7n",
-    initials: "CC",
     platform: "YouTube",
     comment:
       "Força Sara, tu consegues oque quiseres! Estamos todos a apoiar-te! ❤️",
-    avatarColor: "#c4919a",
   },
   {
     name: "Pipa",
-    initials: "PI",
     platform: "TikTok",
-    comment: "adorei ver o teu vídeo. Muita sorte para tudo sara! beijinhos ❤️🤝",
-    avatarColor: "#3d3a4e",
+    comment:
+      "adorei ver o teu vídeo. Muita sorte para tudo sara! beijinhos ❤️🤝",
   },
-] as const
+]
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
-  }),
+const avatarStyles = [
+  "from-mauve to-rose text-paper",
+  "from-slate to-mauve text-paper",
+  "from-rose to-blush text-ink",
+]
+
+const rows = [comments.slice(0, 6), comments.slice(6)]
+
+function initials(name: string) {
+  return name.replace(/^@/, "").slice(0, 2).toUpperCase()
+}
+
+function CommentCard({ item, index }: { item: Comment; index: number }) {
+  return (
+    <li className="w-[min(78vw,21rem)] shrink-0 rounded-2xl border border-hairline bg-ink-raised/60 p-5">
+      <div className="flex items-center gap-3">
+        <span
+          aria-hidden="true"
+          className={cn(
+            "flex size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-xs font-medium",
+            avatarStyles[index % avatarStyles.length]
+          )}
+        >
+          {initials(item.name)}
+        </span>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium text-paper">{item.name}</p>
+          <p className="text-xs text-paper-faint">{item.platform}</p>
+        </div>
+      </div>
+      <p className="mt-4 text-[0.9375rem] leading-relaxed text-paper-dim">
+        {item.comment}
+      </p>
+    </li>
+  )
+}
+
+function MarqueeRow({
+  items,
+  reverse,
+  duration,
+  offset,
+}: {
+  items: Comment[]
+  reverse?: boolean
+  duration: string
+  offset: number
+}) {
+  return (
+    <div className="marquee marquee-mask overflow-hidden">
+      <div
+        className="marquee-track"
+        data-direction={reverse ? "reverse" : undefined}
+        style={{ "--marquee-duration": duration } as React.CSSProperties}
+      >
+        {[false, true].map((isCopy) => (
+          <ul
+            key={String(isCopy)}
+            aria-hidden={isCopy || undefined}
+            className="flex shrink-0 gap-4"
+          >
+            {items.map((item, index) => (
+              <CommentCard key={item.name} item={item} index={index + offset} />
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 function Community() {
   const t = useTranslations("community")
 
   return (
-    <section id="community" className="bg-[#0f0d14] px-6 py-[120px] md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <m.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0}
-          variants={fadeUp}
-          className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
-        >
-          {t("label")}
-        </m.p>
-
-        <m.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.1}
-          variants={fadeUp}
-          className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
-        >
-          {t("heading")}
-        </m.h2>
-
-        <m.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.2}
-          variants={fadeUp}
-          className="mx-auto mt-4 max-w-xl text-center text-sm text-white/50 sm:text-base"
-        >
-          {t("subtext")}
-        </m.p>
-
-        <div className="mt-16 columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {testimonials.map((item, index) => {
-            const platform = platformStyles[item.platform]
-
-            return (
-              <m.div
-                key={`${item.name}-${index}`}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                custom={0.1 + index * 0.05}
-                variants={fadeUp}
-                className="testimonial-card mb-4 break-inside-avoid"
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-medium text-white"
-                    style={{ backgroundColor: item.avatarColor }}
-                  >
-                    {item.initials}
-                  </div>
-                  <div>
-                    <div
-                      className="font-bold text-white"
-                      style={{ fontSize: "14px" }}
-                    >
-                      {item.name}
-                    </div>
-                    <span
-                      className="mt-1 inline-block rounded-full"
-                      style={{
-                        background: platform.background,
-                        color: platform.color,
-                        padding: "2px 10px",
-                        fontSize: "11px",
-                      }}
-                    >
-                      {item.platform}
-                    </span>
-                  </div>
-                </div>
-
-                <p
-                  style={{
-                    marginTop: "12px",
-                    fontSize: "15px",
-                    lineHeight: 1.6,
-                    color: "rgba(255,255,255,0.75)",
-                  }}
-                >
-                  {item.comment}
-                </p>
-              </m.div>
-            )
-          })}
+    <section id="community" className="relative py-24 md:py-36">
+      <div className="mx-auto max-w-[1360px] px-6 md:px-10">
+        <Rule />
+        <div className="grid gap-8 pt-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+          <div>
+            <p className="text-sm text-paper-dim">{t("label")}</p>
+            <RevealText
+              as="h2"
+              className="mt-5 text-[clamp(2.2rem,3.9vw,3.6rem)]"
+            >
+              {t("heading")}
+            </RevealText>
+          </div>
+          <p className="max-w-md self-end text-base leading-relaxed text-paper-dim lg:justify-self-end">
+            {t("subtext")}
+          </p>
         </div>
-
-        <m.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.2 + testimonials.length * 0.05 + 0.1}
-          variants={fadeUp}
-          className="mt-12 text-center text-xs text-white/50"
-        >
-          {t("note")}
-        </m.p>
       </div>
+
+      <div className="mt-16 flex flex-col gap-4">
+        <MarqueeRow items={rows[0]} duration="75s" offset={0} />
+        <MarqueeRow items={rows[1]} duration="90s" offset={1} reverse />
+      </div>
+
+      <p className="mx-auto mt-10 max-w-[1360px] px-6 text-xs text-paper-faint md:px-10">
+        {t("note")}
+      </p>
     </section>
   )
 }

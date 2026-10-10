@@ -11,10 +11,10 @@ function Providers({ children }: { children: ReactNode }) {
         <ReactLenis
           root
           options={{
-            lerp: 0.1,
-            duration: 1.2,
+            lerp: 0.09,
             smoothWheel: true,
-            anchors: true,
+            // Same-page links glide, and land below the floating nav.
+            anchors: { offset: -72, duration: 1.4 },
           }}
         >
           {children}

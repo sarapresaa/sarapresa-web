@@ -1,13 +1,26 @@
 "use client"
 
+import { useRef } from "react"
 import Image from "next/image"
-import { m, type Variants } from "framer-motion"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ArrowDown01Icon, ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
+import {
+  m,
+  useMotionTemplate,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion"
 import { useTranslations } from "next-intl"
 
-import { LanguageToggle } from "@/components/language-toggle"
+import { Magnetic } from "@/components/motion/magnetic"
+import { RevealText } from "@/components/motion/reveal-text"
+import { Signature } from "@/components/signature"
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 16 },
+const rise: Variants = {
+  hidden: { opacity: 0, y: 18 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
@@ -15,170 +28,199 @@ const fadeUp: Variants = {
   }),
 }
 
-const wordUp: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: 2.0 + index * 0.06,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  }),
-}
-
 function Hero() {
   const t = useTranslations("hero")
-  const subtitleWords = t("subtitle").split(" ")
+  const sectionRef = useRef<HTMLElement>(null)
+
+  // Pointer in percent of the section: drives a soft rose glow and a slight
+  // parallax of the portrait. Motion values only, so nothing re-renders.
+  const pointerX = useMotionValue(0.5)
+  const pointerY = useMotionValue(0.4)
+  const smoothX = useSpring(pointerX, { stiffness: 50, damping: 20 })
+  const smoothY = useSpring(pointerY, { stiffness: 50, damping: 20 })
+  const glowX = useTransform(smoothX, (value) => value * 100)
+  const glowY = useTransform(smoothY, (value) => value * 100)
+  const glow = useMotionTemplate`radial-gradient(38rem circle at ${glowX}% ${glowY}%, rgb(232 180 184 / 0.2), transparent 62%)`
+  const portraitShiftX = useTransform(smoothX, [0, 1], [-14, 14])
+  const portraitShiftY = useTransform(smoothY, [0, 1], [-10, 10])
+  const outlineShiftX = useTransform(smoothX, [0, 1], [10, -10])
+  const outlineShiftY = useTransform(smoothY, [0, 1], [8, -8])
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+  const portraitScroll = useTransform(scrollYProgress, [0, 1], [0, 90])
+
+  function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
+    if (event.pointerType !== "mouse") {
+      return
+    }
+
+    const rect = event.currentTarget.getBoundingClientRect()
+    pointerX.set((event.clientX - rect.left) / rect.width)
+    pointerY.set((event.clientY - rect.top) / rect.height)
+  }
 
   return (
     <section
+      ref={sectionRef}
       id="home"
-      className="hero-gradient relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 text-center"
+      onPointerMove={handlePointerMove}
+      className="hero-surface min-h-svh"
     >
-      <div
-        className="absolute inset-0 z-[-1]"
-        style={{
-          backgroundImage: "url('/hero.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center 20%",
-          opacity: 0.25,
-          mixBlendMode: "luminosity",
-        }}
+      <m.div
+        aria-hidden="true"
+        style={{ backgroundImage: glow }}
+        className="pointer-events-none absolute inset-0 z-[-1]"
       />
 
-      <m.div
-        className="absolute top-6 right-6 md:top-10 md:right-10"
-        initial="hidden"
-        animate="visible"
-        custom={0.2}
-        variants={fadeUp}
-      >
-        <LanguageToggle />
-      </m.div>
+      <div className="mx-auto grid min-h-svh max-w-[1280px] items-center gap-12 px-6 pt-28 pb-24 md:px-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10 lg:pt-24">
+        <div className="flex flex-col items-start">
+          <Signature />
 
-      <m.div
-        className="w-[75vw] max-w-[500px]"
-        initial="hidden"
-        animate="visible"
-        custom={0}
-        variants={fadeUp}
-      >
-        <div className="relative">
-          <m.div
-            initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
-            animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
-            transition={{ duration: 1.6, delay: 0.3, ease: [0.65, 0, 0.35, 1] }}
+          <RevealText
+            as="h1"
+            immediate
+            delay={1.15}
+            className="mt-8 max-w-[14em] text-[clamp(2.3rem,4.2vw,4.25rem)]"
           >
-            <Image
-              src="/signature.png"
-              alt="Sara Presa"
-              width={500}
-              height={169}
-              priority
-              className="h-auto w-full"
-              style={{ filter: "brightness(2) contrast(1.2)" }}
-            />
-          </m.div>
-          <m.span
-            aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 z-10 block size-2.5 -translate-y-1/2 rounded-full bg-white"
-            style={{ boxShadow: "0 0 12px 4px rgba(255,255,255,0.6)" }}
-            initial={{ left: "0%", opacity: 0 }}
-            animate={{ left: "100%", opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.6, delay: 0.3, ease: [0.65, 0, 0.35, 1] }}
-          />
-        </div>
-      </m.div>
+            {t("subtitle")}
+          </RevealText>
 
-      <p
-        className="mt-8 text-balance"
-        style={{
-          fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
-          letterSpacing: "0.08em",
-          color: "rgba(255,255,255,0.75)",
-          maxWidth: "520px",
-          textAlign: "center",
-        }}
-      >
-        <span className="sr-only">{t("subtitle")}</span>
-        <span aria-hidden="true">
-          {subtitleWords.map((word, index) => (
-            <span key={index}>
-              <m.span
-                className="inline-block"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={index}
-                variants={wordUp}
-              >
-                {word}
-              </m.span>{" "}
+          <m.p
+            initial="hidden"
+            animate="visible"
+            custom={2.3}
+            variants={rise}
+            className="mt-8 flex max-w-md items-start gap-3 text-base leading-relaxed text-paper-dim md:text-[1.0625rem]"
+          >
+            <span
+              aria-hidden="true"
+              className="relative mt-[0.55em] flex size-2 shrink-0"
+            >
+              <span className="absolute inline-flex size-full rounded-full bg-rose opacity-70 motion-safe:animate-ping" />
+              <span className="relative inline-flex size-2 rounded-full bg-blush" />
             </span>
-          ))}
-        </span>
-      </p>
+            {t("role")}
+          </m.p>
 
-      <m.p
-        initial="hidden"
-        animate="visible"
-        custom={2.6}
-        variants={fadeUp}
-        className="mt-4 text-balance"
-        style={{
-          fontSize: "0.95rem",
-          color: "rgba(255,255,255,0.6)",
-          maxWidth: "440px",
-        }}
-      >
-        {t("role")}
-      </m.p>
+          <m.div
+            initial="hidden"
+            animate="visible"
+            custom={2.5}
+            variants={rise}
+            className="mt-9 flex flex-wrap items-center gap-3"
+          >
+            <Magnetic strength={0.25}>
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-paper px-7 py-3.5 text-[0.9375rem] font-medium text-ink transition-colors duration-300 hover:bg-blush"
+              >
+                {t("contactCta")}
+                <HugeiconsIcon
+                  icon={ArrowUpRight01Icon}
+                  size={18}
+                  strokeWidth={2}
+                  className="transition-transform duration-500 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </Magnetic>
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-full border border-hairline-strong px-7 py-3.5 text-[0.9375rem] text-paper transition-colors duration-300 hover:border-paper/50 hover:bg-paper/5"
+            >
+              {t("projectsCta")}
+              <HugeiconsIcon
+                icon={ArrowDown01Icon}
+                size={18}
+                strokeWidth={2}
+                className="transition-transform duration-500 ease-out-expo group-hover:translate-y-0.5"
+              />
+            </a>
+          </m.div>
+        </div>
 
-      <m.a
-        href="#contact"
-        initial="hidden"
-        animate="visible"
-        custom={2.8}
-        variants={fadeUp}
-        className="mt-6 inline-flex items-center justify-center rounded-full text-white transition-transform hover:scale-105"
-        style={{
-          background: "linear-gradient(135deg, #7d5c6b, #c4919a)",
-          padding: "12px 32px",
-          fontSize: "14px",
-          fontWeight: 500,
-        }}
-      >
-        {t("contactCta")}
-      </m.a>
+        <m.div
+          style={{ y: portraitScroll }}
+          className="relative mx-auto w-full max-w-[26rem] lg:max-w-none lg:justify-self-end lg:pl-6"
+        >
+          <div className="relative mx-auto w-full max-w-[27rem]">
+            <m.div
+              aria-hidden="true"
+              style={{ x: outlineShiftX, y: outlineShiftY }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.6, delay: 1.2 }}
+              className="absolute inset-0 translate-x-5 translate-y-5 rounded-t-[999px] rounded-b-3xl border border-blush/35"
+            />
+            <m.div
+              style={{ x: portraitShiftX, y: portraitShiftY }}
+              className="relative"
+            >
+              <m.div
+                initial={{
+                  clipPath: "inset(100% 0% 0% 0% round 999px 999px 24px 24px)",
+                }}
+                animate={{
+                  clipPath: "inset(0% 0% 0% 0% round 999px 999px 24px 24px)",
+                }}
+                transition={{
+                  duration: 1.8,
+                  delay: 0.35,
+                  ease: [0.76, 0, 0.24, 1],
+                }}
+                className="relative aspect-[4/5.2] w-full overflow-hidden bg-ink-high"
+              >
+                <m.div
+                  initial={{ scale: 1.25 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    duration: 2.2,
+                    delay: 0.35,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src="/hero.jpg"
+                    alt={t("portraitAlt")}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 36vw, 90vw"
+                    className="object-cover object-[50%_8%]"
+                  />
+                </m.div>
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-mauve/15"
+                />
+              </m.div>
+            </m.div>
+          </div>
+
+          <m.p
+            initial="hidden"
+            animate="visible"
+            custom={2.7}
+            variants={rise}
+            className="mx-auto mt-6 max-w-[27rem] text-right text-sm text-paper-faint"
+          >
+            {t("location")}
+          </m.p>
+        </m.div>
+      </div>
 
       <m.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        aria-hidden="true"
         initial="hidden"
         animate="visible"
-        custom={3.2}
-        variants={fadeUp}
+        custom={3}
+        variants={rise}
+        className="absolute inset-x-0 bottom-7 hidden flex-col items-center gap-3 text-xs text-paper-faint lg:flex"
       >
-        <m.div
-          className="text-white/70"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </m.div>
+        {t("scroll")}
+        <span className="scroll-cue" />
       </m.div>
     </section>
   )

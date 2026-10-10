@@ -1,23 +1,35 @@
-import type { Metadata } from "next"
-import { Geist_Mono, Inter } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 
 import "../globals.css"
 import { routing } from "@/i18n/routing"
-import { AmbientParticles } from "@/components/ambient-particles"
+import { Aurora } from "@/components/motion/aurora"
+import { ScrollProgress } from "@/components/motion/scroll-progress"
+import { Spotlight } from "@/components/motion/spotlight"
 import { Providers } from "@/components/providers"
 import { SiteNav } from "@/components/site-nav"
-import { ThemeProvider } from "@/components/theme-provider"
+import { SkipLink } from "@/components/skip-link"
 import { cn } from "@/lib/utils"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-
-const fontMono = Geist_Mono({
+// One family for everything: clean, friendly and refined next to the
+// handwritten signature. Geist Mono is only used for tech tags.
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-jakarta",
 })
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+})
+
+export const viewport: Viewport = {
+  themeColor: "#120e18",
+  colorScheme: "dark",
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -39,7 +51,7 @@ export async function generateMetadata({
     metadataBase: new URL("https://sarapresaa.pt"),
     title: {
       default: title,
-      template: `%s — ${title}`,
+      template: `%s | ${title}`,
     },
     description,
     alternates: {
@@ -65,6 +77,29 @@ export async function generateMetadata({
   }
 }
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sara Presa",
+  url: "https://sarapresaa.pt",
+  email: "info@sarapresaa.pt",
+  jobTitle: "Information Technology student",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Aveiro",
+    addressCountry: "PT",
+  },
+  alumniOf: "Universidade de Aveiro",
+  sameAs: [
+    "https://github.com/sarapresaa",
+    "https://www.linkedin.com/in/sarapresaa/",
+    "https://www.instagram.com/sarapresaa",
+    "https://www.tiktok.com/@sarapresaa.oficial",
+    "https://www.youtube.com/@sarapresaa",
+    "https://pt.pinterest.com/sarapresaa/",
+  ],
+}
+
 export default async function RootLayout({
   children,
   params,
@@ -83,24 +118,24 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        inter.variable
-      )}
+      className={cn("dark antialiased", jakarta.variable, geistMono.variable)}
     >
       <body>
         <NextIntlClientProvider>
-          <ThemeProvider>
-            <Providers>
-              <AmbientParticles />
-              <SiteNav />
-              {children}
-            </Providers>
-          </ThemeProvider>
+          <Providers>
+            <SkipLink />
+            <ScrollProgress />
+            <Aurora />
+            <Spotlight />
+            <SiteNav />
+            {children}
+            <div aria-hidden="true" className="grain" />
+          </Providers>
         </NextIntlClientProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </body>
     </html>
   )

@@ -10,9 +10,9 @@ Portefólio pessoal bilingue (PT/EN), construído para a minha candidatura a est
 
 - [Next.js](https://nextjs.org/) 16 (App Router) + [React](https://react.dev/) 19 + [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/) 4
-- [next-intl](https://next-intl.dev/) — traduções PT/EN
-- [Framer Motion](https://www.framer.com/motion/) — animações
-- [Lenis](https://lenis.darkroom.engineering/) — scroll suave
+- [next-intl](https://next-intl.dev/): traduções PT/EN
+- [Framer Motion](https://www.framer.com/motion/): animações
+- [Lenis](https://lenis.darkroom.engineering/): scroll suave
 
 ## Conteúdos
 
@@ -57,7 +57,7 @@ public/         imagens e outros ficheiros estáticos
 
 ## Variáveis de ambiente
 
-Este projeto ainda não precisa de nenhuma variável de ambiente. Quando a newsletter for ligada a um serviço de envio de emails, essa configuração (chave de API) vai ficar num ficheiro `.env.local` (nunca é enviado para o GitHub) — este README será atualizado nessa altura com o nome exato da variável e onde a obter.
+Este projeto ainda não precisa de nenhuma variável de ambiente. Quando a newsletter for ligada a um serviço de envio de emails, essa configuração (chave de API) vai ficar num ficheiro `.env.local` (nunca é enviado para o GitHub). Este README será atualizado nessa altura com o nome exato da variável e onde a obter.
 
 ## Autora
 
@@ -69,7 +69,7 @@ Este projeto ainda não precisa de nenhuma variável de ambiente. Quando a newsl
 
 ---
 
-# 🇬🇧 Sara Presa — Portfolio
+# 🇬🇧 Sara Presa: Portfolio
 
 🇬🇧 English · 🇵🇹 [Versão em português acima](#portefólio-de-sara-presa)
 
@@ -81,9 +81,9 @@ Bilingual personal portfolio (PT/EN), built for my application to a curricular i
 
 - [Next.js](https://nextjs.org/) 16 (App Router) + [React](https://react.dev/) 19 + [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/) 4
-- [next-intl](https://next-intl.dev/) — PT/EN translations
-- [Framer Motion](https://www.framer.com/motion/) — animations
-- [Lenis](https://lenis.darkroom.engineering/) — smooth scrolling
+- [next-intl](https://next-intl.dev/): PT/EN translations
+- [Framer Motion](https://www.framer.com/motion/): animations
+- [Lenis](https://lenis.darkroom.engineering/): smooth scrolling
 
 ## Content
 
@@ -128,7 +128,7 @@ public/         images and other static files
 
 ## Environment variables
 
-This project doesn't need any environment variables yet. Once the newsletter form is connected to a real email service, that configuration (an API key) will live in a `.env.local` file (never committed to GitHub) — this README will be updated at that point with the exact variable name and where to get it.
+This project doesn't need any environment variables yet. Once the newsletter form is connected to a real email service, that configuration (an API key) will live in a `.env.local` file (never committed to GitHub). This README will be updated at that point with the exact variable name and where to get it.
 
 ## Author
 

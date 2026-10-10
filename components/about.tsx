@@ -1,108 +1,55 @@
 "use client"
 
-import Image from "next/image"
-import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
-  }),
-}
+import { ScrollWords } from "@/components/motion/scroll-words"
+import { SectionShell } from "@/components/section-shell"
 
 function About() {
   const t = useTranslations("about")
   const paragraphs = t("body").split("\n\n")
   const skills = t.raw("skills") as string[]
+  const lastIndex = paragraphs.length - 1
 
   return (
-    <section id="about" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2 md:items-center md:gap-16">
-        <div>
-          <m.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            custom={0}
-            variants={fadeUp}
-            className="text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
-          >
-            {t("label")}
-          </m.p>
+    <SectionShell id="about" label={t("label")} heading={t("heading")}>
+      <div className="flex flex-col gap-8">
+        {paragraphs.map((paragraph, index) => {
+          // The first and last paragraphs carry the story; the middle ones
+          // are the supporting detail.
+          const isStatement = index === 0 || index === lastIndex
 
-          <m.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            custom={0.1}
-            variants={fadeUp}
-            className="mt-4 text-3xl font-medium text-white sm:text-4xl md:text-5xl"
-          >
-            {t("heading")}
-          </m.h2>
+          return (
+            <ScrollWords
+              key={index}
+              text={paragraph}
+              floor={isStatement ? 0.4 : 0.5}
+              className={
+                isStatement
+                  ? "font-display text-[clamp(1.45rem,2.1vw,1.95rem)] leading-[1.32] font-normal tracking-[-0.025em] text-paper"
+                  : "max-w-[34em] text-base leading-[1.75] text-paper md:text-[1.0625rem]"
+              }
+            />
+          )
+        })}
+      </div>
 
-          <div className="mt-6 flex flex-col gap-4">
-            {paragraphs.map((paragraph, index) => (
-              <m.p
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                custom={0.2 + index * 0.08}
-                variants={fadeUp}
-                className="text-sm leading-relaxed text-white/70 sm:text-base"
-              >
-                {paragraph}
-              </m.p>
-            ))}
-          </div>
-
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            custom={0.2 + paragraphs.length * 0.08 + 0.1}
-            variants={fadeUp}
-            className="mt-8 flex flex-wrap gap-2"
-          >
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full text-white"
-                style={{
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  padding: "6px 16px",
-                  fontSize: "13px",
-                }}
-              >
+      <div className="mt-20">
+        <p className="text-sm text-paper-dim">{t("skillsLabel")}</p>
+        <ul className="mt-5 grid grid-cols-1 border-t border-hairline sm:grid-cols-2 sm:gap-x-10">
+          {skills.map((skill) => (
+            <li
+              key={skill}
+              className="group border-b border-hairline py-4 font-display text-lg text-paper transition-colors duration-500 hover:text-blush"
+            >
+              <span className="inline-block transition-transform duration-500 ease-out-expo group-hover:translate-x-2">
                 {skill}
               </span>
-            ))}
-          </m.div>
-        </div>
-
-        <m.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full overflow-hidden rounded-[20px]"
-          style={{ aspectRatio: "3 / 4" }}
-        >
-          <Image
-            src="/hero.jpg"
-            alt="Sara Presa"
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            style={{ objectFit: "cover", objectPosition: "center top" }}
-          />
-        </m.div>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
+    </SectionShell>
   )
 }
 

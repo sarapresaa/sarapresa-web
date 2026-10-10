@@ -1,36 +1,40 @@
 "use client"
 
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 import { Link, usePathname } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 
+/** PT / EN as quiet text: the current language is simply brighter. */
 function LanguageToggle({ className }: { className?: string }) {
   const locale = useLocale()
   const pathname = usePathname()
+  const t = useTranslations("nav")
 
   return (
     <div
-      className={cn(
-        "flex items-center gap-2 text-xs font-medium tracking-[0.2em] text-white/50 uppercase",
-        className
-      )}
+      role="group"
+      aria-label={t("language")}
+      className={cn("flex items-center text-sm", className)}
     >
       {routing.locales.map((loc, index) => (
-        <span key={loc} className="flex items-center gap-2">
-          {index > 0 && (
-            <span className="text-white/25" aria-hidden="true">
-              |
+        <span key={loc} className="flex items-center">
+          {index > 0 ? (
+            <span aria-hidden="true" className="px-0.5 text-paper-faint/50">
+              /
             </span>
-          )}
+          ) : null}
           <Link
             href={pathname}
             locale={loc}
-            aria-current={locale === loc}
+            hrefLang={loc}
+            aria-current={locale === loc ? "true" : undefined}
             className={cn(
-              "transition-colors hover:text-white",
-              locale === loc && "text-white"
+              "rounded-md px-1.5 py-1 font-medium transition-colors duration-300",
+              locale === loc
+                ? "text-paper"
+                : "text-paper-faint hover:text-paper"
             )}
           >
             {loc.toUpperCase()}

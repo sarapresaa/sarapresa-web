@@ -7,7 +7,6 @@ import { Experience } from "@/components/experience"
 import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
 import { LinkHub } from "@/components/link-hub"
-import { Newsletter } from "@/components/newsletter"
 import { Projects } from "@/components/projects"
 import { Results } from "@/components/results"
 import { Timeline } from "@/components/timeline"
@@ -22,16 +21,17 @@ export default async function Page({
 
   return (
     <>
-      <Hero />
-      <About />
-      <Projects />
-      <Experience />
-      <Timeline />
-      <Certificates />
-      <Results />
-      <Community />
-      <LinkHub />
-      <Newsletter />
+      <main id="main">
+        <Hero />
+        <Projects />
+        <About />
+        <Experience />
+        <Timeline />
+        <Certificates />
+        <Results />
+        <Community />
+        <LinkHub />
+      </main>
       <Footer />
     </>
   )

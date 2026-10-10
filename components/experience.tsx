@@ -1,7 +1,8 @@
 "use client"
 
-import { m, type Variants } from "framer-motion"
 import { useTranslations } from "next-intl"
+
+import { SectionShell } from "@/components/section-shell"
 
 type Job = {
   title: string
@@ -10,203 +11,108 @@ type Job = {
   description: string
 }
 
+type SkillGroup = {
+  label: string
+  items: string[]
+}
+
 type LanguageItem = {
   name: string
   level: string
 }
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
-  }),
-}
-
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="rounded-full text-white"
-      style={{
-        background: "rgba(255,255,255,0.07)",
-        border: "1px solid rgba(255,255,255,0.15)",
-        padding: "4px 12px",
-        fontSize: "12px",
-      }}
-    >
-      {children}
-    </span>
-  )
-}
-
 function Experience() {
   const t = useTranslations("experience")
   const jobs = t.raw("jobs") as Job[]
-  const skills = t.raw("skills") as string[]
+  const skillGroups = t.raw("skillGroups") as SkillGroup[]
   const languages = t.raw("languages") as LanguageItem[]
   const activities = t.raw("activities") as string[]
 
   return (
-    <section id="experience" className="bg-[#1a1720] px-6 py-[120px] md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <m.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0}
-          variants={fadeUp}
-          className="text-center text-xs font-medium tracking-[0.2em] text-white/50 uppercase"
-        >
-          {t("label")}
-        </m.p>
+    <SectionShell id="experience" label={t("label")} heading={t("heading")}>
+      <h3 className="font-sans text-sm font-normal tracking-normal text-paper-dim">
+        {t("experienceLabel")}
+      </h3>
 
-        <m.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          custom={0.1}
-          variants={fadeUp}
-          className="mt-4 text-center text-3xl font-medium text-white sm:text-4xl md:text-5xl"
-        >
-          {t("heading")}
-        </m.h2>
-
-        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr]">
-          <div>
-            <m.h3
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.2}
-              variants={fadeUp}
-              className="text-lg font-medium text-white/80"
-            >
-              {t("experienceLabel")}
-            </m.h3>
-
-            <div className="mt-6 flex flex-col gap-4">
-              {jobs.map((job, index) => (
-                <m.div
-                  key={job.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-100px" }}
-                  custom={0.3 + index * 0.1}
-                  variants={fadeUp}
-                  className="education-card"
-                >
-                  <div className="text-base font-medium text-white">
-                    {job.title}
-                  </div>
-                  <div className="mt-1 text-sm text-white/50">
-                    {job.company}
-                  </div>
-                  <div className="mt-1 text-xs text-white/50">
-                    {job.period}
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    {job.description}
-                  </p>
-                </m.div>
-              ))}
+      <ul className="mt-5 border-t border-hairline">
+        {jobs.map((job) => (
+          <li
+            key={job.title}
+            data-spotlight
+            className="grid gap-x-8 gap-y-3 border-b border-hairline py-8 md:grid-cols-[10.5rem_minmax(0,1fr)]"
+          >
+            <p className="text-sm leading-relaxed text-paper-faint">
+              {job.period}
+            </p>
+            <div>
+              <h4 className="font-display text-[1.4rem] leading-tight">
+                {job.title}
+              </h4>
+              <p className="mt-1 text-sm text-blush">{job.company}</p>
+              <p className="mt-4 max-w-[36em] text-[0.9375rem] leading-relaxed text-paper-dim">
+                {job.description}
+              </p>
             </div>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-20 grid gap-14 md:grid-cols-2 md:gap-10">
+        <div>
+          <h3 className="font-sans text-sm font-normal tracking-normal text-paper-dim">
+            {t("skillsLabel")}
+          </h3>
+          <div className="mt-5 flex flex-col gap-6">
+            {skillGroups.map((group) => (
+              <div key={group.label}>
+                <p className="text-xs text-paper-faint">{group.label}</p>
+                <ul className="mt-2.5 flex flex-wrap gap-2">
+                  {group.items.map((skill) => (
+                    <li
+                      key={skill}
+                      className="rounded-md border border-hairline-strong px-2.5 py-1 font-mono text-xs text-paper transition-colors duration-300 hover:border-blush/60 hover:text-blush"
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-xs text-paper-faint">{t("skillsNote")}</p>
+        </div>
+
+        <div className="flex flex-col gap-12">
+          <div>
+            <h3 className="font-sans text-sm font-normal tracking-normal text-paper-dim">
+              {t("languagesLabel")}
+            </h3>
+            <ul className="mt-5 border-t border-hairline">
+              {languages.map((language) => (
+                <li
+                  key={language.name}
+                  className="flex items-baseline justify-between border-b border-hairline py-3 text-[0.9375rem]"
+                >
+                  <span className="text-paper">{language.name}</span>
+                  <span className="text-paper-faint">{language.level}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
-            <m.h3
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.2}
-              variants={fadeUp}
-              className="text-lg font-medium text-white/80"
-            >
-              {t("skillsLabel")}
-            </m.h3>
-
-            <m.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.3}
-              variants={fadeUp}
-              className="mt-6 flex flex-wrap gap-2"
-            >
-              {skills.map((skill) => (
-                <Pill key={skill}>{skill}</Pill>
-              ))}
-            </m.div>
-            <m.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.35}
-              variants={fadeUp}
-              className="mt-2 text-xs text-white/50"
-            >
-              {t("skillsNote")}
-            </m.p>
-
-            <m.h3
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.4}
-              variants={fadeUp}
-              className="mt-10 text-lg font-medium text-white/80"
-            >
-              {t("languagesLabel")}
-            </m.h3>
-
-            <m.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.45}
-              variants={fadeUp}
-              className="mt-6 flex flex-wrap gap-2"
-            >
-              {languages.map((lang) => (
-                <Pill key={lang.name}>
-                  {lang.name} ({lang.level})
-                </Pill>
-              ))}
-            </m.div>
-
-            <m.h3
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.5}
-              variants={fadeUp}
-              className="mt-10 text-lg font-medium text-white/80"
-            >
+            <h3 className="font-sans text-sm font-normal tracking-normal text-paper-dim">
               {t("activitiesLabel")}
-            </m.h3>
-
-            <m.ul
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              custom={0.55}
-              variants={fadeUp}
-              className="mt-6 flex flex-col gap-2"
-            >
+            </h3>
+            <ul className="mt-5 flex flex-col gap-3 text-[0.9375rem] leading-relaxed text-paper">
               {activities.map((activity) => (
-                <li
-                  key={activity}
-                  className="text-sm text-white/70"
-                  style={{ paddingLeft: "16px", textIndent: "-16px" }}
-                >
-                  — {activity}
-                </li>
+                <li key={activity}>{activity}</li>
               ))}
-            </m.ul>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }
 

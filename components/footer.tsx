@@ -1,12 +1,13 @@
 "use client"
 
-import Image from "next/image"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { ArrowUp01Icon } from "@hugeicons/core-free-icons"
 import { useTranslations } from "next-intl"
 
 const navItems = [
   { key: "home", href: "#home" },
-  { key: "about", href: "#about" },
   { key: "projects", href: "#projects" },
+  { key: "about", href: "#about" },
   { key: "experience", href: "#experience" },
   { key: "journey", href: "#journey" },
   { key: "certificates", href: "#certificates" },
@@ -15,81 +16,91 @@ const navItems = [
 ] as const
 
 const socialLinks = [
+  { name: "GitHub", href: "https://github.com/sarapresaa" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/sarapresaa/" },
   { name: "Instagram", href: "https://www.instagram.com/sarapresaa" },
-  {
-    name: "TikTok",
-    href: "https://www.tiktok.com/@sarapresaa.oficial",
-  },
+  { name: "TikTok", href: "https://www.tiktok.com/@sarapresaa.oficial" },
   { name: "YouTube", href: "https://www.youtube.com/@sarapresaa" },
   { name: "Pinterest", href: "https://pt.pinterest.com/sarapresaa/" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/sarapresaa/" },
-  { name: "GitHub", href: "https://github.com/sarapresaa" },
 ] as const
+
+function FooterLink({
+  href,
+  external,
+  children,
+}: {
+  href: string
+  external?: boolean
+  children: React.ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : undefined)}
+      className="link-sweep inline-block pb-0.5 text-paper-dim transition-colors duration-300 hover:text-paper"
+    >
+      {children}
+    </a>
+  )
+}
 
 function Footer() {
   const t = useTranslations("footer")
+  const tA11y = useTranslations("a11y")
 
   return (
-    <footer className="bg-[#0a0810] px-6 py-[60px] md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-          <Image
-            src="/signature.png"
-            alt="Sara Presa"
-            width={160}
-            height={54}
-            className="h-auto w-[160px]"
-            style={{ filter: "brightness(2) contrast(1.2)" }}
-          />
+    <footer className="relative overflow-hidden px-6 pt-8 md:px-10">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="h-px bg-hairline-strong" />
 
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            {navItems.map(({ key, href }) => (
-              <a
-                key={key}
-                href={href}
-                className="text-white/60 transition-colors hover:text-white"
-                style={{ fontSize: "14px" }}
-              >
-                {t(`nav.${key}`)}
-              </a>
-            ))}
+        <div className="flex flex-col gap-12 py-14 md:flex-row md:items-start md:justify-between">
+          <nav className="flex flex-col gap-10 text-[0.9375rem] sm:flex-row sm:gap-20">
+            <ul className="grid grid-flow-col grid-rows-4 gap-x-14 gap-y-3">
+              {navItems.map(({ key, href }) => (
+                <li key={key}>
+                  <FooterLink href={href}>{t(`nav.${key}`)}</FooterLink>
+                </li>
+              ))}
+            </ul>
+            <ul className="grid grid-flow-col grid-rows-4 gap-x-14 gap-y-3">
+              {socialLinks.map(({ name, href }) => (
+                <li key={name}>
+                  <FooterLink href={href} external>
+                    {name}
+                  </FooterLink>
+                </li>
+              ))}
+            </ul>
           </nav>
+
+          <a
+            href="#home"
+            className="group inline-flex items-center gap-2 self-start rounded-full border border-hairline-strong px-5 py-2.5 text-sm text-paper transition-colors duration-300 hover:border-paper/50 hover:bg-paper/5"
+          >
+            {tA11y("toTop")}
+            <HugeiconsIcon
+              icon={ArrowUp01Icon}
+              size={16}
+              strokeWidth={2}
+              className="transition-transform duration-500 ease-out-expo group-hover:-translate-y-1"
+            />
+          </a>
         </div>
 
-        <div
-          className="my-10"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-        />
-
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
-          {socialLinks.map((social) => (
-            <a
-              key={social.name}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/50 uppercase transition-colors hover:text-white"
-              style={{ fontSize: "13px", letterSpacing: "0.05em" }}
-            >
-              {social.name}
-            </a>
-          ))}
-        </div>
-
-        <div
-          className="my-10"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-        />
-
-        <div className="flex flex-col items-center gap-2 text-center md:flex-row md:justify-between md:text-left">
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-            {t("copyright")}
-          </span>
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-            {t("madeWith")}
-          </span>
+        <div className="flex flex-col gap-2 pb-6 text-xs text-paper-faint md:flex-row md:justify-between">
+          <span>{t("copyright")}</span>
+          <span>{t("madeWith")}</span>
         </div>
       </div>
+
+      <p
+        aria-hidden="true"
+        className="pointer-events-none -mb-[0.16em] bg-gradient-to-b from-paper/40 to-transparent bg-clip-text text-center font-display text-[clamp(3.5rem,14.2vw,16rem)] leading-[0.9] font-semibold tracking-[-0.05em] whitespace-nowrap text-transparent select-none"
+      >
+        Sara Presa
+      </p>
     </footer>
   )
 }
