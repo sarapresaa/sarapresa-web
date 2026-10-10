@@ -2,6 +2,7 @@ export const CONTACT_CATEGORIES = [
   "internship",
   "collaboration",
   "project",
+  "marketing",
   "question",
   "other",
 ] as const

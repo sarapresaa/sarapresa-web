@@ -55,6 +55,8 @@ components/     componentes React de cada secção do site
 emails/         templates dos emails (React Email) e edições da newsletter
 i18n/           configuração do next-intl (idiomas suportados, navegação)
 lib/            funções auxiliares
+lib/contact/    lógica do formulário de contacto
+lib/email/      partes partilhadas dos emails (render, validação)
 lib/newsletter/ lógica da newsletter (subscrição, confirmação, envio)
 messages/       textos do site em PT (pt.json) e EN (en.json)
 public/         imagens e outros ficheiros estáticos
@@ -116,6 +118,19 @@ Mantém os dois a correr: a assinatura do cabeçalho é servida pelo site, no en
 3. Criar o rascunho: `npm run newsletter:draft -- --issue 001-primeira-edicao --locale pt`. Por defeito vai para o segmento Teste. Com `--dry-run` só mostra o resultado, sem tocar no Resend.
 4. Rever o rascunho em Broadcasts no dashboard do Resend e enviar de lá.
 5. Para os subscritores a sério, usar `--target subscribers`, com `NEXT_PUBLIC_SITE_URL` a apontar para o endereço público (o script recusa se for localhost).
+
+## Formulário de contacto
+
+O formulário da secção "Vamos conversar" envia a mensagem para o teu email através do Resend, com o email do visitante em "responder a". A validação é feita no servidor (campos obrigatórios, limites de tamanho, assunto da lista) e há um campo escondido que apanha robôs. Não envia resposta automática ao visitante, para que o formulário não possa ser usado para mandar emails a terceiros.
+
+Funciona com as variáveis que já tens (`RESEND_API_KEY` e `NEWSLETTER_FROM`). As outras são opcionais:
+
+| Variável | Para que serve |
+| --- | --- |
+| `CONTACT_FROM` | Remetente das mensagens (por defeito, o `NEWSLETTER_FROM`). |
+| `CONTACT_TO` | Onde chegam as mensagens (por defeito `info@sarapresaa.pt`). |
+
+Para testar sem escrever na tua caixa de entrada, corre o site com `CONTACT_TO=delivered@resend.dev`, o endereço de teste do Resend. O formulário não guarda histórico de envios, por isso, para travar abusos, cria no Vercel uma regra de limite de pedidos (rate limit) para o site. A pré-visualização do email que recebes está em `emails/contact-message.tsx` (`npm run email:dev`).
 
 ## Autora
 
@@ -184,6 +199,8 @@ components/     React components for each section of the site
 emails/         email templates (React Email) and newsletter issues
 i18n/           next-intl configuration (supported locales, navigation)
 lib/            helper functions
+lib/contact/    contact form logic
+lib/email/      shared email pieces (rendering, validation)
 lib/newsletter/ newsletter logic (subscribing, confirming, sending)
 messages/       site copy in PT (pt.json) and EN (en.json)
 public/         images and other static files
@@ -245,6 +262,19 @@ Keep both running: the header signature is served by the site, at the address in
 3. Create the draft: `npm run newsletter:draft -- --issue 001-first-issue --locale pt`. It goes to the Test segment by default. With `--dry-run` it only shows the result, without touching Resend.
 4. Review the draft under Broadcasts in the Resend dashboard and send it from there.
 5. For real subscribers, use `--target subscribers`, with `NEXT_PUBLIC_SITE_URL` pointing at the public address (the script refuses if it is localhost).
+
+## Contact form
+
+The form in the "Let's talk" section emails the message to you through Resend, with the visitor's address as "reply to". Validation happens on the server (required fields, length limits, topic from the list) and a hidden field catches bots. It does not send an automatic reply to the visitor, so the form can't be used to email third parties.
+
+It works with the variables you already have (`RESEND_API_KEY` and `NEWSLETTER_FROM`). The others are optional:
+
+| Variable | What it does |
+| --- | --- |
+| `CONTACT_FROM` | Sender of the messages (defaults to `NEWSLETTER_FROM`). |
+| `CONTACT_TO` | Where the messages arrive (defaults to `info@sarapresaa.pt`). |
+
+To test without writing to your inbox, run the site with `CONTACT_TO=delivered@resend.dev`, Resend's test address. The form keeps no send history, so to curb abuse, add a rate limit rule for the site on Vercel. The preview of the email you receive is in `emails/contact-message.tsx` (`npm run email:dev`).
 
 ## Author
 

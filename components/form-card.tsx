@@ -4,6 +4,9 @@ import { AlertCircleIcon } from "@hugeicons/core-free-icons"
 
 import { cn } from "@/lib/utils"
 
+const controlClassName =
+  "w-full rounded-2xl bg-paper px-4 text-base outline-0 [color-scheme:light] placeholder:text-ink/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink aria-invalid:outline-2 aria-invalid:outline-offset-2 aria-invalid:outline-ink"
+
 function focusOnMount(node: HTMLElement | null) {
   node?.focus()
 }
@@ -76,4 +79,4 @@ function FieldError({
   )
 }
 
-export { FieldError, FormCard }
+export { controlClassName, FieldError, FormCard }

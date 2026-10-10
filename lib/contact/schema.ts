@@ -10,7 +10,9 @@ import { emailSchema, localeSchema } from "@/lib/email/schema"
 
 export type ContactFieldError = "required" | "invalid" | "tooShort" | "tooLong"
 
-export type ContactFieldErrors = Partial<Record<ContactField, ContactFieldError>>
+export type ContactFieldErrors = Partial<
+  Record<ContactField, ContactFieldError>
+>
 
 function stripControlCharacters(value: string, keepLineBreaks: boolean) {
   return Array.from(value)
@@ -41,7 +43,9 @@ const messageSchema = z
   .string()
   .transform((value) => stripControlCharacters(value, true).trim())
   .pipe(z.string().min(1))
-  .pipe(z.string().min(CONTACT_LIMITS.messageMin).max(CONTACT_LIMITS.messageMax))
+  .pipe(
+    z.string().min(CONTACT_LIMITS.messageMin).max(CONTACT_LIMITS.messageMax)
+  )
 
 export const contactFormSchema = z.object({
   firstName: nameSchema,
@@ -72,7 +76,9 @@ export function toFieldErrors(error: z.ZodError): ContactFieldErrors {
   const errors: ContactFieldErrors = {}
 
   for (const issue of error.issues) {
-    const field = CONTACT_FIELDS.find((candidate) => candidate === issue.path[0])
+    const field = CONTACT_FIELDS.find(
+      (candidate) => candidate === issue.path[0]
+    )
 
     if (field && !errors[field]) {
       errors[field] = classify(issue)

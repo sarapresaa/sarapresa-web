@@ -24,7 +24,9 @@ export function parseContactConfig(
 ): ContactConfig {
   const parsed = envSchema.safeParse(env)
   const invalid = new Set<string>(
-    parsed.success ? [] : parsed.error.issues.map((issue) => String(issue.path[0]))
+    parsed.success
+      ? []
+      : parsed.error.issues.map((issue) => String(issue.path[0]))
   )
   const from = env.CONTACT_FROM || env.NEWSLETTER_FROM
 
@@ -38,5 +40,9 @@ export function parseContactConfig(
     )
   }
 
-  return { apiKey: parsed.data.RESEND_API_KEY, from, to: parsed.data.CONTACT_TO }
+  return {
+    apiKey: parsed.data.RESEND_API_KEY,
+    from,
+    to: parsed.data.CONTACT_TO,
+  }
 }

@@ -3,14 +3,14 @@
 import { useActionState, useEffect, useRef, type ReactNode } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowDown01Icon,
   Loading03Icon,
   Message01Icon,
   Tick02Icon,
 } from "@hugeicons/core-free-icons"
 import { useLocale, useTranslations } from "next-intl"
 
-import { FieldError, FormCard } from "@/components/form-card"
+import { controlClassName, FieldError, FormCard } from "@/components/form-card"
+import { SelectField } from "@/components/select-field"
 import { Link } from "@/i18n/navigation"
 import { contactAction } from "@/lib/contact/actions"
 import {
@@ -21,9 +21,6 @@ import {
 import type { ContactFieldError } from "@/lib/contact/schema"
 import { INITIAL_CONTACT_STATE } from "@/lib/contact/state"
 import { EMAIL } from "@/lib/seo"
-
-const controlClassName =
-  "w-full rounded-2xl bg-paper px-4 text-base text-ink outline-0 [color-scheme:light] placeholder:text-ink/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink aria-invalid:outline-2 aria-invalid:outline-offset-2 aria-invalid:outline-ink"
 
 function fieldId(field: ContactField) {
   return `contact-${field}`
@@ -49,6 +46,7 @@ function Field({ field, label, error, wide = false, children }: FieldProps) {
   return (
     <div className={wide ? "sm:col-span-2" : undefined}>
       <label
+        id={`${fieldId(field)}-label`}
         htmlFor={fieldId(field)}
         className="mb-2 block text-sm font-semibold"
       >
@@ -147,7 +145,7 @@ function ContactForm() {
             autoComplete="given-name"
             autoCapitalize="words"
             maxLength={CONTACT_LIMITS.name}
-            className={`${controlClassName} h-12`}
+            className={`${controlClassName} h-12 text-ink`}
           />
         </Field>
 
@@ -162,7 +160,7 @@ function ContactForm() {
             autoComplete="family-name"
             autoCapitalize="words"
             maxLength={CONTACT_LIMITS.name}
-            className={`${controlClassName} h-12`}
+            className={`${controlClassName} h-12 text-ink`}
           />
         </Field>
 
@@ -181,7 +179,7 @@ function ContactForm() {
             spellCheck={false}
             maxLength={CONTACT_LIMITS.email}
             placeholder={t("emailPlaceholder")}
-            className={`${controlClassName} h-12`}
+            className={`${controlClassName} h-12 text-ink`}
           />
         </Field>
 
@@ -191,31 +189,21 @@ function ContactForm() {
           error={messageFor("category")}
           wide
         >
-          <div className="relative">
-            <select
-              {...controlProps("category")}
-              className={`${controlClassName} h-12 appearance-none pr-12 invalid:text-ink/60`}
-            >
-              <option value="" disabled className="bg-paper text-ink">
-                {t("categoryPlaceholder")}
-              </option>
-              {CONTACT_CATEGORIES.map((category) => (
-                <option
-                  key={category}
-                  value={category}
-                  className="bg-paper text-ink"
-                >
-                  {t(`categories.${category}`)}
-                </option>
-              ))}
-            </select>
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-ink"
-            >
-              <HugeiconsIcon icon={ArrowDown01Icon} size={20} strokeWidth={2} />
-            </span>
-          </div>
+          <SelectField
+            id={fieldId("category")}
+            name="category"
+            labelId={`${fieldId("category")}-label`}
+            options={CONTACT_CATEGORIES.map((category) => ({
+              value: category,
+              label: t(`categories.${category}`),
+            }))}
+            placeholder={t("categoryPlaceholder")}
+            defaultValue={state.values.category}
+            invalid={Boolean(state.errors.category)}
+            describedBy={
+              state.errors.category ? `${fieldId("category")}-error` : undefined
+            }
+          />
         </Field>
 
         <Field
@@ -228,7 +216,7 @@ function ContactForm() {
             {...controlProps("message")}
             rows={5}
             maxLength={CONTACT_LIMITS.messageMax}
-            className={`${controlClassName} min-h-36 resize-y py-3.5 leading-relaxed`}
+            className={`${controlClassName} min-h-36 resize-y py-3.5 leading-relaxed text-ink`}
           />
         </Field>
 

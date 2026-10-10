@@ -1,10 +1,7 @@
 import assert from "node:assert/strict"
 import { describe, it } from "node:test"
 
-import {
-  ContactConfigError,
-  parseContactConfig,
-} from "@/lib/contact/config"
+import { ContactConfigError, parseContactConfig } from "@/lib/contact/config"
 import { EMAIL } from "@/lib/seo"
 
 const sender = "Sara Presa <hello@news.example.com>"

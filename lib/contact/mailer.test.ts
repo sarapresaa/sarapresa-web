@@ -102,7 +102,8 @@ describe("contact mailer", () => {
 
     await mailer.sendMessage({
       ...message,
-      message: '<script>alert("x")</script> <a href="https://evil.example">link</a>',
+      message:
+        '<script>alert("x")</script> <a href="https://evil.example">link</a>',
     })
 
     const { html } = sent[0].payload
@@ -128,7 +129,10 @@ describe("contact mailer", () => {
 
     await mailer.sendMessage(message)
     await mailer.sendMessage(message)
-    await mailer.sendMessage({ ...message, message: "Outra mensagem diferente." })
+    await mailer.sendMessage({
+      ...message,
+      message: "Outra mensagem diferente.",
+    })
 
     const keys = sent.map(({ options }) => options.idempotencyKey)
 

@@ -76,7 +76,7 @@ function NewsletterCard() {
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-ink px-7 text-[0.9375rem] font-semibold text-paper transition-colors duration-300 hover:bg-ink-high focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper disabled:cursor-wait disabled:opacity-80"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-[calc(1.5rem-0.375rem)] bg-ink px-7 text-[0.9375rem] font-semibold text-paper transition-colors duration-300 hover:bg-ink-high focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper disabled:cursor-wait disabled:opacity-80 sm:rounded-full"
             >
               {pending ? (
                 <HugeiconsIcon

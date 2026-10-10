@@ -61,6 +61,7 @@ export const emailCopy = {
       internship: "Estágio ou emprego",
       collaboration: "Colaboração ou parceria",
       project: "Projeto web ou freelance",
+      marketing: "Marketing e gestão de redes",
       question: "Pergunta ou feedback",
       other: "Outro assunto",
     },

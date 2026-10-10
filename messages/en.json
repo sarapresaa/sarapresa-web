@@ -403,6 +403,7 @@
       "internship": "Internship or job",
       "collaboration": "Collaboration or partnership",
       "project": "Web project or freelance",
+      "marketing": "Marketing and social media management",
       "question": "Question or feedback",
       "other": "Something else"
     },
@@ -469,7 +470,7 @@
         "paragraphs": ["I only collect the data I need, and only when you give it to me."],
         "items": [
           "Newsletter: your email and the site language you subscribed in, to send you the newsletter. The legal basis is your consent, which you give when you subscribe and confirm again through the link I email you.",
-          "Messages: if you write to info@sarapresaa.pt or through the contact form, I use your name, your email and your message only to reply to you.",
+          "Messages: if you write to info@sarapresaa.pt or through the contact form, I use your name, your email, the topic you choose, the site language and your message only to reply to you. The legal basis is your request to get in touch.",
           "Technical logs: the hosting service may keep data such as your IP address for a short time, to keep the site secure and working."
         ]
       },

@@ -5,7 +5,10 @@ import { fingerprint } from "@/lib/email/fingerprint"
 
 describe("fingerprint", () => {
   it("is stable for the same input", () => {
-    assert.equal(fingerprint("sara@example.com"), fingerprint("sara@example.com"))
+    assert.equal(
+      fingerprint("sara@example.com"),
+      fingerprint("sara@example.com")
+    )
   })
 
   it("differs when the input differs", () => {

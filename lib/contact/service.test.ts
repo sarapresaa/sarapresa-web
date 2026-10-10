@@ -42,7 +42,10 @@ describe("submitContactMessage", () => {
     assert.equal(sent.length, 1)
     assert.equal(sent[0].firstName, "Maria")
     assert.equal(sent[0].email, "maria@example.com")
-    assert.equal(sent[0].message, "Gostava de propor uma parceria.\nPodemos falar?")
+    assert.equal(
+      sent[0].message,
+      "Gostava de propor uma parceria.\nPodemos falar?"
+    )
   })
 
   it("returns field errors and keeps what was typed", async () => {
