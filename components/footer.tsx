@@ -4,6 +4,8 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowUp01Icon } from "@hugeicons/core-free-icons"
 import { useTranslations } from "next-intl"
 
+import { socialList } from "@/lib/socials"
+
 const navItems = [
   { key: "home", href: "#home" },
   { key: "projects", href: "#projects" },
@@ -13,15 +15,6 @@ const navItems = [
   { key: "certificates", href: "#certificates" },
   { key: "community", href: "#community" },
   { key: "contact", href: "#contact" },
-] as const
-
-const socialLinks = [
-  { name: "GitHub", href: "https://github.com/sarapresaa" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/sarapresaa/" },
-  { name: "Instagram", href: "https://www.instagram.com/sarapresaa" },
-  { name: "TikTok", href: "https://www.tiktok.com/@sarapresaa.oficial" },
-  { name: "YouTube", href: "https://www.youtube.com/@sarapresaa" },
-  { name: "Pinterest", href: "https://pt.pinterest.com/sarapresaa/" },
 ] as const
 
 function FooterLink({
@@ -65,9 +58,9 @@ function Footer() {
               ))}
             </ul>
             <ul className="grid grid-flow-col grid-rows-4 gap-x-14 gap-y-3">
-              {socialLinks.map(({ name, href }) => (
+              {socialList.map(({ name, url }) => (
                 <li key={name}>
-                  <FooterLink href={href} external>
+                  <FooterLink href={url} external>
                     {name}
                   </FooterLink>
                 </li>

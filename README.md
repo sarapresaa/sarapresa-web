@@ -55,9 +55,21 @@ messages/       textos do site em PT (pt.json) e EN (en.json)
 public/         imagens e outros ficheiros estáticos
 ```
 
-## Variáveis de ambiente
+## Variáveis de ambiente e SEO
 
-Este projeto ainda não precisa de nenhuma variável de ambiente. Quando a newsletter for ligada a um serviço de envio de emails, essa configuração (chave de API) vai ficar num ficheiro `.env.local` (nunca é enviado para o GitHub). Este README será atualizado nessa altura com o nome exato da variável e onde a obter.
+Todas são opcionais e ficam num ficheiro `.env.local` (nunca é enviado para o GitHub) ou nas definições do alojamento:
+
+| Variável | Para que serve |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Endereço público do site (por defeito `https://sarapresaa.pt`). Define-o num deploy de teste para que o canonical, o sitemap e os dados estruturados não apontem para um domínio que ainda não existe. |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Código de verificação do Google Search Console. |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | Código de verificação do Bing Webmaster Tools. |
+
+O SEO técnico já está feito no código: títulos e descrições por idioma, hreflang, dados estruturados (JSON-LD), `sitemap.xml`, `robots.txt`, `llms.txt` e `llms-full.txt`, manifesto e imagem de partilha. Depois de publicar o site:
+
+1. Verificar o site no [Google Search Console](https://search.google.com/search-console) e enviar `https://sarapresaa.pt/sitemap.xml`.
+2. Pedir a indexação de `/pt` e `/en` (ferramenta de inspeção de URL).
+3. Pôr o link do site na bio do Instagram, TikTok, YouTube, LinkedIn, Pinterest e GitHub, sempre com o mesmo nome (Sara Presa) e `@sarapresaa`.
 
 ## Autora
 
@@ -126,9 +138,21 @@ messages/       site copy in PT (pt.json) and EN (en.json)
 public/         images and other static files
 ```
 
-## Environment variables
+## Environment variables and SEO
 
-This project doesn't need any environment variables yet. Once the newsletter form is connected to a real email service, that configuration (an API key) will live in a `.env.local` file (never committed to GitHub). This README will be updated at that point with the exact variable name and where to get it.
+All are optional and live in a `.env.local` file (never committed to GitHub) or in your hosting settings:
+
+| Variable | What it does |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Public address of the site (defaults to `https://sarapresaa.pt`). Set it on a preview deployment so the canonical link, sitemap and structured data don't point at a domain that isn't live yet. |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Google Search Console verification code. |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | Bing Webmaster Tools verification code. |
+
+Technical SEO is already handled in code: per-language titles and descriptions, hreflang, structured data (JSON-LD), `sitemap.xml`, `robots.txt`, `llms.txt` and `llms-full.txt`, a web manifest and a social share image. After you publish the site:
+
+1. Verify the site in [Google Search Console](https://search.google.com/search-console) and submit `https://sarapresaa.pt/sitemap.xml`.
+2. Request indexing for `/pt` and `/en` (URL inspection tool).
+3. Put the site link in the bio of Instagram, TikTok, YouTube, LinkedIn, Pinterest and GitHub, always with the same name (Sara Presa) and `@sarapresaa`.
 
 ## Author
 

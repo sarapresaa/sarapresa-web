@@ -8,17 +8,11 @@ import {
   Download01Icon,
   Menu01Icon,
 } from "@hugeicons/core-free-icons"
-import {
-  AnimatePresence,
-  animate,
-  m,
-  useMotionValue,
-  useScroll,
-  useTransform,
-} from "framer-motion"
+import { AnimatePresence, animate, m, useMotionValue } from "framer-motion"
 import { useLenis } from "lenis/react"
 import { useLocale, useTranslations } from "next-intl"
 
+import { BrandMark } from "@/components/brand-mark"
 import { LanguageToggle } from "@/components/language-toggle"
 import { cn } from "@/lib/utils"
 
@@ -95,14 +89,6 @@ function SiteNav() {
   const indicatorWidth = useMotionValue(0)
   const indicatorOpacity = useMotionValue(0)
 
-  // The wordmark only appears once the big hero signature has scrolled away.
-  const { scrollY } = useScroll()
-  const logoOpacity = useTransform(scrollY, [260, 480], [0, 1])
-  const logoY = useTransform(scrollY, [260, 480], [8, 0])
-  const logoVisibility = useTransform(logoOpacity, (value) =>
-    value > 0.01 ? "visible" : "hidden"
-  )
-
   // Slide the highlight under the active link. Motion values only: moving
   // the indicator never re-renders the nav.
   useEffect(() => {
@@ -157,17 +143,13 @@ function SiteNav() {
         />
 
         <div className="relative mx-auto grid h-[4.5rem] max-w-[1360px] grid-cols-2 items-center gap-4 px-6 md:px-10 lg:grid-cols-[1fr_auto_1fr]">
-          <m.a
+          <a
             href="#home"
-            style={{
-              opacity: logoOpacity,
-              y: logoY,
-              visibility: logoVisibility,
-            }}
-            className="justify-self-start text-[0.95rem] font-semibold tracking-[-0.02em] text-paper"
+            className="group flex items-center gap-2.5 justify-self-start text-[0.95rem] font-semibold tracking-[-0.02em] text-paper"
           >
+            <BrandMark className="transition-transform duration-500 ease-out-expo group-hover:scale-105" />
             Sara Presa
-          </m.a>
+          </a>
 
           <nav
             aria-label={t("label")}

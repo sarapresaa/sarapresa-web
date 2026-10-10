@@ -12,6 +12,15 @@ import { Spotlight } from "@/components/motion/spotlight"
 import { Providers } from "@/components/providers"
 import { SiteNav } from "@/components/site-nav"
 import { SkipLink } from "@/components/skip-link"
+import {
+  HANDLE,
+  HREFLANG,
+  OG_LOCALES,
+  SITE_NAME,
+  SITE_URL,
+  languageAlternates,
+  localeUrl,
+} from "@/lib/seo"
 import { cn } from "@/lib/utils"
 
 // One family for everything: clean, friendly and refined next to the
@@ -41,63 +50,70 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "hero" })
 
-  const title = "Sara Presa"
-  const description = t("subtitle")
-  const ogLocale = locale === "pt" ? "pt_PT" : "en_US"
+  if (!hasLocale(routing.locales, locale)) {
+    return {}
+  }
+
+  const t = await getTranslations({ locale, namespace: "meta" })
+  const title = t("title")
+  const description = t("description")
+  const url = localeUrl(locale)
 
   return {
-    metadataBase: new URL("https://sarapresaa.pt"),
-    title: {
-      default: title,
-      template: `%s | ${title}`,
-    },
+    metadataBase: new URL(SITE_URL),
+    title: { default: title, template: `%s | ${SITE_NAME}` },
     description,
+    keywords: t.raw("keywords") as string[],
+    applicationName: SITE_NAME,
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    referrer: "origin-when-cross-origin",
+    formatDetection: { email: false, address: false, telephone: false },
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        pt: "/pt",
-        en: "/en",
-      },
+      canonical: url,
+      languages: languageAlternates(),
     },
     openGraph: {
+      type: "profile",
+      firstName: "Sara",
+      lastName: "Presa",
+      username: HANDLE,
       title,
       description,
-      url: `/${locale}`,
-      siteName: title,
-      locale: ogLocale,
-      type: "website",
+      url,
+      siteName: SITE_NAME,
+      locale: OG_LOCALES[locale],
+      alternateLocale: routing.locales
+        .filter((other) => other !== locale)
+        .map((other) => OG_LOCALES[other]),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    // Optional: set these env vars after claiming the site in Google Search
+    // Console / Bing Webmaster Tools (see the README).
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+      other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+        : undefined,
+    },
   }
-}
-
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Sara Presa",
-  url: "https://sarapresaa.pt",
-  email: "info@sarapresaa.pt",
-  jobTitle: "Information Technology student",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Aveiro",
-    addressCountry: "PT",
-  },
-  alumniOf: "Universidade de Aveiro",
-  sameAs: [
-    "https://github.com/sarapresaa",
-    "https://www.linkedin.com/in/sarapresaa/",
-    "https://www.instagram.com/sarapresaa",
-    "https://www.tiktok.com/@sarapresaa.oficial",
-    "https://www.youtube.com/@sarapresaa",
-    "https://pt.pinterest.com/sarapresaa/",
-  ],
 }
 
 export default async function RootLayout({
@@ -117,7 +133,7 @@ export default async function RootLayout({
 
   return (
     <html
-      lang={locale}
+      lang={HREFLANG[locale]}
       className={cn("dark antialiased", jakarta.variable, geistMono.variable)}
     >
       <body>
@@ -132,10 +148,6 @@ export default async function RootLayout({
             <div aria-hidden="true" className="grain" />
           </Providers>
         </NextIntlClientProvider>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
       </body>
     </html>
   )

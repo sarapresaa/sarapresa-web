@@ -1,8 +1,25 @@
+import { readFile } from "node:fs/promises"
+import path from "node:path"
+
 import { ImageResponse } from "next/og"
 import { getTranslations } from "next-intl/server"
 
+import { PORTRAIT_PATH, SITE_NAME } from "@/lib/seo"
+
+export const alt = "Sara Presa (@sarapresaa), influencer and content creator"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
+
+let portrait: Promise<string> | undefined
+
+/** The portrait as a data URL, read once and reused across requests. */
+function loadPortrait() {
+  portrait ??= readFile(
+    path.join(process.cwd(), "public", PORTRAIT_PATH.slice(1))
+  ).then((file) => `data:image/jpeg;base64,${file.toString("base64")}`)
+
+  return portrait
+}
 
 export default async function OpengraphImage({
   params,
@@ -10,7 +27,9 @@ export default async function OpengraphImage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "hero" })
+  const t = await getTranslations({ locale, namespace: "meta" })
+  const hero = await getTranslations({ locale, namespace: "hero" })
+  const photo = await loadPortrait()
 
   return new ImageResponse(
     <div
@@ -18,35 +37,88 @@ export default async function OpengraphImage({
         width: "100%",
         height: "100%",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
+        padding: "0 88px 0 80px",
+        color: "#f6edef",
         background:
-          "linear-gradient(135deg, #3d3a4e 0%, #7d5c6b 45%, #c4919a 100%)",
-        padding: "80px",
+          "radial-gradient(circle at 82% 38%, rgba(196,145,154,0.55), rgba(18,14,24,0) 52%), radial-gradient(circle at 12% 90%, rgba(125,92,107,0.6), rgba(18,14,24,0) 50%), #120e18",
       }}
     >
-      <div
-        style={{
-          fontSize: 96,
-          fontWeight: 700,
-          color: "white",
-          letterSpacing: "-2px",
-        }}
-      >
-        Sara Presa
+      <div style={{ display: "flex", flexDirection: "column", maxWidth: 640 }}>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            color: "#e8b4b8",
+            marginBottom: 22,
+          }}
+        >
+          @sarapresaa
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 118,
+            fontWeight: 700,
+            lineHeight: 1,
+            letterSpacing: -4,
+          }}
+        >
+          {SITE_NAME}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            marginTop: 30,
+            fontSize: 42,
+            fontWeight: 600,
+            lineHeight: 1.15,
+          }}
+        >
+          {t("jobTitle")}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            marginTop: 20,
+            fontSize: 27,
+            lineHeight: 1.35,
+            color: "#bcadb4",
+          }}
+        >
+          {hero("location")}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            marginTop: 6,
+            fontSize: 27,
+            color: "#e8b4b8",
+          }}
+        >
+          sarapresaa.pt
+        </div>
       </div>
+
       <div
         style={{
-          marginTop: 28,
-          fontSize: 32,
-          color: "rgba(255,255,255,0.8)",
-          textAlign: "center",
-          maxWidth: 900,
           display: "flex",
+          width: 380,
+          height: 510,
+          borderRadius: "190px 190px 28px 28px",
+          overflow: "hidden",
+          border: "3px solid rgba(232,180,184,0.55)",
         }}
       >
-        {t("subtitle")}
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> */}
+        <img
+          src={photo}
+          alt=""
+          width={380}
+          height={510}
+          style={{ objectFit: "cover", objectPosition: "50% 8%" }}
+        />
       </div>
     </div>,
     { ...size }

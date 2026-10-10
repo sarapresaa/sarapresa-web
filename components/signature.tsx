@@ -54,28 +54,29 @@ function Signature({ delay = 0.5 }: { delay?: number }) {
   const penOpacity = useTransform(progress, [0, 0.03, 0.96, 1], [0, 1, 1, 0])
 
   return (
-    <div
-      className="relative -ml-[8%] w-[min(78vw,340px)]"
-      role="img"
-      aria-label="Sara Presa"
-    >
-      <m.div style={{ maskImage: mask, WebkitMaskImage: mask }}>
+    // Spans only: this lives inside the page's <h1>, which allows phrasing
+    // content. The image alt carries the name for search engines and readers.
+    <span className="relative -ml-[8%] block w-[min(78vw,340px)]">
+      <m.span
+        className="block"
+        style={{ maskImage: mask, WebkitMaskImage: mask }}
+      >
         <Image
-          src="/signature.png"
-          alt=""
+          src="/sara-presa-signature.png"
+          alt="Sara Presa"
           width={500}
           height={169}
           priority
           className="h-auto w-full"
           style={{ filter: "brightness(2.2) contrast(1.15)" }}
         />
-      </m.div>
+      </m.span>
       <m.span
         aria-hidden="true"
         style={{ left: penLeft, top: penTop, opacity: penOpacity }}
         className="pointer-events-none absolute block size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blush shadow-[0_0_14px_5px_rgb(232_180_184/0.55)]"
       />
-    </div>
+    </span>
   )
 }
 

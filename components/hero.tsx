@@ -77,13 +77,18 @@ function Hero() {
 
       <div className="mx-auto grid min-h-svh max-w-[1280px] items-center gap-12 px-6 pt-28 pb-24 md:px-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-10 lg:pt-24">
         <div className="flex flex-col items-start">
-          <Signature />
+          {/* The signature is the visible name, so it is the page's H1. The
+              screen-reader suffix gives the heading its full meaning. */}
+          <h1 className="block text-[1rem] leading-none tracking-normal">
+            <Signature />
+            <span className="sr-only">, {t("h1Suffix")}</span>
+          </h1>
 
           <RevealText
-            as="h1"
+            as="p"
             immediate
             delay={1.15}
-            className="mt-8 max-w-[14em] text-[clamp(2.3rem,4.2vw,4.25rem)]"
+            className="mt-8 max-w-[14em] font-display text-[clamp(2.3rem,4.2vw,4.25rem)] leading-[1.06] text-balance"
           >
             {t("subtitle")}
           </RevealText>
@@ -183,7 +188,7 @@ function Hero() {
                   className="absolute inset-0"
                 >
                   <Image
-                    src="/hero.jpg"
+                    src="/sara-presa.jpg"
                     alt={t("portraitAlt")}
                     fill
                     priority

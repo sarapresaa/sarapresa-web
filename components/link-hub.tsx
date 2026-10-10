@@ -19,57 +19,23 @@ import { useLocale, useTranslations } from "next-intl"
 import { Magnetic } from "@/components/motion/magnetic"
 import { RevealText } from "@/components/motion/reveal-text"
 import { Rule } from "@/components/motion/rule"
+import { EMAIL } from "@/lib/seo"
+import { socials, type Social } from "@/lib/socials"
 
-const EMAIL = "info@sarapresaa.pt"
-const YOUTUBE_URL = "https://www.youtube.com/@sarapresaa"
+const YOUTUBE_URL = socials.youtube.url
 
-type SocialLink = {
-  platform: string
-  handle: string
-  href: string
-  icon: IconSvgElement
-}
+type SocialLink = Social & { icon: IconSvgElement }
 
 const workLinks: SocialLink[] = [
-  {
-    platform: "GitHub",
-    handle: "@sarapresaa",
-    href: "https://github.com/sarapresaa",
-    icon: GithubIcon,
-  },
-  {
-    platform: "LinkedIn",
-    handle: "sarapresaa",
-    href: "https://www.linkedin.com/in/sarapresaa/",
-    icon: Linkedin01Icon,
-  },
+  { ...socials.github, icon: GithubIcon },
+  { ...socials.linkedin, icon: Linkedin01Icon },
 ]
 
 const contentLinks: SocialLink[] = [
-  {
-    platform: "Instagram",
-    handle: "@sarapresaa",
-    href: "https://www.instagram.com/sarapresaa",
-    icon: InstagramIcon,
-  },
-  {
-    platform: "TikTok",
-    handle: "@sarapresaa.oficial",
-    href: "https://www.tiktok.com/@sarapresaa.oficial",
-    icon: TiktokIcon,
-  },
-  {
-    platform: "YouTube",
-    handle: "@sarapresaa",
-    href: YOUTUBE_URL,
-    icon: YoutubeIcon,
-  },
-  {
-    platform: "Pinterest",
-    handle: "@sarapresaa",
-    href: "https://pt.pinterest.com/sarapresaa/",
-    icon: PinterestIcon,
-  },
+  { ...socials.instagram, icon: InstagramIcon },
+  { ...socials.tiktok, icon: TiktokIcon },
+  { ...socials.youtube, icon: YoutubeIcon },
+  { ...socials.pinterest, icon: PinterestIcon },
 ]
 
 function CopyEmailButton() {
@@ -104,10 +70,10 @@ function CopyEmailButton() {
 }
 
 /** One tappable profile: icon, name, handle. The whole card is the link. */
-function SocialCard({ platform, handle, href, icon }: SocialLink) {
+function SocialCard({ name, handle, url, icon }: SocialLink) {
   return (
     <a
-      href={href}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       data-spotlight
@@ -118,7 +84,7 @@ function SocialCard({ platform, handle, href, icon }: SocialLink) {
       </span>
       <span className="min-w-0 sm:col-span-2 sm:row-start-2 sm:self-end">
         <span className="block text-lg font-medium tracking-[-0.02em] text-paper">
-          {platform}
+          {name}
         </span>
         <span className="mt-0.5 block truncate text-sm text-paper-faint">
           {handle}
@@ -140,7 +106,7 @@ function SocialGroup({ label, links }: { label: string; links: SocialLink[] }) {
       <p className="text-sm text-paper-faint">{label}</p>
       <ul className="mt-3 grid gap-3 sm:grid-cols-2">
         {links.map((link) => (
-          <li key={link.platform}>
+          <li key={link.name}>
             <SocialCard {...link} />
           </li>
         ))}

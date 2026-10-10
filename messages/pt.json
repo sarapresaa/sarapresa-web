@@ -22,8 +22,9 @@
     "contactCta": "Contacta-me",
     "projectsCta": "Ver os meus projetos",
     "location": "Aveiro, Portugal",
-    "portraitAlt": "Retrato de Sara Presa",
-    "scroll": "Desce"
+    "portraitAlt": "Retrato de Sara Presa, influencer e criadora de conteúdo de Aveiro",
+    "scroll": "Desce",
+    "h1Suffix": "influencer e criadora de conteúdo"
   },
   "about": {
     "label": "Sobre mim",
@@ -387,5 +388,32 @@
     },
     "copyright": "© 2026 Sara Presa. Todos os direitos reservados.",
     "madeWith": "Feito com 🤍 em Aveiro, Portugal"
+  },
+  "meta": {
+    "title": "Sara Presa (@sarapresaa) | Influencer e Criadora de Conteúdo",
+    "description": "Sara Presa (@sarapresaa): influencer e criadora de conteúdo de Aveiro. Finalista de TI com foco em desenvolvimento web, UI/UX e marketing digital.",
+    "shortTitle": "Sara Presa",
+    "jobTitle": "Influencer e criadora de conteúdo",
+    "keywords": [
+      "Sara Presa",
+      "Sara Presaa",
+      "sarapresaa",
+      "@sarapresaa",
+      "Sara Presa influencer",
+      "Sara Presa criadora de conteúdo",
+      "criadora de conteúdo portuguesa",
+      "influencer Aveiro",
+      "criadora de conteúdo Aveiro",
+      "UGC creator Portugal",
+      "estudante de TI Aveiro",
+      "portefólio web developer",
+      "UI/UX",
+      "marketing digital"
+    ]
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "text": "Esta página não existe ou mudou de sítio.",
+    "cta": "Voltar à página inicial"
   }
 }
