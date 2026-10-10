@@ -153,7 +153,7 @@ function SiteNav() {
         {/* Soft blur that fades out below the bar, so the bar has no edge. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-28 [mask-image:linear-gradient(to_bottom,#000_35%,transparent)] bg-gradient-to-b from-ink/80 via-ink/40 to-transparent backdrop-blur-md"
+          className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/80 via-ink/40 to-transparent [mask-image:linear-gradient(to_bottom,#000_35%,transparent)] backdrop-blur-md"
         />
 
         <div className="relative mx-auto grid h-[4.5rem] max-w-[1360px] grid-cols-2 items-center gap-4 px-6 md:px-10 lg:grid-cols-[1fr_auto_1fr]">
@@ -262,9 +262,7 @@ function MobileMenu({ active, locale, onClose }: MobileMenuProps) {
 
     const panel = panelRef.current
     const focusable = () =>
-      Array.from(
-        panel?.querySelectorAll<HTMLElement>("a[href], button") ?? []
-      )
+      Array.from(panel?.querySelectorAll<HTMLElement>("a[href], button") ?? [])
 
     focusable()[0]?.focus()
 
@@ -367,7 +365,11 @@ function MobileMenu({ active, locale, onClose }: MobileMenuProps) {
           className="flex items-center gap-2 text-paper-dim"
         >
           GitHub
-          <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} strokeWidth={1.8} />
+          <HugeiconsIcon
+            icon={ArrowUpRight01Icon}
+            size={16}
+            strokeWidth={1.8}
+          />
         </a>
       </div>
     </m.div>

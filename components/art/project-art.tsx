@@ -347,10 +347,11 @@ function BingoArt({ className }: ArtProps) {
       <m.circle
         r="5"
         className="fill-blush"
-        cx={510}
-        cy={154}
+        cx={468}
+        cy={200}
+        initial={{ x: 84, y: -92 }}
         whileInView={
-          prefersReducedMotion ? undefined : { cx: [552, 468], cy: [108, 200] }
+          prefersReducedMotion ? undefined : { x: [84, 0], y: [-92, 0] }
         }
         viewport={{ once: false }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
@@ -358,9 +359,10 @@ function BingoArt({ className }: ArtProps) {
       <m.circle
         r="5"
         className="fill-blush"
-        cx={514}
+        cx={468}
         cy={200}
-        whileInView={prefersReducedMotion ? undefined : { cx: [468, 560] }}
+        initial={{ x: 46 }}
+        whileInView={prefersReducedMotion ? undefined : { x: [0, 92] }}
         viewport={{ once: false }}
         transition={{
           duration: 2.4,

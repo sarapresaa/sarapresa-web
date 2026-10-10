@@ -20,7 +20,9 @@ function TimelineEntry({ item }: { item: TimelineItem }) {
     target: ref,
     offset: ["start 82%", "start 52%"],
   })
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.32, 1])
+  // Only the large year dims: large text stays above 3:1 contrast even
+  // before the entry is reached, and the readable text never fades.
+  const yearOpacity = useTransform(scrollYProgress, [0, 1], [0.4, 1])
   const dotScale = useTransform(scrollYProgress, [0, 1], [0.6, 1])
   const dotFill = useTransform(
     scrollYProgress,
@@ -35,14 +37,14 @@ function TimelineEntry({ item }: { item: TimelineItem }) {
         style={{ scale: dotScale, backgroundColor: dotFill }}
         className="absolute top-[0.9rem] -left-[5px] size-[11px] rounded-full border border-blush"
       />
-      <m.div
-        style={{ opacity }}
-        className="grid gap-x-8 gap-y-2 md:grid-cols-[8.5rem_minmax(0,1fr)]"
-      >
+      <div className="grid gap-x-8 gap-y-2 md:grid-cols-[8.5rem_minmax(0,1fr)]">
         <div>
-          <p className="font-display text-[2.25rem] leading-none font-light tracking-[-0.04em] text-paper tabular-nums md:text-[2.6rem]">
+          <m.p
+            style={{ opacity: yearOpacity }}
+            className="font-display text-[2.25rem] leading-none font-light tracking-[-0.04em] text-paper tabular-nums md:text-[2.6rem]"
+          >
             {item.year}
-          </p>
+          </m.p>
           <p className="mt-1.5 text-sm text-paper-faint">{item.note}</p>
         </div>
         <div>
@@ -53,7 +55,7 @@ function TimelineEntry({ item }: { item: TimelineItem }) {
             {item.description}
           </p>
         </div>
-      </m.div>
+      </div>
     </li>
   )
 }

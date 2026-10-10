@@ -134,13 +134,7 @@ function SocialCard({ platform, handle, href, icon }: SocialLink) {
   )
 }
 
-function SocialGroup({
-  label,
-  links,
-}: {
-  label: string
-  links: SocialLink[]
-}) {
+function SocialGroup({ label, links }: { label: string; links: SocialLink[] }) {
   return (
     <div>
       <p className="text-sm text-paper-faint">{label}</p>
@@ -214,7 +208,9 @@ function LinkHub() {
 
         <div className="mt-32 grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <h3 className="text-[clamp(2rem,3.4vw,3rem)]">{t("followLabel")}</h3>
+            <h3 className="text-[clamp(2rem,3.4vw,3rem)]">
+              {t("followLabel")}
+            </h3>
             <p className="mt-4 max-w-xs text-base leading-relaxed text-paper-dim">
               {t("followIntro")}
             </p>
@@ -230,7 +226,11 @@ function LinkHub() {
             >
               <span className="flex items-center gap-4">
                 <span className="grid size-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-mauve to-rose text-paper">
-                  <HugeiconsIcon icon={YoutubeIcon} size={26} strokeWidth={1.6} />
+                  <HugeiconsIcon
+                    icon={YoutubeIcon}
+                    size={26}
+                    strokeWidth={1.6}
+                  />
                 </span>
                 <span>
                   <span className="block text-xl font-medium tracking-[-0.025em] text-paper md:text-2xl">

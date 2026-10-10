@@ -26,7 +26,7 @@ function About() {
               floor={isStatement ? 0.4 : 0.5}
               className={
                 isStatement
-                  ? "font-display text-[clamp(1.45rem,2.1vw,1.95rem)] leading-[1.32] font-normal tracking-[-0.025em] text-paper"
+                  ? "font-display text-[clamp(1.5rem,2.1vw,1.95rem)] leading-[1.32] font-normal tracking-[-0.025em] text-paper"
                   : "max-w-[34em] text-base leading-[1.75] text-paper md:text-[1.0625rem]"
               }
             />
