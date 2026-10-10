@@ -130,6 +130,15 @@ describe("mailer", () => {
     assert.notEqual(keys[0], keys[2])
   })
 
+  it("tells new subscribers how to leave in the welcome email", async () => {
+    const { mailer, sent } = mailerWith()
+
+    await mailer.sendWelcome({ email, locale: "pt" })
+
+    assert.ok(sent[0].payload.html.includes(emailCopy.welcome.pt.leave))
+    assert.ok(sent[0].payload.text.includes(emailCopy.welcome.pt.leave))
+  })
+
   it("fails with the Resend error name when delivery is rejected", async () => {
     const { mailer } = mailerWith({ name: "validation_error" })
 

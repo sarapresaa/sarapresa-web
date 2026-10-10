@@ -1,3 +1,5 @@
-export const previewSiteUrl = "http://localhost:3000"
+import { SITE_URL } from "@/lib/seo"
 
-export const previewConfirmUrl = `${previewSiteUrl}/newsletter/confirm?token=preview-token`
+export const previewSiteUrl = SITE_URL
+
+export const previewConfirmUrl = `${SITE_URL}/newsletter/confirm?token=preview-token`

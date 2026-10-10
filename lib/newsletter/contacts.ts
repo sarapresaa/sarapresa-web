@@ -16,8 +16,7 @@ type DirectoryIds = {
 }
 
 type Outcome<T> =
-  | { data: T; error: null }
-  | { data: null; error: { name: string } }
+  { data: T; error: null } | { data: null; error: { name: string } }
 
 function unwrap<T>(outcome: Outcome<T>, step: string): T {
   if (outcome.error) {
@@ -91,10 +90,7 @@ export function createContactDirectory(
         return
       }
 
-      unwrap(
-        await api.update({ email, unsubscribed: false }),
-        "update contact"
-      )
+      unwrap(await api.update({ email, unsubscribed: false }), "update contact")
       await moveToSegment(api, email, segmentId, otherSegmentIds)
       unwrap(await api.topics.update({ email, topics }), "update topics")
     },

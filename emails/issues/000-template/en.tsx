@@ -11,8 +11,7 @@ import { previewSiteUrl } from "../../_shared/preview-data"
 
 export const subject = "Issue title"
 
-export const previewText =
-  "A line that shows next to the subject in the inbox."
+export const previewText = "A line that shows next to the subject in the inbox."
 
 export default function Issue({ siteUrl }: IssueProps) {
   return (
@@ -42,8 +41,8 @@ export default function Issue({ siteUrl }: IssueProps) {
 
       <Label>In the making</Label>
       <Paragraph>
-        A short note about what you are preparing, so people look forward to
-        the next issue.
+        A short note about what you are preparing, so people look forward to the
+        next issue.
       </Paragraph>
       <Paragraph>Until next time, Sara</Paragraph>
     </EmailFrame>

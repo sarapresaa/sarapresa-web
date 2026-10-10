@@ -54,7 +54,10 @@ describe("newsletter config", () => {
 
     assert.throws(
       () =>
-        parseNewsletterConfig({ ...completeEnv, NEWSLETTER_TOKEN_SECRET: secret }),
+        parseNewsletterConfig({
+          ...completeEnv,
+          NEWSLETTER_TOKEN_SECRET: secret,
+        }),
       (error: Error) =>
         error.message.includes("NEWSLETTER_TOKEN_SECRET") &&
         !error.message.includes(secret)

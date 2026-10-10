@@ -24,7 +24,7 @@ Portefólio pessoal bilingue (PT/EN), construído para a minha candidatura a est
 
 ## Como correr localmente
 
-Pré-requisito: [Node.js](https://nodejs.org/) 20 ou superior.
+Pré-requisito: [Node.js](https://nodejs.org/) 22 ou superior.
 
 ```bash
 npm install
@@ -42,6 +42,9 @@ npm run start      # corre o build de produção
 npm run lint        # verifica erros de código
 npm run typecheck   # verifica tipos do TypeScript
 npm run format      # formata o código (Prettier)
+npm run test        # testes da lógica da newsletter
+npm run email:dev   # pré-visualização dos emails em http://localhost:3001
+npm run newsletter:draft   # cria o rascunho de uma edição no Resend
 ```
 
 ## Estrutura do projeto
@@ -49,10 +52,13 @@ npm run format      # formata o código (Prettier)
 ```
 app/[locale]/   páginas e layout (português em / e inglês em /en)
 components/     componentes React de cada secção do site
+emails/         templates dos emails (React Email) e edições da newsletter
 i18n/           configuração do next-intl (idiomas suportados, navegação)
 lib/            funções auxiliares
+lib/newsletter/ lógica da newsletter (subscrição, confirmação, envio)
 messages/       textos do site em PT (pt.json) e EN (en.json)
 public/         imagens e outros ficheiros estáticos
+scripts/        scripts de linha de comandos (rascunho de edições)
 ```
 
 ## Variáveis de ambiente e SEO
@@ -70,6 +76,46 @@ O SEO técnico já está feito no código: títulos e descrições por idioma, h
 1. Verificar o site no [Google Search Console](https://search.google.com/search-console) e enviar `https://sarapresaa.pt/sitemap.xml`.
 2. Pedir a indexação de `/` (português) e `/en` (inglês) (ferramenta de inspeção de URL).
 3. Pôr o link do site na bio do Instagram, TikTok, YouTube, LinkedIn, Pinterest e GitHub, sempre com o mesmo nome (Sara Presa) e `@sarapresaa`.
+
+## Newsletter
+
+A newsletter usa o [Resend](https://resend.com) para guardar os contactos e enviar os emails, e o [React Email](https://react.email) para os templates. A subscrição tem duplo opt-in: o formulário envia um link de confirmação e o contacto só é criado no Resend quando a pessoa o confirma. Os textos de privacidade estão em `/privacy`.
+
+### Configurar o Resend
+
+1. Criar conta e adicionar o domínio de envio, de preferência um subdomínio (por exemplo `news.sarapresaa.pt`), com os registos DNS que o Resend indicar.
+2. Criar o Topic **Newsletter** (subscrição por defeito "Opt-in", que não se pode mudar depois) e os segmentos **PT**, **EN** e **Teste**.
+3. Criar uma API key, copiar `.env.example` para `.env.local` e preencher os valores. O comando `openssl rand -base64 32` gera o `NEWSLETTER_TOKEN_SECRET`.
+4. Personalizar a página de anulação (logo e cores) nas definições do Resend. É para lá que vai o link "Anular subscrição" que cada edição leva no fim.
+
+| Variável | Para que serve |
+| --- | --- |
+| `RESEND_API_KEY` | Chave da API do Resend. |
+| `NEWSLETTER_FROM` | Remetente, por exemplo `Sara Presa <hello@news.sarapresaa.pt>`. |
+| `NEWSLETTER_REPLY_TO` | Para onde vão as respostas (por defeito `info@sarapresaa.pt`). |
+| `NEWSLETTER_TOPIC_ID` | ID do Topic Newsletter. |
+| `NEWSLETTER_SEGMENT_PT`, `NEWSLETTER_SEGMENT_EN` | IDs dos segmentos por língua. Se só escreveres numa língua, usa o mesmo ID nos dois. |
+| `NEWSLETTER_SEGMENT_TEST` | ID do segmento de teste, usado pelo script de rascunhos. |
+| `NEWSLETTER_TOKEN_SECRET` | Segredo (32 caracteres ou mais) que assina os links de confirmação. |
+
+Em desenvolvimento, confirmar uma subscrição cria um contacto verdadeiro. Aponta `NEWSLETTER_SEGMENT_PT` e `NEWSLETTER_SEGMENT_EN` para o segmento Teste no `.env.local` e usa `delivered@resend.dev` para testar sem enviar emails a sério.
+
+### Ver os emails em localhost
+
+```bash
+npm run dev         # site em http://localhost:3000
+npm run email:dev   # emails em http://localhost:3001
+```
+
+Mantém os dois a correr: a assinatura do cabeçalho é servida pelo site, no endereço de `NEXT_PUBLIC_SITE_URL` (o `.env.local` também é lido pela pré-visualização). Cada ficheiro de `emails/` aparece na lista da pré-visualização, que também mostra a vista móvel, o código HTML e a compatibilidade com os clientes de email.
+
+### Escrever e enviar uma edição
+
+1. Duplicar `emails/issues/000-template`, mudar o nome da pasta (por exemplo `001-primeira-edicao`) e editar `pt.tsx` e `en.tsx`.
+2. Ver o resultado na pré-visualização.
+3. Criar o rascunho: `npm run newsletter:draft -- --issue 001-primeira-edicao --locale pt`. Por defeito vai para o segmento Teste. Com `--dry-run` só mostra o resultado, sem tocar no Resend.
+4. Rever o rascunho em Broadcasts no dashboard do Resend e enviar de lá.
+5. Para os subscritores a sério, usar `--target subscribers`, com `NEXT_PUBLIC_SITE_URL` a apontar para o endereço público (o script recusa se for localhost).
 
 ## Autora
 
@@ -107,7 +153,7 @@ Bilingual personal portfolio (PT/EN), built for my application to a curricular i
 
 ## Running locally
 
-Requirement: [Node.js](https://nodejs.org/) 20 or later.
+Requirement: [Node.js](https://nodejs.org/) 22 or later.
 
 ```bash
 npm install
@@ -125,6 +171,9 @@ npm run start      # run the production build
 npm run lint        # check for code issues
 npm run typecheck   # check TypeScript types
 npm run format      # format code (Prettier)
+npm run test        # newsletter logic tests
+npm run email:dev   # email preview at http://localhost:3001
+npm run newsletter:draft   # create an issue draft in Resend
 ```
 
 ## Project structure
@@ -132,10 +181,13 @@ npm run format      # format code (Prettier)
 ```
 app/[locale]/   pages and layout (Portuguese at / and English at /en)
 components/     React components for each section of the site
+emails/         email templates (React Email) and newsletter issues
 i18n/           next-intl configuration (supported locales, navigation)
 lib/            helper functions
+lib/newsletter/ newsletter logic (subscribing, confirming, sending)
 messages/       site copy in PT (pt.json) and EN (en.json)
 public/         images and other static files
+scripts/        command-line scripts (issue drafts)
 ```
 
 ## Environment variables and SEO
@@ -153,6 +205,46 @@ Technical SEO is already handled in code: per-language titles and descriptions, 
 1. Verify the site in [Google Search Console](https://search.google.com/search-console) and submit `https://sarapresaa.pt/sitemap.xml`.
 2. Request indexing for `/` (Portuguese) and `/en` (English) (URL inspection tool).
 3. Put the site link in the bio of Instagram, TikTok, YouTube, LinkedIn, Pinterest and GitHub, always with the same name (Sara Presa) and `@sarapresaa`.
+
+## Newsletter
+
+The newsletter uses [Resend](https://resend.com) to store contacts and send emails, and [React Email](https://react.email) for the templates. Subscribing is double opt-in: the form emails a confirmation link and the contact is only created in Resend once the person confirms it. The privacy details live at `/privacy`.
+
+### Setting up Resend
+
+1. Create an account and add the sending domain, preferably a subdomain (for example `news.sarapresaa.pt`), with the DNS records Resend gives you.
+2. Create the **Newsletter** Topic (default subscription "Opt-in", which can't be changed later) and the **PT**, **EN** and **Test** segments.
+3. Create an API key, copy `.env.example` to `.env.local` and fill in the values. `openssl rand -base64 32` generates the `NEWSLETTER_TOKEN_SECRET`.
+4. Customize the unsubscribe page (logo and colors) in the Resend settings. That is where the "Unsubscribe" link at the bottom of every issue leads.
+
+| Variable | What it does |
+| --- | --- |
+| `RESEND_API_KEY` | Resend API key. |
+| `NEWSLETTER_FROM` | Sender, for example `Sara Presa <hello@news.sarapresaa.pt>`. |
+| `NEWSLETTER_REPLY_TO` | Where replies go (defaults to `info@sarapresaa.pt`). |
+| `NEWSLETTER_TOPIC_ID` | ID of the Newsletter Topic. |
+| `NEWSLETTER_SEGMENT_PT`, `NEWSLETTER_SEGMENT_EN` | Segment IDs per language. If you only write in one language, use the same ID for both. |
+| `NEWSLETTER_SEGMENT_TEST` | ID of the test segment, used by the draft script. |
+| `NEWSLETTER_TOKEN_SECRET` | Secret (32 characters or more) that signs the confirmation links. |
+
+In development, confirming a subscription creates a real contact. Point `NEWSLETTER_SEGMENT_PT` and `NEWSLETTER_SEGMENT_EN` at the Test segment in `.env.local` and use `delivered@resend.dev` to test without sending real emails.
+
+### Viewing emails on localhost
+
+```bash
+npm run dev         # site at http://localhost:3000
+npm run email:dev   # emails at http://localhost:3001
+```
+
+Keep both running: the header signature is served by the site, at the address in `NEXT_PUBLIC_SITE_URL` (the preview reads `.env.local` too). Every file in `emails/` shows up in the preview list, which also offers a mobile view, the HTML source and email client compatibility checks.
+
+### Writing and sending an issue
+
+1. Duplicate `emails/issues/000-template`, rename the folder (for example `001-first-issue`) and edit `pt.tsx` and `en.tsx`.
+2. Check the result in the preview.
+3. Create the draft: `npm run newsletter:draft -- --issue 001-first-issue --locale pt`. It goes to the Test segment by default. With `--dry-run` it only shows the result, without touching Resend.
+4. Review the draft under Broadcasts in the Resend dashboard and send it from there.
+5. For real subscribers, use `--target subscribers`, with `NEXT_PUBLIC_SITE_URL` pointing at the public address (the script refuses if it is localhost).
 
 ## Author
 

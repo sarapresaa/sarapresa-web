@@ -86,7 +86,12 @@ function NewsletterForm() {
 
       <input type="hidden" name="locale" value={locale} />
       <div aria-hidden="true" className="sr-only">
-        <input type="text" name="referralCode" tabIndex={-1} autoComplete="off" />
+        <input
+          type="text"
+          name="referralCode"
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
 
       {errorKey ? (

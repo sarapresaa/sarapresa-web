@@ -25,10 +25,7 @@ export function MutedParagraph({ children }: BlockProps) {
   return <Text style={styles.muted}>{children}</Text>
 }
 
-export function ButtonLink({
-  href,
-  children,
-}: BlockProps & { href: string }) {
+export function ButtonLink({ href, children }: BlockProps & { href: string }) {
   return (
     <Section style={styles.action}>
       <Button href={href} style={styles.button}>

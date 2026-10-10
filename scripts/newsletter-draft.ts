@@ -44,7 +44,9 @@ function parseOptions(): Options {
   const locale = localeSchema.safeParse(values.locale)
 
   if (!locale.success) {
-    throw new UsageError(`--locale must be one of: ${routing.locales.join(", ")}`)
+    throw new UsageError(
+      `--locale must be one of: ${routing.locales.join(", ")}`
+    )
   }
 
   const target = TARGETS.find((candidate) => candidate === values.target)

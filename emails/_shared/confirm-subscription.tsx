@@ -1,6 +1,12 @@
 import type { Locale } from "@/lib/seo"
 
-import { ButtonLink, MutedParagraph, Paragraph, TextLink, Title } from "./blocks"
+import {
+  ButtonLink,
+  MutedParagraph,
+  Paragraph,
+  TextLink,
+  Title,
+} from "./blocks"
 import { emailCopy } from "./copy"
 import { EmailFrame } from "./frame"
 

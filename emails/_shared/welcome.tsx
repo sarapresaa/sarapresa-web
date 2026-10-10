@@ -23,6 +23,7 @@ export function WelcomeEmail({ locale, siteUrl }: WelcomeEmailProps) {
       <Paragraph>{copy.body}</Paragraph>
       <ButtonLink href={siteUrl}>{copy.action}</ButtonLink>
       <MutedParagraph>{copy.reply}</MutedParagraph>
+      <MutedParagraph>{copy.leave}</MutedParagraph>
     </EmailFrame>
   )
 }

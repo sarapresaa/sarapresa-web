@@ -50,9 +50,7 @@ function NewsletterConfirm({ token, inspection }: NewsletterConfirmProps) {
         {t(`${view}.title`)}
       </h1>
       <p className="mt-3 text-base leading-relaxed text-paper-dim">
-        {view === "prompt"
-          ? t("prompt.text", { email })
-          : t(`${view}.text`)}
+        {view === "prompt" ? t("prompt.text", { email }) : t(`${view}.text`)}
       </p>
 
       {view === "prompt" ? (

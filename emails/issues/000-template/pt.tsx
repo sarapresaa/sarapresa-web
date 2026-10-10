@@ -25,8 +25,8 @@ export default function Issue({ siteUrl }: IssueProps) {
       <Label>Edição 000</Label>
       <Title>{subject}</Title>
       <Paragraph>
-        Isto é um modelo. Duplica esta pasta, muda o número e o texto, e
-        escreve a tua primeira edição.
+        Isto é um modelo. Duplica esta pasta, muda o número e o texto, e escreve
+        a tua primeira edição.
       </Paragraph>
 
       <Divider />

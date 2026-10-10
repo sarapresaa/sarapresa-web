@@ -35,7 +35,9 @@ function hasValidSignature(
   const expected = Buffer.from(sign(encodedClaims, secret))
   const received = Buffer.from(signature)
 
-  return expected.length === received.length && timingSafeEqual(expected, received)
+  return (
+    expected.length === received.length && timingSafeEqual(expected, received)
+  )
 }
 
 export function createConfirmationToken(
@@ -49,7 +51,9 @@ export function createConfirmationToken(
     locale: payload.locale,
     expiresAt: now + CONFIRMATION_TTL_MS,
   }
-  const encodedClaims = Buffer.from(JSON.stringify(claims)).toString("base64url")
+  const encodedClaims = Buffer.from(JSON.stringify(claims)).toString(
+    "base64url"
+  )
 
   return `${encodedClaims}.${sign(encodedClaims, secret)}`
 }
