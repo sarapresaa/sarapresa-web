@@ -33,7 +33,9 @@ export const HREFLANG: Record<Locale, string> = {
 }
 
 export function localeUrl(locale: string) {
-  return `${SITE_URL}/${locale}`
+  return locale === routing.defaultLocale
+    ? `${SITE_URL}/`
+    : `${SITE_URL}/${locale}`
 }
 
 /** hreflang map for one page, including the default-language fallback. */

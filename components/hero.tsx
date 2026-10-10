@@ -81,7 +81,7 @@ function Hero() {
               screen-reader suffix gives the heading its full meaning. */}
           <h1 className="block text-[1rem] leading-none tracking-normal">
             <Signature />
-            <span className="sr-only">, {t("h1Suffix")}</span>
+            <span className="sr-only">Sara Presa, {t("h1Suffix")}</span>
           </h1>
 
           <RevealText

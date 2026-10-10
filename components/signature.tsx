@@ -55,7 +55,7 @@ function Signature({ delay = 0.5 }: { delay?: number }) {
 
   return (
     // Spans only: this lives inside the page's <h1>, which allows phrasing
-    // content. The image alt carries the name for search engines and readers.
+    // content. The name itself is real text in an sr-only span next to it (hero.tsx).
     <span className="relative -ml-[8%] block w-[min(78vw,340px)]">
       <m.span
         className="block"
@@ -63,7 +63,7 @@ function Signature({ delay = 0.5 }: { delay?: number }) {
       >
         <Image
           src="/sara-presa-signature.png"
-          alt="Sara Presa"
+          alt=""
           width={500}
           height={169}
           priority

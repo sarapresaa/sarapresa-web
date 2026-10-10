@@ -47,7 +47,7 @@ npm run format      # formata o código (Prettier)
 ## Estrutura do projeto
 
 ```
-app/[locale]/   páginas e layout (uma rota por idioma: /pt e /en)
+app/[locale]/   páginas e layout (português em / e inglês em /en)
 components/     componentes React de cada secção do site
 i18n/           configuração do next-intl (idiomas suportados, navegação)
 lib/            funções auxiliares
@@ -68,7 +68,7 @@ Todas são opcionais e ficam num ficheiro `.env.local` (nunca é enviado para o 
 O SEO técnico já está feito no código: títulos e descrições por idioma, hreflang, dados estruturados (JSON-LD), `sitemap.xml`, `robots.txt`, `llms.txt` e `llms-full.txt`, manifesto e imagem de partilha. Depois de publicar o site:
 
 1. Verificar o site no [Google Search Console](https://search.google.com/search-console) e enviar `https://sarapresaa.pt/sitemap.xml`.
-2. Pedir a indexação de `/pt` e `/en` (ferramenta de inspeção de URL).
+2. Pedir a indexação de `/` (português) e `/en` (inglês) (ferramenta de inspeção de URL).
 3. Pôr o link do site na bio do Instagram, TikTok, YouTube, LinkedIn, Pinterest e GitHub, sempre com o mesmo nome (Sara Presa) e `@sarapresaa`.
 
 ## Autora
@@ -130,7 +130,7 @@ npm run format      # format code (Prettier)
 ## Project structure
 
 ```
-app/[locale]/   pages and layout (one route per language: /pt and /en)
+app/[locale]/   pages and layout (Portuguese at / and English at /en)
 components/     React components for each section of the site
 i18n/           next-intl configuration (supported locales, navigation)
 lib/            helper functions
@@ -151,7 +151,7 @@ All are optional and live in a `.env.local` file (never committed to GitHub) or 
 Technical SEO is already handled in code: per-language titles and descriptions, hreflang, structured data (JSON-LD), `sitemap.xml`, `robots.txt`, `llms.txt` and `llms-full.txt`, a web manifest and a social share image. After you publish the site:
 
 1. Verify the site in [Google Search Console](https://search.google.com/search-console) and submit `https://sarapresaa.pt/sitemap.xml`.
-2. Request indexing for `/pt` and `/en` (URL inspection tool).
+2. Request indexing for `/` (Portuguese) and `/en` (English) (URL inspection tool).
 3. Put the site link in the bio of Instagram, TikTok, YouTube, LinkedIn, Pinterest and GitHub, always with the same name (Sara Presa) and `@sarapresaa`.
 
 ## Author
