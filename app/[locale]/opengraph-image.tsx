@@ -26,7 +26,6 @@ export default async function OpengraphImage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "meta" })
   const hero = await getTranslations({ locale, namespace: "hero" })
   const photo = await loadPortrait()
 
@@ -73,9 +72,10 @@ export default async function OpengraphImage({
             fontSize: 42,
             fontWeight: 600,
             lineHeight: 1.15,
+            textWrap: "balance",
           }}
         >
-          {t("jobTitle")}
+          {hero("subtitle")}
         </div>
         <div
           style={{
