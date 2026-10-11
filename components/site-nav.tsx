@@ -175,7 +175,7 @@ function SiteNav() {
 
           <div className="flex items-center gap-1.5 justify-self-end">
             <a
-              href={`/cv-${locale}.pdf`}
+              href={`/CV-Sara Presa-${locale}.pdf`}
               download
               className="group hidden items-center gap-1.5 rounded-full border border-hairline-strong px-4 py-2 text-sm text-paper transition-colors duration-300 hover:border-paper/50 hover:bg-paper/5 lg:inline-flex"
             >
@@ -317,7 +317,7 @@ function MobileMenu({ active, locale, onClose }: MobileMenuProps) {
 
       <div className="flex items-center justify-between border-t border-hairline pt-6 text-sm">
         <a
-          href={`/cv-${locale}.pdf`}
+          href={`/CV-Sara Presa-${locale}.pdf`}
           download
           className="flex items-center gap-2 text-paper"
         >
