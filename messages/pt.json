@@ -122,7 +122,7 @@
         "title": "Criadora de Conteúdo",
         "company": "@sarapresaa",
         "period": "Abr. 2025 – Out. 2025 em ritmo regular; pontual desde então",
-        "description": "Marca pessoal em 4 plataformas. Instagram (612 seguidores), TikTok (369 seguidores), YouTube (105 subscritores) e Pinterest (em desenvolvimento). Planeamento de conteúdo, vídeo e análise de métricas."
+        "description": "Marca pessoal em 4 plataformas. Instagram (+610 seguidores), TikTok (370 seguidores), YouTube (107 subscritores) e Pinterest (em desenvolvimento). Planeamento de conteúdo, vídeo e análise de métricas."
       },
       {
         "title": "Nail Designer e Maquilhadora",
@@ -350,9 +350,9 @@
         "period": "em 90 dias"
       },
       {
-        "value": "612",
-        "label": "seguidores no Instagram",
-        "period": ""
+        "value": "+1000",
+        "label": "seguidores no total",
+        "period": "Instagram, TikTok, YouTube e Pinterest"
       },
       {
         "value": "+7,5 mil",
@@ -377,9 +377,9 @@
     "latestVideo": "Último vídeo",
     "soonLabel": "Brevemente",
     "soon": [
-      "Cursos & Loja",
       "Eventos & Datas",
-      "Deixa a tua mensagem"
+      "Música & Onde Ouvir",
+      "Cursos & Loja"
     ],
     "copy": "Copiar email",
     "copied": "Copiado",

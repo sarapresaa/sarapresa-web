@@ -122,7 +122,7 @@
         "title": "Content Creator",
         "company": "@sarapresaa",
         "period": "Apr 2025 – Oct 2025 (regular pace); occasionally since then",
-        "description": "Personal brand on 4 platforms. Instagram (612 followers), TikTok (369 followers), YouTube (105 subscribers) and Pinterest (in development). Content planning, video and metrics analysis."
+        "description": "Personal brand on 4 platforms. Instagram (+610 followers), TikTok (370 followers), YouTube (107 subscribers) and Pinterest (in development). Content planning, video and metrics analysis."
       },
       {
         "title": "Nail Designer & Makeup Artist",
@@ -350,9 +350,9 @@
         "period": "in 90 days"
       },
       {
-        "value": "612",
-        "label": "Instagram followers",
-        "period": ""
+        "value": "+1000",
+        "label": "followers in total",
+        "period": "Instagram, TikTok, YouTube and Pinterest"
       },
       {
         "value": "+7.5K",
@@ -377,9 +377,9 @@
     "latestVideo": "Latest video",
     "soonLabel": "Coming soon",
     "soon": [
-      "Courses & Shop",
       "Events & Dates",
-      "Leave a message"
+      "Music & Where to Listen",
+      "Courses & Shop"
     ],
     "copy": "Copy email",
     "copied": "Copied",

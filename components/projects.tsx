@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
-import { m, useScroll, useTransform } from "framer-motion"
+import { m, useInView, useScroll, useTransform } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 import { ProjectArt } from "@/components/art/project-art"
@@ -30,6 +30,7 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
     offset: ["start end", "end start"],
   })
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"])
+  const isCentered = useInView(coverRef, { margin: "-30% 0px -30% 0px" })
 
   return (
     <article
@@ -44,7 +45,8 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
       >
         <m.div
           style={{ y }}
-          className="absolute inset-x-0 -inset-y-[6%] transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04]"
+          data-centered={isCentered}
+          className="absolute inset-x-0 -inset-y-[6%] transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04] motion-safe:[@media(hover:none)]:data-[centered=true]:scale-[1.06]"
         >
           <ProjectArt id={item.id} className="size-full" />
         </m.div>
