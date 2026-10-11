@@ -264,6 +264,7 @@
     "educationLabel": "Formação académica",
     "certificatesLabel": "Certificados",
     "moreNote": "E muitos mais. Consulta o meu LinkedIn para a lista completa.",
+    "tagsNote": "entre outras",
     "education": [
       {
         "title": "Licenciatura em Tecnologias da Informação",
@@ -271,10 +272,13 @@
         "period": "2023–2027",
         "tags": [
           "Desenvolvimento Web",
+          "Desenvolvimento de Aplicações Móveis",
           "UI/UX",
           "Bases de Dados",
-          "Marketing Digital",
-          "Programação"
+          "Tecnologias de Integração",
+          "Sistemas de Informação Geográfica",
+          "Marketing",
+          "Estudos de Mercado"
         ]
       },
       {
@@ -282,9 +286,11 @@
         "institution": "Escola Secundária Dr. Mário Sacramento",
         "period": "2019–2023",
         "tags": [
-          "Línguas",
+          "Economia",
+          "Matemática",
           "Sociologia",
-          "Economia"
+          "Português",
+          "Espanhol"
         ]
       },
       {
@@ -293,10 +299,12 @@
         "period": "2014–2024",
         "tags": [
           "Piano",
-          "Italiano",
-          "Alemão",
+          "Formação Musical",
+          "Análise e Técnicas de Composição",
           "Arte de Representar",
-          "Análise Musical"
+          "Classe de Conjunto",
+          "Italiano",
+          "Alemão"
         ]
       }
     ],

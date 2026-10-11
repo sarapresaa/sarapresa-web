@@ -54,6 +54,9 @@ function Certificates() {
                   {tag}
                 </li>
               ))}
+              <li className="self-center text-xs text-paper-faint">
+                {t("tagsNote")}
+              </li>
             </ul>
           </li>
         ))}
