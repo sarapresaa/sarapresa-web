@@ -204,15 +204,46 @@ function Hero() {
             </m.div>
           </div>
 
-          <m.p
+          <m.div
             initial="hidden"
             animate="visible"
             custom={2.7}
             variants={rise}
-            className="mx-auto mt-6 max-w-[27rem] text-right text-sm text-paper-faint"
+            className="mx-auto mt-6 flex max-w-[27rem] items-end justify-end gap-1.5"
           >
-            {t("location")}
-          </m.p>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 56 48"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-12 w-14 shrink-0 text-blush"
+            >
+              <m.path
+                d="M53 35 C 41 43, 25 42, 17 33 C 9 24, 13 13, 19 6"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{
+                  duration: 1,
+                  delay: 3.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              />
+              <m.path
+                d="M11 9.5 C 14 8.5, 17 7, 19 6 C 19.5 9, 20 12.5, 20 15.5"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: 4,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              />
+            </svg>
+            <p className="text-base text-paper-dim">{t("portraitCaption")}</p>
+          </m.div>
         </m.div>
       </div>
 
