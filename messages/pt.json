@@ -63,7 +63,8 @@
           "Angular",
           "NestJS",
           "MySQL"
-        ]
+        ],
+        "link": "https://github.com/sarapresaa/Mensora-IoT_Solutions"
       },
       {
         "id": "bingo",
@@ -91,7 +92,8 @@
           "OpenLayers",
           "FastAPI",
           "PostgreSQL/PostGIS"
-        ]
+        ],
+        "link": "https://github.com/sarapresaa/ProjetoTematicoSig"
       },
       {
         "id": "portfolio",
