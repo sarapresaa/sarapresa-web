@@ -79,7 +79,6 @@ function Experience() {
               </div>
             ))}
           </div>
-          <p className="mt-5 text-xs text-paper-faint">{t("skillsNote")}</p>
         </div>
 
         <div className="flex flex-col gap-12">

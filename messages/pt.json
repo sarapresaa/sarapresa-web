@@ -30,17 +30,20 @@
   "about": {
     "label": "Sobre mim",
     "heading": "Nunca fui só uma coisa.",
-    "body": "Sou a Sara. Tenho 22 anos, sou de Aveiro e estou a construir alguma coisa, ainda não sei exatamente o quê, mas sei que vai ser grande.\n\nGosto de criar. De transformar ideias em coisas reais, sejam vídeos, sites, campanhas ou simplesmente uma ideia que ficou na cabeça e que não descansou enquanto não saiu.\n\nTenho medo de ser medíocre. De um dia olhar para trás e perceber que fiquei na zona de conforto quando podia ter arriscado mais. É esse medo que me faz continuar.\n\nO @sarapresaa nasceu disso, da necessidade de documentar, de ser honesta, de mostrar que o caminho não é linear e que tudo bem assim.\n\nSou estudante de TI, criadora de conteúdo, apaixonada por marketing digital e web, e acredito mesmo que criatividade e tecnologia juntas são a combinação mais poderosa que existe.",
+    "body": "Aos dez anos, os meus dias passaram a ter dois turnos: a escola de manhã e o Conservatório ao fim da tarde. Horas a tocar um instrumento, a cantar, a ter aulas teóricas muitas vezes secantes. Como qualquer criança, houve muitos dias em que só queria ir para casa, brincar ou estar com os meus amigos, que não tinham a mesma rotina que eu. Houve cansaço, houve dúvidas, e mais do que uma vez pensei em desistir.\n\nFiquei dez anos. E à medida que chegava ao fim, percebi o quanto amava aquilo. Cresci imenso, e o Conservatório fez de mim quem sou hoje. A música ficou comigo: é o que me acalma e é onde desabafo.\n\nHoje os meus dias continuam a ter vários turnos. Sou estudante de Tecnologias da Informação, desenho sites, gravo vídeos, escrevo músicas e trabalho com pessoas todos os dias. Pelo meio, ainda tenho o meu próprio negócio.\n\nTenho medo de ser medíocre. De um dia olhar para trás e perceber que fiquei na zona de conforto quando podia ter arriscado.\n\nE não vou fingir que é sempre fácil. Há fases em que paro, em que duvido de tudo, em que as redes ficam em silêncio durante meses. Fico sem ideias, empanco, fecho-me nos meus mil e um pensamentos e chego a desistir. Mas este bichinho nunca passa. Volta sempre. E cada vez que volta, tenho mais certeza de que quero fazer disto alguma coisa.\n\nO @sarapresaa nasceu para mostrar isso: o caminho como ele é, com os avanços e as pausas, sem a ilusão do sucesso instantâneo.\n\nAinda estou no início, mas sei para onde vou. Quero juntar tecnologia e criatividade para construir coisas que façam as pessoas sentir alguma coisa, e um dia ajudar outros a fazer o mesmo.\n\nSe chegaste até aqui, já fazes parte desta história. Acompanha-me nas redes, conta-me o teu projeto ou escreve-me só para dizer olá. Gosto de saber quem está do outro lado.",
     "skillsLabel": "O que faço",
     "skills": [
-      "Marketing Digital",
-      "Web Design",
-      "UI/UX",
       "Criação de Conteúdo",
+      "Edição de Vídeo",
+      "Gestão de Redes Sociais",
+      "Marketing Digital",
       "Branding",
       "Storytelling",
-      "HTML/CSS",
-      "Canto Lírico 🎶"
+      "UI/UX",
+      "Web Design",
+      "Desenvolvimento Web",
+      "Canto Lírico",
+      "Escrita de Letras"
     ]
   },
   "projects": {
@@ -55,26 +58,12 @@
         "title": "Mensora IoT Solutions",
         "kind": "Projeto de grupo",
         "year": "2025",
-        "description": "Plataforma web de automação doméstica e monitorização de consumo energético.",
-        "role": "Coordenação do grupo, relatórios, apresentações, design e front-end.",
+        "description": "Plataforma web para automatizar a casa e acompanhar o consumo de energia.",
+        "role": "Coordenei o grupo e participei no desenvolvimento, do design ao front-end e back-end, além dos relatórios e das apresentações.",
         "tags": [
           "Angular",
           "NestJS",
           "MySQL"
-        ]
-      },
-      {
-        "id": "sig",
-        "title": "Projeto Temático SIG",
-        "kind": "Projeto de grupo",
-        "year": "2026",
-        "description": "Aplicação web de mapas para pesquisar farmácias, hospitais e restaurantes, com rotas e locais próximos.",
-        "role": "Coordenação, relatórios, apresentações, design e front-end.",
-        "tags": [
-          "SvelteKit",
-          "OpenLayers",
-          "FastAPI",
-          "PostgreSQL/PostGIS"
         ]
       },
       {
@@ -92,11 +81,25 @@
         "link": "https://github.com/sarapresaa/BingoGame"
       },
       {
+        "id": "sig",
+        "title": "Projeto Temático SIG",
+        "kind": "Projeto de grupo",
+        "year": "2026",
+        "description": "Aplicação web de mapas para encontrar farmácias, hospitais e restaurantes próximos, com cálculo de rotas.",
+        "role": "Coordenação da equipa, design e desenvolvimento, relatórios e apresentações.",
+        "tags": [
+          "SvelteKit",
+          "OpenLayers",
+          "FastAPI",
+          "PostgreSQL/PostGIS"
+        ]
+      },
+      {
         "id": "portfolio",
         "title": "Este portefólio",
         "kind": "Projeto a solo",
         "year": "2026",
-        "description": "Site pessoal bilingue (PT/EN), construído de raiz.",
+        "description": "Site pessoal bilingue (PT/EN), desenhado e desenvolvido por mim de raiz: interface, formulário de contacto, newsletter e publicação em domínio próprio.",
         "role": "",
         "tags": [
           "Next.js",
@@ -113,7 +116,6 @@
     "heading": "Para além do computador.",
     "experienceLabel": "Experiência profissional",
     "skillsLabel": "Competências",
-    "skillsNote": "entre outras...",
     "languagesLabel": "Idiomas",
     "activitiesLabel": "Atividades",
     "jobs": [
@@ -146,32 +148,46 @@
       {
         "label": "Construir",
         "items": [
-          "Java",
-          "JavaScript",
-          "TypeScript",
           "HTML",
           "CSS",
-          "Angular",
+          "JavaScript",
+          "TypeScript",
           "React",
+          "Next.js",
+          "Tailwind CSS",
+          "Angular",
+          "SvelteKit",
+          "Java",
+          "NestJS",
+          "FastAPI",
+          "APIs REST",
           "SQL",
           "Firebase",
-          "APIs REST",
           "Git/GitHub",
-          "IA"
+          "Ferramentas de IA"
         ]
       },
       {
         "label": "Criar",
         "items": [
+          "Figma",
           "UI/UX",
-          "Vídeo",
-          "Storytelling"
+          "Edição de Vídeo",
+          "Canva",
+          "Storytelling",
+          "Branding",
+          "Planeamento de Conteúdo",
+          "Análise de Métricas"
         ]
       },
       {
         "label": "Liderar",
         "items": [
-          "Coordenação de equipas"
+          "Coordenação de Equipas",
+          "Apresentações",
+          "Atendimento ao Cliente",
+          "Vendas",
+          "Gestão de Negócio Próprio"
         ]
       }
     ],
