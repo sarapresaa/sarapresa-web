@@ -3,13 +3,18 @@
 import type { ReactNode } from "react"
 import { m, useReducedMotion } from "framer-motion"
 
-type ArtProps = { className?: string }
+type ArtProps = {
+  className?: string
+  revealed: boolean
+  visible: boolean
+}
 
-const draw = {
-  initial: { pathLength: 0 },
-  whileInView: { pathLength: 1 },
-  viewport: { once: true, margin: "0px 0px -15% 0px" },
-} as const
+function drawIn(revealed: boolean, length = 1) {
+  return {
+    initial: { pathLength: 0 },
+    animate: { pathLength: revealed ? length : 0 },
+  }
+}
 
 function Frame({
   id,
@@ -43,7 +48,7 @@ function Frame({
   )
 }
 
-function MensoraArt({ className }: ArtProps) {
+function MensoraArt({ className, revealed }: ArtProps) {
   const bars = [88, 132, 104, 164, 122, 190, 148, 176, 112]
 
   return (
@@ -71,8 +76,7 @@ function MensoraArt({ className }: ArtProps) {
           rx="6"
           className="fill-rose/55"
           initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true, margin: "0px 0px -15% 0px" }}
+          animate={{ scaleY: revealed ? 1 : 0 }}
           transition={{
             duration: 1,
             delay: index * 0.05,
@@ -87,7 +91,7 @@ function MensoraArt({ className }: ArtProps) {
         strokeWidth="3"
         strokeLinecap="round"
         className="stroke-blush"
-        {...draw}
+        {...drawIn(revealed)}
         transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
       />
       <circle cx="365" cy="120" r="6" className="fill-blush" />
@@ -110,8 +114,7 @@ function MensoraArt({ className }: ArtProps) {
         strokeLinecap="round"
         className="stroke-blush"
         transform="rotate(-90 486 124)"
-        {...draw}
-        whileInView={{ pathLength: 0.7 }}
+        {...drawIn(revealed, 0.7)}
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
       />
       <path
@@ -147,7 +150,7 @@ function MensoraArt({ className }: ArtProps) {
   )
 }
 
-function SigArt({ className }: ArtProps) {
+function SigArt({ className, revealed }: ArtProps) {
   return (
     <Frame id="sig" from="#241d2e" to="#3d3a4e" className={className}>
       <path
@@ -172,7 +175,7 @@ function SigArt({ className }: ArtProps) {
         strokeLinecap="round"
         strokeLinejoin="round"
         className="stroke-blush"
-        {...draw}
+        {...drawIn(revealed)}
         transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
       />
 
@@ -267,8 +270,9 @@ function SigArt({ className }: ArtProps) {
   )
 }
 
-function BingoArt({ className }: ArtProps) {
+function BingoArt({ className, visible }: ArtProps) {
   const prefersReducedMotion = useReducedMotion()
+  const isPlaying = visible && !prefersReducedMotion
   const marked = new Set([1, 6, 8, 12, 14, 17, 21, 23])
   const letters = ["B", "I", "N", "G", "O"]
 
@@ -341,11 +345,19 @@ function BingoArt({ className }: ArtProps) {
         cx={468}
         cy={200}
         initial={{ x: 84, y: -92 }}
-        whileInView={
-          prefersReducedMotion ? undefined : { x: [84, 0], y: [-92, 0] }
+        animate={
+          isPlaying
+            ? {
+                x: [84, 0],
+                y: [-92, 0],
+                transition: {
+                  duration: 2.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }
+            : { x: 84, y: -92, transition: { duration: 0 } }
         }
-        viewport={{ once: false }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       />
       <m.circle
         r="5"
@@ -353,14 +365,19 @@ function BingoArt({ className }: ArtProps) {
         cx={468}
         cy={200}
         initial={{ x: 46 }}
-        whileInView={prefersReducedMotion ? undefined : { x: [0, 92] }}
-        viewport={{ once: false }}
-        transition={{
-          duration: 2.4,
-          delay: 0.8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={
+          isPlaying
+            ? {
+                x: [0, 92],
+                transition: {
+                  duration: 2.4,
+                  delay: 0.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              }
+            : { x: 46, transition: { duration: 0 } }
+        }
       />
 
       <rect
@@ -406,7 +423,7 @@ function BingoArt({ className }: ArtProps) {
   )
 }
 
-function PortfolioArt({ className }: ArtProps) {
+function PortfolioArt({ className, revealed }: ArtProps) {
   return (
     <Frame id="portfolio" from="#3d3a4e" to="#c4919a" className={className}>
       <rect
@@ -429,7 +446,7 @@ function PortfolioArt({ className }: ArtProps) {
         strokeLinecap="round"
         strokeLinejoin="round"
         className="stroke-paper"
-        {...draw}
+        {...drawIn(revealed)}
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       />
 
@@ -495,10 +512,12 @@ const artById = {
 
 type ProjectArtProps = ArtProps & { id: string }
 
-function ProjectArt({ id, className }: ProjectArtProps) {
+function ProjectArt({ id, className, revealed, visible }: ProjectArtProps) {
   const Art = artById[id as keyof typeof artById]
 
-  return Art ? <Art className={className} /> : null
+  return Art ? (
+    <Art className={className} revealed={revealed} visible={visible} />
+  ) : null
 }
 
 export { ProjectArt }

@@ -31,6 +31,11 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
   })
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"])
   const isCentered = useInView(coverRef, { margin: "-30% 0px -30% 0px" })
+  const isRevealed = useInView(coverRef, {
+    once: true,
+    margin: "0px 0px -15% 0px",
+  })
+  const isVisible = useInView(coverRef)
 
   return (
     <article
@@ -48,7 +53,12 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
           style={{ y }}
           className="absolute inset-x-0 -inset-y-[6%] transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04] motion-safe:[@media(hover:none)]:group-data-[centered=true]:scale-[1.06]"
         >
-          <ProjectArt id={item.id} className="size-full" />
+          <ProjectArt
+            id={item.id}
+            className="size-full"
+            revealed={isRevealed}
+            visible={isVisible}
+          />
         </m.div>
       </div>
 
