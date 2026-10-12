@@ -197,6 +197,12 @@
   opacity: 1;
 }
 
+@media (hover: none) {
+  [data-spotlight][data-centered="true"]::before {
+    opacity: 1;
+  }
+}
+
 .link-sweep {
   background-image: linear-gradient(currentColor, currentColor);
   background-position: 0 100%;

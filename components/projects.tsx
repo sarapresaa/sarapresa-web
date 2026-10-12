@@ -36,6 +36,7 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
     <article
       id={`project-${item.id}`}
       data-project={item.id}
+      data-centered={isCentered}
       data-spotlight
       className="group scroll-mt-28 rounded-[1.75rem] border border-hairline bg-ink-raised/50 p-3 md:p-4"
     >
@@ -45,8 +46,7 @@ function ProjectPanel({ item }: { item: ProjectItem }) {
       >
         <m.div
           style={{ y }}
-          data-centered={isCentered}
-          className="absolute inset-x-0 -inset-y-[6%] transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04] motion-safe:[@media(hover:none)]:data-[centered=true]:scale-[1.06]"
+          className="absolute inset-x-0 -inset-y-[6%] transition-transform duration-[900ms] ease-out-expo group-hover:scale-[1.04] motion-safe:[@media(hover:none)]:group-data-[centered=true]:scale-[1.06]"
         >
           <ProjectArt id={item.id} className="size-full" />
         </m.div>
